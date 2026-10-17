@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <meta name="description" content="AI 面試複習：Agent、GenAI、VLA 三個雙語知識庫。">
+  <title>AI Knowledge Review</title>
+  <link rel="icon" href="agent/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root { --paper: #f6f5ef; --ink: #263d30; --muted: #647065; --line: #d9ddd2; --accent: #c34b23; --white: #fcfcf8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, "Noto Sans TC", sans-serif; }
+    main { max-width: 1040px; margin: auto; padding: 72px 24px 48px; }
+    .eyebrow { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--muted); }
+    h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -1px; line-height: 1.3; margin: 14px 0 12px; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { color: var(--muted); line-height: 1.8; max-width: 560px; margin: 0 0 44px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .card { display: flex; flex-direction: column; padding: 26px; background: var(--white); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: inherit; transition: border-color .18s, transform .18s; }
+    .card:hover { border-color: #8b9e84; transform: translateY(-2px); }
+    .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .card .num { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 1.5px; color: var(--muted); }
+    .card .num span:last-child { color: var(--accent); font-size: 20px; }
+    .card h2 { font-size: 22px; margin: 22px 0 4px; }
+    .card small { color: var(--muted); font-size: 12px; }
+    .card p { flex: 1; color: var(--muted); font-size: 14px; line-height: 1.8; margin: 14px 0 20px; }
+    .card .meta { border-top: 1px solid var(--line); padding-top: 14px; font-size: 12px; color: var(--muted); }
+    footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: var(--ink); }
+    @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">AI INTERVIEW REVIEW</div>
+  <h1>今天要複習<em>哪一個</em>？</h1>
+  <p class="lead">三個雙語（中文 / English）面試知識庫：讀觀念、做測驗、回顧錯題。登入 Google 後，各主題的進度會分別跨裝置同步。</p>
+  <div class="grid">
+    <a class="card" href="agent/">
+      <span class="num"><span>01 / AGENT</span><span aria-hidden="true">↗</span></span>
+      <h2>Agent Knowledge Lab</h2>
+      <small>AI Agent / GenAI Engineer</small>
+      <p>Agent 架構、Tool Calling、Context Engineering、Memory &amp; RAG、多代理、安全、評估與系統設計。</p>
+      <span class="meta">12 個主題 · 問答學習 · 選擇題測驗</span>
+    </a>
+    <a class="card" href="genai/">
+      <span class="num"><span>02 / GENAI</span><span aria-hidden="true">↗</span></span>
+      <h2>GenAI Knowledge</h2>
+      <small>Generative AI systems</small>
+      <p>模型架構、微調與對齊、RAG 與 Agent、推論與部署，搭配情境式說明與圖解。</p>
+      <span class="meta">97 則筆記 · 34 題測驗 · 錯題複習</span>
+    </a>
+    <a class="card" href="vla/">
+      <span class="num"><span>03 / VLA</span><span aria-hidden="true">↗</span></span>
+      <h2>VLA Knowledge Lab</h2>
+      <small>Vision-Language-Action · Physical AI</small>
+      <p>VLA 基礎、模型架構（OpenVLA、π0、GR00T、Gemini Robotics）、訓練資料、邊緣部署與系統設計。</p>
+      <span class="meta">30 題 · 5 個章節 · 錯題複習</span>
+    </a>
+  </div>
+  <footer><span>AI Knowledge Review</span><a href="https://github.com/greamown/ai-knowledge-review">GitHub</a></footer>
+</main>
+</body>
+</html>
