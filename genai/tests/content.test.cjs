@@ -35,7 +35,7 @@ for (const q of data.quiz) {
   }
   assert.doesNotMatch(JSON.stringify(q.en), /[\u3400-\u9fff]/);
 }
-const script = html.match(/<script>\s*([\s\S]*?)<\/script>/)[1];
+const script = fs.readFileSync(require('node:path').join(__dirname, '../../shared/study.js'), 'utf8');
 new vm.Script(script);
 // Exercise state and session logic without browser dependencies; rendering is checked in Chrome.
 const core = script.split('document.querySelectorAll("[data-icon]")')[0];

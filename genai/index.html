@@ -7,16 +7,8 @@
 <link rel="icon" href="data:,">
 <meta name="description" content="A bilingual GenAI field guide: 85 concepts, visual learning paths, and 34 practice questions. 中英文生成式 AI 圖解學習手冊。">
 <title>GenAI Knowledge — Fieldnotes</title>
-<style>
-:root{--paper:#f6f5ef;--surface:#fffefa;--ink:#203d35;--muted:#65716a;--line:#dedfd5;--green:#234b3d;--mint:#e4ecdf;--orange:#af4a25;--peach:#f3e5d8;--blue:#e3eaf0;--radius:16px;color:var(--ink);background:var(--paper);font-family:"Avenir Next","Noto Sans TC","Microsoft JhengHei",sans-serif;font-synthesis:none}
-*{box-sizing:border-box}body{margin:0;line-height:1.7}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:default}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:4px}a{color:inherit;text-underline-offset:4px}button{color:inherit}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.3}svg{display:block}.hide,[hidden]{display:none!important}.shell{max-width:1280px;margin:auto;padding:0 40px}.top{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:100px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand-symbol{display:grid;place-items:center;background:var(--green);color:var(--paper);width:39px;height:43px;border-radius:5px 11px 5px 5px}.brand strong{display:block;font-size:19px;letter-spacing:-.7px}.brand small{display:block;font-size:9px;letter-spacing:2.2px;color:var(--muted)}.top-right,.tabs,.row{display:flex;align-items:center;gap:12px}.top-right{gap:26px}.tabs{gap:24px}.tab{padding:13px 0;background:none;border:0;color:var(--muted);font-size:13px;position:relative}.tab[aria-current="page"]{color:var(--ink);font-weight:700}.tab[aria-current="page"]:after{content:"";position:absolute;bottom:3px;left:0;right:0;height:2px;background:var(--orange)}.language{display:flex;gap:3px;padding:4px;border:1px solid var(--line);border-radius:8px}.language button{font-size:11px;min-height:30px;padding:3px 9px;border:0;border-radius:4px;background:none;color:var(--muted)}.language button[aria-pressed="true"]{background:var(--green);color:white}.eyebrow{font-size:10px;letter-spacing:2.2px;font-weight:700;text-transform:uppercase}.eyebrow.accent{color:var(--orange)}.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;align-items:center;padding:58px 0 42px}.hero h1{font-size:clamp(35px,4.4vw,58px);font-weight:500;letter-spacing:-2px;margin:18px 0 20px;font-family:Georgia,"Noto Serif TC","Songti TC",serif;max-width:650px}.hero h1 em{color:var(--orange);font-weight:400;font-style:normal}.hero p{max-width:460px;font-size:14px;color:var(--muted);line-height:1.9}.hero-actions{display:flex;gap:20px;align-items:center;margin-top:28px}.btn{display:inline-flex;gap:9px;align-items:center;justify-content:center;min-height:42px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:9px 16px;font-size:12px;font-weight:600;text-decoration:none;transition:background .2s,transform .2s}.btn:hover{background:var(--mint);transform:translateY(-1px)}.btn.primary{background:var(--green);border-color:var(--green);color:white}.btn.primary:hover{background:#32614e}.btn.text{background:transparent;border-color:transparent;padding-left:0;color:var(--muted)}.icon{width:20px;height:20px;flex-shrink:0}.hero-art{position:relative;max-width:510px;width:100%;justify-self:end;background-image:radial-gradient(#acb8a7 0.7px,transparent .7px);background-size:15px 15px;border-radius:50%;padding:7px}.hero-art svg{width:100%;height:auto;overflow:visible}.art-caption{text-align:center;font-family:Georgia,serif;font-style:italic;font-size:12px;color:var(--muted);margin-top:-5px}.stats{display:grid;grid-template-columns:1.2fr 1fr 1fr;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 0;margin-bottom:42px}.stat{padding:0 28px;border-right:1px solid var(--line);display:flex;gap:17px;align-items:center}.stat:last-child{border:0}.stat-icon{width:39px;height:39px;display:grid;place-items:center;color:var(--green);background:var(--mint);border-radius:50%}.stat b{font-family:Georgia,serif;font-size:27px;font-weight:400;line-height:1.2}.stat span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.stat .progress{width:100%;margin-top:7px;height:3px}.stat-copy{flex:1}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:20px}.section-head h2{font-family:Georgia,"Noto Serif TC",serif;font-size:25px;letter-spacing:-.5px;font-weight:500}.section-head p{font-size:12px;color:var(--muted);margin-top:5px}.section-note{font-size:10px;color:var(--muted);letter-spacing:1px}.paths{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:42px}.path{padding:20px;text-align:left;border:1px solid var(--line);border-radius:12px;background:transparent;position:relative;transition:transform .2s,background .2s}.path:hover{transform:translateY(-3px);background:var(--surface)}.path.active{border-color:var(--green);background:var(--surface);box-shadow:0 3px 0 var(--green)}.path-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.path-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:var(--mint)}.path:nth-child(2) .path-icon{background:var(--peach);color:var(--orange)}.path:nth-child(3) .path-icon{background:var(--blue);color:#385b73}.path:nth-child(4) .path-icon{background:#ece8dc;color:#725f32}.path-num{font-family:Georgia,serif;color:var(--muted);font-size:12px}.path h3{font-size:15px;margin-bottom:8px}.path p{font-size:11px;color:var(--muted);min-height:38px;line-height:1.7}.path-bottom{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:18px;padding-top:13px;border-top:1px solid var(--line)}.layout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:35px;border-top:1px solid var(--line);padding-top:32px;scroll-margin-top:20px}.layout>aside,.layout>main{min-width:0}.sidebar{position:sticky;top:24px;align-self:start}.sidebar .eyebrow{color:var(--muted);margin-bottom:15px}.filter{display:flex;align-items:center;gap:10px;width:100%;padding:12px 10px;text-align:left;border:0;border-radius:7px;background:none;color:var(--muted);font-size:12px;margin-bottom:3px}.filter .icon{width:17px;height:17px}.filter.active{background:var(--mint);color:var(--green);font-weight:700}.filter .count{margin-left:auto;font-size:10px}.study-tip{margin-top:28px;padding:20px 15px;background:#edeedf;border-radius:10px}.study-tip .icon{color:var(--orange);margin-bottom:12px}.study-tip h3{font-size:12px;margin-bottom:8px}.study-tip p{font-size:11px;line-height:1.9;color:var(--muted)}.sidebar-note{margin:18px 10px;color:var(--muted);font-size:10px}.main-title{display:flex;align-items:center;gap:12px}.main-title h2{font-size:24px;font-family:Georgia,"Noto Serif TC",serif;font-weight:500}.pill{border:1px solid var(--line);border-radius:20px;padding:3px 10px;font-size:10px;white-space:nowrap;color:var(--muted)}.tools{display:flex;gap:10px;margin:20px 0}.search-wrap{position:relative;flex:1;min-width:0}.search-wrap>.icon{position:absolute;left:14px;top:13px;width:17px;color:var(--muted)}input,select{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:11px 13px;font-size:12px;min-width:0;min-height:44px}input{width:100%;padding-left:41px}input::placeholder{color:#7a8178}select{max-width:100%}.visual-guide{background:#eaf0e6;border:1px solid #d9e3d3;border-radius:12px;padding:22px;margin-bottom:20px;overflow:hidden}.guide-top{display:flex;align-items:start;justify-content:space-between;gap:15px}.guide-top h3{font-size:16px;font-weight:600;margin:5px 0 8px}.guide-top p{font-size:12px;color:#50634f;max-width:570px}.guide-tag{font-size:9px;letter-spacing:1.2px;white-space:nowrap;color:#50634f}.flow{display:flex;align-items:stretch;gap:20px;margin:22px 0 14px;list-style:none;padding:0}.flow li{flex:1;min-width:0;position:relative;background:var(--surface);border:1px solid #cbd8c4;border-radius:8px;padding:12px;text-align:center;font-size:12px;font-weight:600}.flow li:not(:last-child):after{content:"→";position:absolute;right:-17px;top:50%;transform:translateY(-50%);color:#687e5e}.flow .icon{margin:0 auto 8px;color:var(--green)}.flow small{display:block;color:var(--muted);font-weight:400;font-size:10px;margin-top:4px}.lora-flow{display:grid;grid-template-columns:1fr 1.3fr 1fr;grid-template-rows:auto auto;gap:12px 20px;align-items:center}.lora-flow li:first-child{grid-column:1;grid-row:1 / 3}.lora-flow li:nth-child(2){grid-column:2;grid-row:1}.lora-flow li:nth-child(3){grid-column:2;grid-row:2}.lora-flow li:last-child{grid-column:3;grid-row:1 / 3}.lora-flow li:first-child:after{content:"↗ ↘"}.lora-flow li:nth-child(3):after{display:block}.guide-foot{font-size:10px;color:#52664d;display:flex;gap:8px;align-items:center}.guide-foot .icon{width:15px;height:15px}.stack{display:grid;gap:10px}.qa{border:1px solid var(--line);border-radius:11px;background:var(--surface);overflow:hidden;transition:border-color .2s}.qa:hover{border-color:#b2bfb0}.qa.is-read{border-left:3px solid #739465}.question-summary{width:100%;border:0;background:transparent;text-align:left;color:inherit;display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:center;gap:13px;padding:19px 20px}.question-number{font-family:Georgia,serif;font-size:17px;color:var(--muted);align-self:start}.question-title{display:block;font-size:15px;font-weight:600;overflow-wrap:anywhere}.question-copy .meta{display:block;font-weight:400}.meta{font-size:9px;color:var(--muted);letter-spacing:.5px;margin-top:5px}.question-actions{display:flex;gap:8px;align-items:center}.reveal{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border:1px solid var(--line);border-radius:50%;font-size:22px;font-weight:400;color:var(--green)}.question-summary:hover{background:var(--mint)}.question-summary[aria-expanded="true"] .reveal{background:var(--green);border-color:var(--green);color:white}.answer{border-top:1px solid var(--line);padding:20px 22px 20px 73px;background:#f9faf4}.answer-label{font-size:9px;letter-spacing:1.4px;color:var(--orange);font-weight:700;margin-bottom:10px}.answer p{font-size:13px;line-height:1.95;white-space:pre-line;overflow-wrap:anywhere}.answer-footer{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:17px}.answer-footer>span{font-size:10px;color:var(--muted)}.mark{min-height:34px;font-size:10px;padding:6px 11px}.mini-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0;font-family:Georgia,serif;font-size:12px}.mini-flow span{padding:6px 10px;background:var(--mint);border:1px solid #d5dfcf;border-radius:5px}.pagination{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:22px 0}.pagination span{color:var(--muted);font-size:11px}.progress{height:6px;border-radius:20px;background:#dde4d5;overflow:hidden}.bar{height:100%;background:#739465;transition:width .3s}.panel{padding:28px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.panel h2{font-family:Georgia,"Noto Serif TC",serif;font-size:25px;font-weight:500}.panel>p{white-space:pre-line;font-size:13px;color:var(--muted);margin:12px 0 20px}.row{justify-content:space-between;flex-wrap:wrap}.quiz-card{margin-top:20px}.quiz-card h3{font-size:22px;margin:25px 0 20px}.quiz-card>.meta{margin-bottom:12px}.quiz-option{display:flex;align-items:center;gap:13px;text-align:left;width:100%;padding:14px;margin:10px 0;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:13px}.option-letter{display:grid;place-items:center;width:29px;height:29px;flex-shrink:0;border:1px solid var(--line);border-radius:6px;font-size:11px}.quiz-option:hover:not(:disabled){background:var(--mint);border-color:#8eaa83}.quiz-option.correct{background:#e4efdf;border-color:#739465}.quiz-option.wrong{background:#f6e4dc;border-color:#ba6846}.quiz-option:disabled{color:var(--ink);opacity:1}.feedback{margin-top:20px;padding:20px;background:var(--paper);border-radius:9px}.feedback p{white-space:pre-line;font-size:13px;margin:8px 0 16px}.feedback strong{font-size:14px}.empty{text-align:center;padding:45px 20px;border:1px dashed #c0c9b9;border-radius:12px}.empty .icon{margin:0 auto 14px;width:32px;height:32px;color:#739465}.empty h3{font-size:17px;margin-bottom:10px}.empty p{font-size:12px;color:var(--muted);margin-bottom:16px}.score{font-family:Georgia,serif;font-size:65px;font-weight:400;color:var(--green)}.foot{display:flex;align-items:center;justify-content:space-between;gap:15px;border-top:1px solid var(--line);margin:50px 0 0;padding:24px 0;color:var(--muted);font-size:10px}.foot span:first-child{font-family:Georgia,serif;font-size:15px;color:var(--green)}.skip{position:absolute;left:20px;top:-100px;background:var(--green);color:white;padding:8px 15px;z-index:10}.skip:focus{top:10px}.storage-note{margin-top:18px;padding:10px;background:var(--peach);font-size:12px;border-radius:8px}.hero-copy,.hero-art{animation:arrive .6s ease-out both}.hero-art{animation-delay:.12s}@keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.progress-link{font-size:11px;text-decoration:none;white-space:nowrap}.progress-tools{margin-top:42px;padding:26px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}.progress-tools h2{font-family:Georgia,"Noto Serif TC",serif;font-size:22px;font-weight:500}.progress-tools>p,.sync-meta{font-size:12px;color:var(--muted);margin-top:8px}.progress-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px}.cloud-backup{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}.cloud-backup h3{font-size:14px}.sync-meta{display:flex;gap:18px;flex-wrap:wrap}.sync-status{font-size:12px;min-height:21px}.cloud-backup button:disabled{opacity:.55}
-@media(min-width:1500px){.shell{max-width:1360px}.hero{padding-top:70px;padding-bottom:50px}}
-@media(max-width:1000px){.shell{padding:0 25px}.top-right{gap:18px}.tabs{gap:15px}.hero{gap:10px}.hero h1{font-size:42px}.layout{grid-template-columns:185px minmax(0,1fr);gap:23px}.path{padding:16px}.question-summary{gap:8px;padding:16px}.answer{padding-left:63px}.reveal{font-size:22px}.stat{padding:0 20px}}
-@media(max-width:760px){.shell{padding:0 20px}.top{min-height:115px;flex-wrap:wrap;gap:6px;padding:16px 0}.brand strong{font-size:17px}.brand small{font-size:8px}.brand-symbol{width:31px;height:36px}.top-right{display:contents}.tabs{order:3;width:100%;gap:25px}.language{margin-left:auto}.hero{padding:30px 0;grid-template-columns:1fr 0.7fr;gap:0}.hero h1{font-size:34px;letter-spacing:-1px}.hero p{font-size:12px}.hero-actions{gap:7px;margin-top:20px;flex-wrap:wrap}.hero-art{padding:0;align-self:center}.art-caption{font-size:9px}.hero .eyebrow{font-size:8px;letter-spacing:1px}.stats{padding:17px 0;margin-bottom:30px;grid-template-columns:1fr 1fr 1fr}.stat{padding:0 12px;gap:7px}.stat-icon{display:none}.stat b{font-size:24px}.stat span{font-size:9px}.section-head h2{font-size:22px}.section-note{display:none}.paths{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:28px}.path-top{margin-bottom:12px}.path p{min-height:0}.path-bottom{margin-top:12px}.layout{grid-template-columns:minmax(0,1fr);gap:20px;padding-top:20px}.sidebar{position:static}.sidebar>.eyebrow,.study-tip,.sidebar-note{display:none}#filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px}.filter{width:auto;flex-shrink:0;padding:9px 11px;margin:0;font-size:11px}.filter .icon,.filter .count{display:none}.main-title h2{font-size:23px}.visual-guide{padding:18px}.guide-top h3{font-size:15px}.guide-tag{display:none}.flow{gap:16px}.flow li{font-size:11px;padding:10px 5px}.flow li:not(:last-child):after{right:-14px}.flow small{font-size:9px}.question-summary{grid-template-columns:29px minmax(0,1fr) auto;padding:15px 12px;gap:7px}.question-title{font-size:13px}.meta{font-size:8px}.question-number{font-size:15px}.question-actions .read-check{display:none}.reveal{width:32px;height:32px;font-size:22px}.answer{padding:18px}.panel{padding:20px}.foot{flex-wrap:wrap;margin-top:32px;gap:8px}.foot span:first-child{width:100%}}
-@media(max-width:440px){.hero{grid-template-columns:1fr}.hero-art{width:78%;justify-self:center;margin:12px 0 -3px}.hero h1{font-size:38px;max-width:350px}.hero p{max-width:340px}.hero-actions{gap:18px}.hero{padding-bottom:22px}.stat b{font-size:22px}.stat{padding:0 10px}.flow{flex-wrap:wrap;gap:12px}.flow li{flex:1 1 40%}.flow li:after{display:none}.flow li:before{content:counter(list-item,decimal-leading-zero);display:block;font-size:9px;color:var(--muted);margin-bottom:5px}.flow .icon{display:none}.tools{gap:7px}.tools select{padding:10px 7px;font-size:11px}.question-summary{grid-template-columns:25px minmax(0,1fr) auto}.pagination .btn{padding:8px 11px}.pill{font-size:9px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+<link rel="stylesheet" href="../shared/study.css">
+</head>
 </head>
 <body>
 <a class="skip" href="#workspace" data-i18n="skip">跳至學習內容</a>
@@ -27,12 +19,7 @@
 </header>
 <section class="hero" aria-labelledby="heroTitle">
 <div class="hero-copy"><div class="eyebrow accent">THE GENAI FIELDNOTES · VOL. 01</div><h1 id="heroTitle"><span data-i18n="hero1">把複雜的 AI，</span><br><em data-i18n="hero2">學成自己的知識。</em></h1><p data-i18n="intro">從第一個 Attention 到完整的 AI 系統。用圖解拆解觀念，用練習串起理解，一次掌握一個關鍵概念。</p><div class="hero-actions"><button class="btn primary" id="continueLearning"><span data-i18n="startLearning">開始學習</span><span aria-hidden="true">↗</span></button><button class="btn text" id="heroQuiz"><span data-i18n="testYourself">測試我的理解</span><span aria-hidden="true">→</span></button></div></div>
-<figure class="hero-art" style="margin:0"><svg viewBox="0 0 490 355" role="img" aria-labelledby="artTitle artDesc"><title id="artTitle">GenAI systems, connected</title><desc id="artDesc">Tokens flow through model architecture, retrieval and tools, then inference. A conceptual illustration of the learning journey.</desc><defs><pattern id="hatch" width="5" height="5" patternTransform="rotate(35)" patternUnits="userSpaceOnUse"><path d="M0 0v5" stroke="#bdc9b5" stroke-width="1"/></pattern></defs>
-<circle cx="254" cy="178" r="145" fill="none" stroke="#c7d0bd" stroke-dasharray="3 7"/><path d="M82 97h60v50M335 201h51v66h-57M155 270H91v-65" fill="none" stroke="#849b79" stroke-width="1.5"/><circle cx="82" cy="97" r="4" fill="#af4a25"/><circle cx="91" cy="205" r="4" fill="#af4a25"/>
-<g transform="translate(160 55) rotate(8 128 55)"><rect x="5" y="7" width="233" height="106" rx="10" fill="url(#hatch)"/><rect width="233" height="106" rx="10" fill="#f9f8ef" stroke="#99aa8e"/><text x="18" y="25" font-family="monospace" font-size="9" letter-spacing="1" fill="#64725c">01 / MODEL ARCHITECTURE</text><g fill="#dfe8d5" stroke="#9baf8e"><rect x="20" y="43" width="45" height="39" rx="5"/><rect x="94" y="43" width="45" height="39" rx="5"/><rect x="168" y="43" width="45" height="39" rx="5"/></g><g font-family="Georgia" font-size="20" fill="#234b3d" text-anchor="middle"><text x="42" y="69">Q</text><text x="116" y="69">K</text><text x="190" y="69">V</text></g><path d="M65 63h29m45 0h29" stroke="#64795b" stroke-dasharray="3 3"/></g>
-<g transform="translate(82 140) rotate(-7 145 62)"><rect x="5" y="8" width="290" height="115" rx="10" fill="#d2d9c8"/><rect width="290" height="115" rx="10" fill="#234b3d" stroke="#234b3d"/><text x="19" y="26" font-family="monospace" font-size="9" letter-spacing="1" fill="#c9d5bd">02 / KNOWLEDGE + REASONING</text><g fill="none" stroke="#b5c7a7" stroke-width="1.3"><circle cx="44" cy="71" r="16"/><rect x="111" y="53" width="67" height="36" rx="6"/><circle cx="247" cy="71" r="16"/><path d="M60 71h51m67 0h53M39 64v14m9-14v14M35 67h17m-17 7h17M240 71h14m-7-7v14"/></g><text x="144" y="76" fill="#fffefa" font-family="Georgia" font-size="15" text-anchor="middle">LLM</text></g>
-<g transform="translate(178 254) rotate(4 116 35)"><rect x="4" y="5" width="229" height="69" rx="9" fill="#e6cdb8"/><rect width="229" height="69" rx="9" fill="#f3e5d8" stroke="#c69a79"/><text x="17" y="22" font-family="monospace" font-size="9" letter-spacing="1" fill="#915535">03 / INFERENCE</text><path d="M20 49h24l10-14 15 24 14-18 9 8h48" fill="none" stroke="#af4a25" stroke-width="2"/><text x="158" y="51" font-family="Georgia" font-style="italic" font-size="16" fill="#915535">output ↗</text></g>
-<g transform="translate(49 63)"><rect width="57" height="27" rx="5" fill="#fffefa" stroke="#bdc9b5"/><text x="28" y="18" font-family="monospace" font-size="10" fill="#64725c" text-anchor="middle">tokens</text></g><path d="M418 128v20m-10-10h20M64 287v14m-7-7h14" stroke="#af4a25" stroke-width="1.5"/><circle cx="406" cy="235" r="5" fill="none" stroke="#849b79"/></svg><figcaption class="art-caption" data-i18n="artCaption">一個概念，一步步連成系統。</figcaption></figure>
+<figure class="hero-art" style="margin:0"><img id="art" src="art.svg" width="490" height="355" alt=""><figcaption class="art-caption" data-i18n="artCaption">一個概念，一步步連成系統。</figcaption></figure>
 </section>
 <div class="stats" data-i18n-label="progressLabel" aria-label="學習進度"><div class="stat"><div class="stat-icon" data-icon="book"></div><div class="stat-copy"><b id="doneNum">0 / 85</b><span data-i18n="readCount">已掌握的知識筆記</span><div class="progress"><div class="bar" id="readBar"></div></div></div></div><div class="stat"><div class="stat-icon" data-icon="target"></div><div><b id="accuracy">—</b><span data-i18n="accuracy">累計測驗答對率</span></div></div><div class="stat"><div class="stat-icon" data-icon="repeat"></div><div><b id="wrongNum">0</b><span data-i18n="wrongCount">值得再練一次的觀念</span></div></div></div>
 <section aria-labelledby="pathTitle"><div class="section-head"><div><h2 id="pathTitle" data-i18n="pathTitle">你的 GenAI 學習地圖</h2><p data-i18n="pathIntro">四個章節，從理解模型到打造系統。選擇一站，開始探索。</p></div><span class="section-note">THE LEARNING PATH / 01—04</span></div><div class="paths" id="paths"></div></section>
@@ -62,7 +49,17 @@
       "en": {
         "title": "Self-Attention",
         "answer": "In plain words: Self-Attention lets every token (a piece of text) look at the other tokens in the same input, decide which ones are most relevant, and blend their information by relevance into a new, context-aware representation. \"Self\" means Q, K, and V all come from the same sequence.\nQ (Query): what the current token is looking for.\nK (Key): the label each token offers, compared with Q to produce a relevance score.\nV (Value): the content that is actually retrieved and mixed.\nsoftmax: turns a row of scores into weights that sum to 1.\n\nScenario: in \"Mia handed Leo a book because he wanted to read it,\" the Q of \"he\" is compared with the K of every earlier word. If \"Leo\" scores highest, more of Leo's V is mixed in. This gives a clue about who \"he\" is, but does not guarantee correct understanding.\n\nRemember: the formula is softmax(QKᵀ/√dₖ)V, where dₖ is the key dimension; dividing by √dₖ keeps scores from growing with dimension and stops softmax from piling almost all weight onto a few tokens."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Q × Kᵀ",
+            "÷ √dₖ",
+            "Softmax",
+            "× V"
+          ]
+        }
+      ]
     },
     {
       "id": 2,
@@ -252,7 +249,17 @@
       "en": {
         "title": "KV Cache",
         "answer": "In plain words: a KV Cache stores the K (Key) and V (Value) computed at every layer for each earlier token during generation. A decoder-only model must attend to all previous tokens for every new token; with the cache, old K and V are not recomputed and only the new token's part is calculated.\nPrefill: process the whole input once and build the cache.\nDecode: each later step computes one new token and appends its K and V to the cache.\n\nScenario: like taking notes during a meeting. Each time someone speaks, you just add the new sentence and consult your notes before replying, instead of replaying the whole recording from the start.\n\nRemember: a KV cache trades memory for speed, and its main benefit is avoiding recomputation of past K/V. Its size is roughly 2 x layers x tokens x KV heads x head dimension x bytes per value, times batch size, so longer chats and more concurrent users mean a bigger cache."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Past K / V",
+            "Cache",
+            "New token Q",
+            "Attention"
+          ]
+        }
+      ]
     },
     {
       "id": 21,
@@ -362,7 +369,16 @@
       "en": {
         "title": "LoRA",
         "answer": "In plain words: LoRA (Low-Rank Adaptation) is a parameter-efficient fine-tuning method. It leaves the original large weight matrix untouched and adds a correction made from the product of two small matrices, training only those small matrices.\nFreeze: the original weight W0 stays fixed and gets no gradients.\nLow rank: the update is dW = BA, where A squeezes the input down to a tiny r dimensions and B expands it back; r is the rank, usually just 8 to 64.\nAlpha: a scaling factor, so the actual added update is (alpha/r)BA.\nMerging: after training, dW can be added into W0 so inference has no extra latency.\n\nScenario: like giving a general support team a thin supplement booklet on company wording instead of retraining everyone; each department can keep its own booklet and swap it in when needed.\n\nRemember: a LoRA update is the low-rank product BA, adding r(d_in + d_out) parameters instead of d_in x d_out for a full matrix, so it usually needs far less GPU memory and storage than full fine-tuning."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "W₀ frozen",
+            "ΔW = (α/r)BA",
+            "W₀ + ΔW"
+          ]
+        }
+      ]
     },
     {
       "id": 32,
@@ -372,7 +388,16 @@
       "en": {
         "title": "QLoRA",
         "answer": "In plain words: QLoRA (Quantized LoRA) stores the frozen base model in 4-bit form and trains LoRA corrections on top, so large models can be fine-tuned on smaller GPUs.\nQuantization: representing numbers with fewer bits to save memory, for example from 16-bit to 4-bit.\nNF4 (4-bit NormalFloat): a 4-bit format designed for roughly normally distributed weights, giving lower error for the same 4 bits.\nDouble Quantization: quantizes the scaling constants used by quantization as well, saving a bit more space.\nPaged Optimizers: move optimizer state to CPU memory when GPU memory runs short, avoiding crashes from memory spikes.\nDuring compute, 4-bit weights are dequantized to BF16 on the fly; gradients update only the LoRA parameters.\n\nScenario: when the GPU cannot hold the full-precision model, it is like shrinking a heavy manuscript into a pocket booklet and writing edits on sticky notes beside it, enlarging a page only when you need to read it.\n\nRemember: QLoRA typically stores the frozen backbone in NF4 with double quantization and paged optimizers; it does not run all training math in 4-bit, compute still happens at higher precision, and quantization can cost a little quality."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "4-bit NF4",
+            "Frozen backbone",
+            "Train LoRA"
+          ]
+        }
+      ]
     },
     {
       "id": 33,
@@ -562,7 +587,17 @@
       "en": {
         "title": "Multimodal RAG",
         "answer": "In plain words: Multimodal RAG (Multimodal Retrieval-Augmented Generation) lets a question-answering system search not only text but also tables, charts, images, and layout in documents, then hands the original content to the model for the answer.\nRAG: retrieve relevant material first, then generate the answer from it.\nMultimodal: handling different kinds of data, such as text and images, together.\nCommon practice: use layout parsing or OCR (optical character recognition) to extract table structure; create text summaries or image vectors for charts so they can be searched; at answer time, give the original table or screenshot to a VLM (vision-language model) to read the details.\n\nScenario: asked \"how much did revenue grow this year\" about an annual report, the system uses a table summary to find the financial statement page, then gives the model the original table with headers, units (thousands or millions), and values to calculate, rather than guessing from the summary.\n\nRemember: for tables, the best practice is to keep the table structure and original evidence; summaries or vectors are for finding, original passages are for confirming details, and source locations such as page numbers should be recorded."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Parse + index",
+            "Retrieve",
+            "DocStore",
+            "LLM + evidence"
+          ]
+        }
+      ]
     },
     {
       "id": 52,
@@ -592,7 +627,17 @@
       "en": {
         "title": "Tool Calling",
         "answer": "In plain words: Tool Calling (also called function calling) is when a model outputs a structured request saying which tool to use and with which arguments; the application actually runs it and returns the result to the model.\nTool definition: developers describe each tool's name, purpose, and parameter types, for example with JSON Schema, and the model decides whether to call it.\nWho executes: the model never runs anything itself; your code executes, checks, and gatekeeps.\nReturning results: the output is added back to the conversation as a new message, and the model decides the next step or answers the user.\n\nScenario: a user asks \"where is my order A123?\" The model outputs get_order(order_id=\"A123\"). The backend checks the ID format and that the signed-in user owns the order before querying, then returns the shipping status for the model to phrase the answer.\n\nRemember: tool arguments generated by a model cannot be trusted as-is; validate format and authorization, handle errors, timeouts, and sensible retries, and ask the user to confirm actions with side effects such as payments or deletions."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Schema + permissions",
+            "Execute tool",
+            "Validate result",
+            "Return to LLM"
+          ]
+        }
+      ]
     },
     {
       "id": 55,
@@ -612,7 +657,16 @@
       "en": {
         "title": "Hybrid Search / RRF",
         "answer": "In plain words: Hybrid Search runs two kinds of search and merges the results:\nKeyword (lexical) search: matches exact words; the classic algorithm is BM25 (Best Matching 25), which weighs how often and how rarely terms appear. Good for product codes, names, and jargon.\nVector (semantic) search: turns text into embedding vectors and finds similar meanings even when the wording differs.\nRRF (Reciprocal Rank Fusion): each document gets 1/(k + rank) from each list, with k often 60, and the sums are re-sorted. It uses ranks only, not raw scores.\n\nScenario: searching \"model XZ-500 specs,\" keyword search hits exactly; searching \"laptop stuck on spinning circle,\" vector search finds an article that says \"boot hangs.\" Combining them handles both kinds of question.\n\nRemember: Hybrid Search usually combines BM25 with vector search; RRF fuses by reciprocal rank instead of adding two scores that live on different scales."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "BM25 + Vector",
+            "RRF",
+            "Ranked candidates"
+          ]
+        }
+      ]
     },
     {
       "id": 57,
@@ -622,7 +676,17 @@
       "en": {
         "title": "Reranker",
         "answer": "In plain words: a Reranker is the second-round review in retrieval: the first round quickly finds a batch of candidates (say 50 passages), then a more careful but slower model re-scores and re-orders them, passing the most relevant few to the LLM.\nBi-encoder: turns the question and each document into separate vectors and compares them; document vectors can be precomputed, so it is fast and suits the first round.\nCross-encoder: feeds the question and each document into the model together to judge relevance, seeing fine-grained interactions; more accurate, but it runs once per candidate, so it suits only a few candidates.\n\nScenario: searching \"can opened items be returned,\" the first round finds 50 clauses mentioning returns; the reranker reads each closely and moves the ones that explicitly cover opened items to the top.\n\nRemember: a reranker re-orders candidates after the initial retrieval, search wide then sort carefully; it can improve quality but adds latency, and it cannot recover documents the first round missed."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Retrieve",
+            "Candidates",
+            "Rerank",
+            "Context"
+          ]
+        }
+      ]
     },
     {
       "id": 58,
@@ -762,7 +826,16 @@
       "en": {
         "title": "PagedAttention",
         "answer": "In plain words: PagedAttention is the KV-cache management method introduced by the vLLM inference engine, inspired by operating-system virtual-memory paging.\nThe old problem: traditional serving reserved one large contiguous memory region per request, sized for the longest possible output; unused space was wasted, and scattered gaps could not fit new requests. This is fragmentation.\nHow it works: the KV cache is split into fixed-size blocks (for example 16 tokens each) and allocated block by block as needed, without being contiguous.\nBlock table: records which physical block each logical block of a request maps to, like an OS page table.\nBonus: requests that share a prefix (such as the same system prompt) can share the same blocks.\n\nScenario: like a hotel assigning rooms one at a time as needed instead of requiring a tour group to occupy a whole contiguous row; rooms are not left empty just because they are scattered, so more guests can stay.\n\nRemember: the core of PagedAttention is non-contiguous mapping through a KV block table; it improves cache allocation, fragmentation, and sharing so one GPU serves more requests, without changing what attention computes."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Logical KV blocks",
+            "Block table",
+            "Physical KV blocks"
+          ]
+        }
+      ]
     },
     {
       "id": 72,
@@ -792,7 +865,16 @@
       "en": {
         "title": "TTFT / TPOT / ITL",
         "answer": "In plain words: when measuring LLM serving speed, users feel two things: how long until text starts appearing, and how smoothly it flows afterward.\nTTFT (Time To First Token): time from sending the request to receiving the first token, including queueing, input processing (prefill), and network.\nTPOT (Time Per Output Token): the average time per token after the first; total time is about TTFT + TPOT x (output tokens - 1).\nITL (Inter-Token Latency): the actual gap between consecutive tokens, which reveals stalls mid-stream.\nP99: the latency of the slowest 1% of requests, reflecting the worst user experience.\n\nScenario: bot A waits three seconds before answering, then streams smoothly; bot B starts instantly but freezes for a second every few sentences. Their average speed may be similar, but they feel completely different, so measure them separately.\n\nRemember: TTFT is the wait for the first token (including queueing and input processing), TPOT is the average time of later tokens, and ITL is the gap between neighboring tokens; look at the slowest cases such as P99, not just averages."
-      }
+      },
+      "flows": [
+        {
+          "steps": [
+            "Queue + Prefill",
+            "First token (TTFT)",
+            "Decode (TPOT / ITL)"
+          ]
+        }
+      ]
     },
     {
       "id": 75,
@@ -1868,418 +1950,298 @@
         "explain": "In plain words: Inference OOM (Out Of Memory) is when a model server runs out of GPU memory and errors out or crashes. During inference, GPU memory is mainly used by:\nModel weights: a fixed size, for example about 14 GB for 7B parameters at FP16.\nKV cache: one per conversation, growing with context length and the number of concurrent requests; often the largest part under high concurrency.\nActivations and workspace: intermediate results of computation; prefill on long inputs causes spikes.\nFragmentation: free memory exists but is not contiguous, so a new large block will not fit.\nThe CUDA runtime itself also takes some memory.\n\nScenario: a single-user chat test works fine, but in production the server crashes when hundreds of people use it at once. Often the KV caches of all conversations add up beyond the remaining space, or someone pastes a huge document and the prefill spike blows past the limit.\n\nRemember: a common cause of OOM in high-concurrency decoding is KV-cache growth; first separate pressure from weights, intermediate compute, KV cache, or fragmentation, then tune the concurrency cap, maximum input length, and batch size, and watch prefill and decode peaks separately."
       }
     }
-  ]
+  ],
+  "site": {
+    "key": "genai-learning-v1",
+    "app": "genai-knowledge",
+    "copy": {
+      "zh": {
+        "hero1": "把複雜的 AI，",
+        "hero2": "學成自己的知識。",
+        "intro": "從第一個 Attention 到完整的 AI 系統。用圖解拆解觀念，用練習串起理解，一次掌握一個關鍵概念。",
+        "artCaption": "一個概念，一步步連成系統。",
+        "pathTitle": "你的 GenAI 學習地圖",
+        "pathIntro": "四個章節，從理解模型到打造系統。選擇一站，開始探索。",
+        "footer": "GenAI Knowledge · 開源雙語學習手冊",
+        "source": "原始 Notion 題庫 ↗",
+        "answer": "白話理解 × 情境應用",
+        "labels": [
+          "核心理論與模型架構",
+          "模型微調與對齊",
+          "RAG 與 Agent",
+          "推論優化與工程落地"
+        ],
+        "shortLabels": [
+          "理解模型",
+          "微調與對齊",
+          "RAG 與 Agent",
+          "推論與部署"
+        ],
+        "descriptions": [
+          "從 Attention 出發，理解模型如何思考與生成。",
+          "讓通用模型學會特定任務，理解訓練的取捨。",
+          "連結外部知識與工具，建立有根據的 AI 系統。",
+          "從記憶體到延遲，讓模型穩定地服務使用者。"
+        ],
+        "artDesc": "Token 串連模型架構、檢索與工具，再進入推論，呈現概念性的學習旅程。",
+        "name": "GenAI Knowledge"
+      },
+      "en": {
+        "hero1": "Complex AI.",
+        "hero2": "Clear understanding.",
+        "intro": "From your first Attention mechanism to a complete AI system. Explore visual explanations, connect the ideas, and make each concept your own.",
+        "artCaption": "One concept at a time. One connected system.",
+        "pathTitle": "Your map to GenAI",
+        "pathIntro": "Four chapters, from understanding models to building systems. Pick a place to begin.",
+        "footer": "GenAI Knowledge · An open-source bilingual field guide",
+        "source": "Original Notion question bank ↗",
+        "answer": "IN PLAIN WORDS / IN PRACTICE",
+        "labels": [
+          "Theory & model architecture",
+          "Fine-tuning & alignment",
+          "RAG & agents",
+          "Inference & deployment"
+        ],
+        "shortLabels": [
+          "Understand models",
+          "Tune & align",
+          "RAG & agents",
+          "Serve & scale"
+        ],
+        "descriptions": [
+          "Start with Attention. Discover how models learn and generate.",
+          "Adapt a general model to your task. Understand the tradeoffs.",
+          "Connect knowledge and tools. Build grounded AI systems.",
+          "Memory, latency, and the art of serving models reliably."
+        ],
+        "artDesc": "Tokens flow through model architecture, retrieval and tools, then inference. A conceptual illustration of the learning journey.",
+        "name": "GenAI Knowledge"
+      }
+    },
+    "guides": {
+      "zh": [
+        {
+          "title": "Attention：從關聯找到重點",
+          "text": "Q 提出查詢，K 用來比對，V 提供內容；注意力權重決定該取用多少資訊。",
+          "steps": [
+            [
+              "查詢與內容",
+              "建立 Q / K / V",
+              "layers"
+            ],
+            [
+              "計算關聯",
+              "QKᵀ / √dₖ",
+              "network"
+            ],
+            [
+              "轉成權重",
+              "Softmax",
+              "sliders"
+            ],
+            [
+              "加權輸出",
+              "權重 × V",
+              "arrow"
+            ]
+          ]
+        },
+        {
+          "title": "LoRA：用小更新，調整大模型",
+          "text": "原始權重保持凍結，只訓練兩個低秩矩陣。理解記憶體節省從哪裡來，再比較微調策略。",
+          "steps": [
+            [
+              "輸入 x",
+              "同時進入兩路",
+              "layers"
+            ],
+            [
+              "凍結主幹",
+              "W₀x 保持不變",
+              "lock"
+            ],
+            [
+              "訓練支路",
+              "(α/r)BAx",
+              "sliders"
+            ],
+            [
+              "合併輸出",
+              "W₀x + (α/r)BAx",
+              "arrow"
+            ]
+          ],
+          "branch": "輸入分成凍結主幹與訓練支路，兩路輸出相加。"
+        },
+        {
+          "title": "RAG：讓回答帶著證據",
+          "text": "先找對資料，再請模型回答。檢索、重排與證據品質，會一起影響最終結果。",
+          "steps": [
+            [
+              "提出問題",
+              "Query / Rewrite",
+              "search"
+            ],
+            [
+              "檢索資料",
+              "Hybrid retrieval",
+              "book"
+            ],
+            [
+              "精選證據",
+              "Rerank / Context",
+              "sliders"
+            ],
+            [
+              "生成回答",
+              "LLM + Citations",
+              "arrow"
+            ]
+          ]
+        },
+        {
+          "title": "推論：每個 token 背後的旅程",
+          "text": "首個 token 的等待與後續生成速度是不同的瓶頸。沿著流程理解快取、排程與延遲。",
+          "steps": [
+            [
+              "請求入列",
+              "Queue / Schedule",
+              "layers"
+            ],
+            [
+              "處理提示",
+              "Prefill → KV cache",
+              "network"
+            ],
+            [
+              "逐步生成",
+              "Decode + KV cache",
+              "repeat"
+            ],
+            [
+              "串流回應",
+              "Tokens → Client",
+              "arrow"
+            ]
+          ]
+        }
+      ],
+      "en": [
+        {
+          "title": "Attention: finding what matters",
+          "text": "Q asks, K matches, V provides the content. Attention weights decide how much information to take from each position.",
+          "steps": [
+            [
+              "Represent",
+              "Build Q / K / V",
+              "layers"
+            ],
+            [
+              "Compare",
+              "QKᵀ / √dₖ",
+              "network"
+            ],
+            [
+              "Normalize",
+              "Softmax",
+              "sliders"
+            ],
+            [
+              "Aggregate",
+              "Weights × V",
+              "arrow"
+            ]
+          ]
+        },
+        {
+          "title": "LoRA: small updates, big models",
+          "text": "Freeze the original weights and train two low-rank matrices. Follow the two parallel paths to understand the memory savings.",
+          "steps": [
+            [
+              "Input x",
+              "Feed both paths",
+              "layers"
+            ],
+            [
+              "Frozen path",
+              "Keep W₀x fixed",
+              "lock"
+            ],
+            [
+              "Trainable path",
+              "(α/r)BAx",
+              "sliders"
+            ],
+            [
+              "Sum outputs",
+              "W₀x + (α/r)BAx",
+              "arrow"
+            ]
+          ],
+          "branch": "Input branches into frozen and trainable paths; their outputs are added."
+        },
+        {
+          "title": "RAG: answers with evidence",
+          "text": "Find the right information before asking the model to answer. Retrieval, reranking, and evidence quality all shape the result.",
+          "steps": [
+            [
+              "Ask",
+              "Query / Rewrite",
+              "search"
+            ],
+            [
+              "Retrieve",
+              "Hybrid retrieval",
+              "book"
+            ],
+            [
+              "Refine",
+              "Rerank / Context",
+              "sliders"
+            ],
+            [
+              "Generate",
+              "LLM + Citations",
+              "arrow"
+            ]
+          ]
+        },
+        {
+          "title": "Inference: the journey of a token",
+          "text": "Waiting for the first token and generating the next ones have different bottlenecks. Follow the path through caching, scheduling, and latency.",
+          "steps": [
+            [
+              "Queue",
+              "Request scheduling",
+              "layers"
+            ],
+            [
+              "Prefill",
+              "Prompt → KV cache",
+              "network"
+            ],
+            [
+              "Decode",
+              "Generate with cache",
+              "repeat"
+            ],
+            [
+              "Stream",
+              "Tokens → Client",
+              "arrow"
+            ]
+          ]
+        }
+      ]
+    }
+  }
 }
 </script>
 <script src="../shared/progress-records.js"></script>
-<script>
-"use strict";
-const DATA = JSON.parse(document.getElementById("seed").textContent);
-const KEY = "genai-learning-v1";
-const UPDATED_KEY = KEY + "-updated-at";
-const RECORDS_KEY = KEY + "-records";
-const $ = id => document.getElementById(id);
-const COPY = {
-  zh: {
-    skip:"跳至學習內容",navigation:"主選單",learn:"知識筆記",quiz:"練習測驗",review:"錯題複習",
-    hero1:"把複雜的 AI，",hero2:"學成自己的知識。",intro:"從第一個 Attention 到完整的 AI 系統。用圖解拆解觀念，用練習串起理解，一次掌握一個關鍵概念。",startLearning:"開始學習",continueLearning:"繼續學習",testYourself:"測試我的理解",artCaption:"一個概念，一步步連成系統。",
-    readCount:"已理解的知識筆記",accuracy:"累計測驗答對率",progressLabel:"學習進度",wrongCount:"值得再練一次的觀念",pathTitle:"你的 GenAI 學習地圖",pathIntro:"四個章節，從理解模型到打造系統。選擇一站，開始探索。",chapters:"學習章節",tipTitle:"先想一下，再看答案。",tip:"試著用自己的話解釋這個觀念。閱讀解析後，再按「已理解」記下進度，最後用測驗確認理解。",localNote:"進度保存在此瀏覽器；登入 Google 可跨裝置自動同步，也可在頁尾下載備份。",
-    notes:"知識筆記",searchPlaceholder:"搜尋觀念、題號或關鍵字…",searchLabel:"搜尋題目",statusLabel:"閱讀狀態",allStatus:"全部狀態",unread:"尚未理解",read:"已理解",allTopics:"全部章節",questions:"題",of:"／",show:"展開筆記 +",hide:"收起筆記 −",answer:"白話理解 × 情境應用",references:"延伸閱讀",reflect:"能用自己的話說明了嗎？",mark:"標記已理解",marked:"✓ 已理解",practice:"練習這個觀念 →",previous:"← 上一頁",next:"下一頁 →",noResults:"沒有找到符合的筆記",searchHint:"試試其他關鍵字，或調整章節與閱讀狀態。",resetFilters:"重設篩選",guideLabel:"VISUAL FIELDNOTES / 圖解導讀",guideHint:"先建立全貌，再往下探索每個觀念。",
-    quizTitle:"把理解，變成直覺。",quizScope:"測驗範圍",quizIntro:"每回合最多 10 題，選項隨機排列。作答後立即看解析；答錯的觀念會留在複習區，陪你再練一次。",startQuiz:"開始新測驗 →",allAreas:"全部領域",question:"第",correct:"答對了 ✓",incorrect:"再想一次，下次會更熟悉。",correctAnswer:"正確答案：",nextQuestion:"下一題 →",seeResults:"查看成績 →",results:"本回合完成",scoreNote:"答對率",again:"再練一回 →",reviewResults:"複習錯題 →",restartConfirm:"目前的測驗尚未完成，確定開始新回合？已作答的紀錄會保留。",reviewIntro:"錯題是一張學習地圖。重新回答這些題目，答對後就會自動移出。",clearWrong:"清除錯題紀錄",clearConfirm:"確定清除所有錯題紀錄？累計測驗成績與閱讀進度會保留。",retryWrong:"練習這些錯題 →",noWrong:"目前沒有待複習的錯題",noWrongHint:"做一回測驗，找出下一個值得練習的觀念。",progressTools:"備份與同步",allTopics:"全部主題",progressIntro:"下載備份可離線保存（含每筆紀錄的時間）；從檔案還原會覆蓋此瀏覽器的學習進度。登入 Google 後，進度會在你的各裝置間自動同步。",downloadBackup:"下載進度備份 ↓",restoreBackup:"從檔案還原",restoreConfirm:"還原會覆蓋此瀏覽器目前的學習進度。確定繼續？",restoreDone:"進度已還原，正在重新載入…",restoreFailed:"還原失敗：",cloudBackup:"私人雲端同步",localUpdated:"本機最後學習：",cloudUpdated:"上次同步：",googleLogin:"使用 Google 登入",syncNow:"立即同步",logout:"登出",cloudWarning:"每則筆記與每道題都記錄最後變更的時間；同步時逐項以較新的變更為準，不同裝置的進度會合併而不是互相覆蓋。",footer:"GenAI Knowledge · 開源雙語學習手冊",source:"原始 Notion 題庫 ↗",storageNote:"此瀏覽器無法儲存進度；本次仍可學習，但重新開啟後不會保留紀錄。",
-    labels:["核心理論與模型架構","模型微調與對齊","RAG 與 Agent","推論優化與工程落地"],shortLabels:["理解模型","微調與對齊","RAG 與 Agent","推論與部署"],descriptions:["從 Attention 出發，理解模型如何思考與生成。","讓通用模型學會特定任務，理解訓練的取捨。","連結外部知識與工具，建立有根據的 AI 系統。","從記憶體到延遲，讓模型穩定地服務使用者。"]
-  },
-  en: {
-    skip:"Skip to learning content",navigation:"Main navigation",learn:"Fieldnotes",quiz:"Practice",review:"Review",
-    hero1:"Complex AI.",hero2:"Clear understanding.",intro:"From your first Attention mechanism to a complete AI system. Explore visual explanations, connect the ideas, and make each concept your own.",startLearning:"Start exploring",continueLearning:"Continue learning",testYourself:"Test my knowledge",artCaption:"One concept at a time. One connected system.",
-    readCount:"Notes marked understood",accuracy:"Overall quiz accuracy",progressLabel:"Learning progress",wrongCount:"Concepts to revisit",pathTitle:"Your map to GenAI",pathIntro:"Four chapters, from understanding models to building systems. Pick a place to begin.",chapters:"The chapters",tipTitle:"Think first. Then unfold.",tip:"Try explaining the concept in your own words. Read the note, mark it understood when ready, and test your understanding with a quiz.",localNote:"Progress is saved in this browser. Sign in with Google to sync across devices, or download a backup below.",
-    notes:"The fieldnotes",searchPlaceholder:"Search concepts, question numbers, keywords…",searchLabel:"Search questions",statusLabel:"Reading status",allStatus:"All notes",unread:"To explore",read:"Understood",allTopics:"All chapters",questions:"notes",of:"of",show:"Unfold note +",hide:"Fold note −",answer:"IN PLAIN WORDS / IN PRACTICE",references:"Read more",reflect:"Can you explain it in your own words?",mark:"Mark understood",marked:"✓ Understood",practice:"Practice this concept →",previous:"← Previous",next:"Next →",noResults:"No matching fieldnotes",searchHint:"Try another keyword, chapter, or reading status.",resetFilters:"Reset filters",guideLabel:"VISUAL FIELDNOTES / THE BIG PICTURE",guideHint:"Start with the big picture. Explore each concept below.",
-    quizTitle:"Turn knowledge into intuition.",quizScope:"Quiz scope",quizIntro:"Up to 10 questions per round, with shuffled options. Get an explanation after every answer. Missed concepts stay in Review until you get them right.",startQuiz:"Start a new round →",allAreas:"All topics",question:"Question",correct:"That's right ✓",incorrect:"A useful one to revisit.",correctAnswer:"Correct answer: ",nextQuestion:"Next question →",seeResults:"See results →",results:"Round complete",scoreNote:"Accuracy",again:"Another round →",reviewResults:"Review missed concepts →",restartConfirm:"This round is unfinished. Start a new round? Your submitted answers will stay saved.",reviewIntro:"Mistakes are a map of what to learn next. Answer these again; correct answers leave your review list automatically.",clearWrong:"Clear review list",clearConfirm:"Clear all missed questions? Overall quiz scores and reading progress will be kept.",retryWrong:"Practice missed questions →",noWrong:"A fresh page. No missed questions.",noWrongHint:"Take a quiz to discover your next learning opportunity.",progressTools:"Backup & sync",allTopics:"All topics",progressIntro:"Download an offline backup (with the time of every record), or restore one to replace this browser's progress. Sign in with Google to sync automatically across your devices.",downloadBackup:"Download progress backup ↓",restoreBackup:"Restore from file",restoreConfirm:"Restoring will replace the learning progress in this browser. Continue?",restoreDone:"Progress restored. Reloading…",restoreFailed:"Restore failed: ",cloudBackup:"Private cloud sync",localUpdated:"Last studied here: ",cloudUpdated:"Last synced: ",googleLogin:"Sign in with Google",syncNow:"Sync now",logout:"Sign out",cloudWarning:"Every note and question keeps the time it last changed. Sync keeps the newer change for each one, so progress from different devices is combined instead of overwritten.",footer:"GenAI Knowledge · An open-source bilingual field guide",source:"Original Notion question bank ↗",storageNote:"This browser cannot save progress. You can keep learning, but your progress will be lost when you reopen the page.",
-    labels:["Theory & model architecture","Fine-tuning & alignment","RAG & agents","Inference & deployment"],shortLabels:["Understand models","Tune & align","RAG & agents","Serve & scale"],descriptions:["Start with Attention. Discover how models learn and generate.","Adapt a general model to your task. Understand the tradeoffs.","Connect knowledge and tools. Build grounded AI systems.","Memory, latency, and the art of serving models reliably."]
-  }
-};
-const GUIDES = {
-  zh: [
-    {title:"Attention：從關聯找到重點",text:"Q 提出查詢，K 用來比對，V 提供內容；注意力權重決定該取用多少資訊。",steps:[["查詢與內容","建立 Q / K / V","layers"],["計算關聯","QKᵀ / √dₖ","network"],["轉成權重","Softmax","sliders"],["加權輸出","權重 × V","arrow"]]},
-    {title:"LoRA：用小更新，調整大模型",text:"原始權重保持凍結，只訓練兩個低秩矩陣。理解記憶體節省從哪裡來，再比較微調策略。",steps:[["輸入 x","同時進入兩路","layers"],["凍結主幹","W₀x 保持不變","lock"],["訓練支路","(α/r)BAx","sliders"],["合併輸出","W₀x + (α/r)BAx","arrow"]]},
-    {title:"RAG：讓回答帶著證據",text:"先找對資料，再請模型回答。檢索、重排與證據品質，會一起影響最終結果。",steps:[["提出問題","Query / Rewrite","search"],["檢索資料","Hybrid retrieval","book"],["精選證據","Rerank / Context","sliders"],["生成回答","LLM + Citations","arrow"]]},
-    {title:"推論：每個 token 背後的旅程",text:"首個 token 的等待與後續生成速度是不同的瓶頸。沿著流程理解快取、排程與延遲。",steps:[["請求入列","Queue / Schedule","layers"],["處理提示","Prefill → KV cache","network"],["逐步生成","Decode + KV cache","repeat"],["串流回應","Tokens → Client","arrow"]]}
-  ],
-  en: [
-    {title:"Attention: finding what matters",text:"Q asks, K matches, V provides the content. Attention weights decide how much information to take from each position.",steps:[["Represent","Build Q / K / V","layers"],["Compare","QKᵀ / √dₖ","network"],["Normalize","Softmax","sliders"],["Aggregate","Weights × V","arrow"]]},
-    {title:"LoRA: small updates, big models",text:"Freeze the original weights and train two low-rank matrices. Follow the two parallel paths to understand the memory savings.",steps:[["Input x","Feed both paths","layers"],["Frozen path","Keep W₀x fixed","lock"],["Trainable path","(α/r)BAx","sliders"],["Sum outputs","W₀x + (α/r)BAx","arrow"]]},
-    {title:"RAG: answers with evidence",text:"Find the right information before asking the model to answer. Retrieval, reranking, and evidence quality all shape the result.",steps:[["Ask","Query / Rewrite","search"],["Retrieve","Hybrid retrieval","book"],["Refine","Rerank / Context","sliders"],["Generate","LLM + Citations","arrow"]]},
-    {title:"Inference: the journey of a token",text:"Waiting for the first token and generating the next ones have different bottlenecks. Follow the path through caching, scheduling, and latency.",steps:[["Queue","Request scheduling","layers"],["Prefill","Prompt → KV cache","network"],["Decode","Generate with cache","repeat"],["Stream","Tokens → Client","arrow"]]}
-  ]
-};
-const ICONS = {
-  book:'<path d="M4 4h6a3 3 0 0 1 2 1 3 3 0 0 1 2-1h6v15h-6a3 3 0 0 0-2 1 3 3 0 0 0-2-1H4zM12 5v15"/>',
-  network:'<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="m11 7-5 9m7-9 5 9M7 18h10"/>',
-  sliders:'<path d="M5 3v8m0 4v6M12 3v3m0 4v11M19 3v11m0 4v3M2 11h6M9 6h6m1 8h6"/>',
-  layers:'<path d="m12 3 10 5-10 5L2 8zm-10 9 10 5 10-5M2 16l10 5 10-5"/>',
-  arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
-  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
-  repeat:'<path d="M20 7H7a4 4 0 0 0-4 4m14-8 4 4-4 4M4 17h13a4 4 0 0 0 4-4M7 13l-4 4 4 4"/>',
-  bulb:'<path d="M9 18h6m-6 3h6M8 14a6 6 0 1 1 8 0l-1 4H9zM12 1v2M3 5l2 2m14 0 2-2"/>',
-  search:'<circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/>',
-  lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/>',
-  check:'<path d="m5 12 4 4L19 6"/>'
-};
-function cleanState(value) {
-  const source = value && typeof value === "object" && !Array.isArray(value) ? value : {};
-  const count = v => Number.isSafeInteger(v) && v >= 0 ? v : 0;
-  const tally = v => { const attempts = count(v?.attempts); return {attempts, correct:Math.min(count(v?.correct), attempts)}; };
-  const answers = Object.fromEntries(Object.entries(source.answers && typeof source.answers === "object" ? source.answers : {})
-    .filter(([id]) => DATA.quiz.some(q => q.id === Number(id))).map(([id, v]) => [id, tally(v)]));
-  // Totals saved before per-question counts existed are kept as-is under `earlier`.
-  const earlier = tally(source.answers ? source.earlier : source), all = [earlier, ...Object.values(answers)];
-  return {
-    read:[...new Set((Array.isArray(source.read) ? source.read : []).filter(id => DATA.questions.some(q => q.id === id)))],
-    wrong:[...new Set((Array.isArray(source.wrong) ? source.wrong : []).filter(id => DATA.quiz.some(q => q.id === id)))],
-    answers, earlier,
-    attempts:all.reduce((sum, v) => sum + v.attempts, 0),
-    correct:all.reduce((sum, v) => sum + v.correct, 0),
-    lang:source.lang === "en" ? "en" : "zh"
-  };
-}
-// Synced per-item records: note:<id> {read}, quiz:<id> {attempts, correct, wrong}, earlier {attempts, correct}; each carries `at`.
-function toRecords(s) {
-  const out = {};
-  for (const id of s.read) out["note:" + id] = {read:true};
-  for (const id of new Set([...Object.keys(s.answers).map(Number), ...s.wrong])) out["quiz:" + id] = {attempts:s.answers[id]?.attempts || 0, correct:s.answers[id]?.correct || 0, wrong:s.wrong.includes(id)};
-  if (s.earlier.attempts) out.earlier = {...s.earlier};
-  return out;
-}
-function fromRecords(records) {
-  const s = {read:[], wrong:[], answers:{}, earlier:{}};
-  for (const [key, r] of Object.entries(ProgressRecords.live(records))) {
-    const [kind, id] = key.split(":");
-    if (kind === "note" && r.read) s.read.push(Number(id));
-    if (kind === "quiz") { s.answers[id] = r; if (r.wrong) s.wrong.push(Number(id)); }
-    if (key === "earlier") s.earlier = r;
-  }
-  return cleanState(s);
-}
-// Data saved before records existed is dated by its last update; corrupt records fall back to that snapshot.
-function loadRecords() {
-  const saved = localStorage.getItem(RECORDS_KEY), legacy = localStorage.getItem(KEY), legacyAt = Number(localStorage.getItem(UPDATED_KEY)) || 0;
-  try { if (saved) return ProgressRecords.clean(JSON.parse(saved)); } catch {}
-  let old; try { old = cleanState(JSON.parse(legacy)); } catch { old = cleanState({}); }
-  return ProgressRecords.stamp({}, toRecords(old), legacyAt);
-}
-let state, records = {};
-try { state = cleanState(JSON.parse(localStorage.getItem(KEY))); } catch { state = cleanState({}); }
-try { records = loadRecords(); state = {...fromRecords(records), lang:state.lang}; } catch {}
-let lang = state.lang === "en" ? "en" : "zh";
-let topic = "all", tab = "learn", page = 0, session = null;
-const expanded = new Set();
-const PAGE_SIZE = 10;
-const t = key => COPY[lang][key];
-const localized = q => lang === "en" ? { ...q, ...q.en } : q;
-function el(tag, cls, text) {
-  const node = document.createElement(tag);
-  if (cls) node.className = cls;
-  if (text !== undefined) node.textContent = String(text);
-  return node;
-}
-function icon(name) {
-  const wrapper = el("span");
-  wrapper.innerHTML = '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS[name] + '</svg>';
-  return wrapper.firstElementChild;
-}
-function button(text, cls, onClick) {
-  const b = el("button", cls, text);
-  b.type = "button";
-  b.addEventListener("click", onClick);
-  return b;
-}
-function save(markDirty = true) {
-  state.lang = lang;
-  try {
-    const before = markDirty && loadRecords(); // read first: before records exist they derive from KEY
-    localStorage.setItem(KEY, JSON.stringify(state));
-    if (markDirty) {
-      const updatedAt = Date.now();
-      records = ProgressRecords.stamp(before, toRecords(state), updatedAt);
-      localStorage.setItem(RECORDS_KEY, JSON.stringify(records));
-      localStorage.setItem(UPDATED_KEY, String(updatedAt));
-      globalThis.markProgressDirty?.();
-    }
-  } catch { $("storageNote").classList.remove("hide"); }
-  stats();
-}
-// Cloud sync and other tabs hand over merged records here.
-globalThis.genaiProgress = {
-  records: loadRecords,
-  fromLegacy: (value, at) => ProgressRecords.stamp({}, toRecords(cleanState(value)), at),
-  apply(value) {
-    localStorage.setItem(RECORDS_KEY, JSON.stringify(value));
-    records = value; state = {...fromRecords(value), lang};
-    localStorage.setItem(KEY, JSON.stringify(state));
-    stats(); renderPaths(); renderQuestions(); renderWrong();
-  }
-};
-globalThis.addEventListener?.("storage", event => { if (event.key === RECORDS_KEY) try { genaiProgress.apply(loadRecords()); } catch {} });
-function when(key) {
-  const at = ProgressRecords.live(records)[key]?.at;
-  return at ? " · " + new Date(at).toLocaleString(lang === "en" ? "en" : "zh-TW", {month:"numeric", day:"numeric", hour:"2-digit", minute:"2-digit"}) : "";
-}
-function backupData() { return {version:2,app:"genai-knowledge",exportedAt:new Date().toISOString(),state:cleanState(state),records}; }
-function parseBackup(value) {
-  if (!value || ![1, 2].includes(value.version) || value.app !== "genai-knowledge" || !value.state || typeof value.state !== "object" || Array.isArray(value.state)) throw Error(lang === "en" ? "This is not a GenAI Knowledge progress backup." : "這不是 GenAI Knowledge 進度備份。");
-  return cleanState(value.state);
-}
-function exportProgress() {
-  const blob = new Blob([JSON.stringify(backupData(), null, 2)], {type:"application/json"});
-  const link = document.createElement("a"); link.href = URL.createObjectURL(blob); link.download = "genai-knowledge-progress.json"; link.click();
-  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
-}
-async function restoreProgress(file) {
-  try {
-    const restored = parseBackup(JSON.parse(await file.text()));
-    if (!confirm(t("restoreConfirm"))) return;
-    state = {...restored, lang}; save();
-    $("backupStatus").textContent = t("restoreDone"); location.reload();
-  } catch (error) { $("backupStatus").textContent = t("restoreFailed") + error.message; }
-}
-function stats() {
-  $("doneNum").textContent = state.read.length + " / " + DATA.questions.length;
-  $("readBar").style.width = (state.read.length / DATA.questions.length * 100) + "%";
-  $("accuracy").textContent = state.attempts ? Math.round(state.correct / state.attempts * 100) + "%" : "—";
-  $("wrongNum").textContent = state.wrong.length;
-  $("continueLearning").querySelector("[data-i18n]").textContent = t(state.read.length ? "continueLearning" : "startLearning");
-}
-function scrollToWorkspace() { $("workspace").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block:"start" }); }
-function setTopic(value, scroll = false) {
-  topic = value; page = 0;
-  renderFilters(); renderPaths(); renderGuide(); renderQuestions();
-  chooseTab("learn");
-  if (scroll) scrollToWorkspace();
-}
-function renderPaths() {
-  const root = $("paths"); root.replaceChildren();
-  t("shortLabels").forEach((name, i) => {
-    const b = button("", "path" + (topic === String(i) ? " active" : ""), () => setTopic(String(i), true));
-    b.setAttribute("aria-pressed", String(topic === String(i)));
-    const top = el("div", "path-top"), badge = el("span", "path-icon");
-    badge.append(icon(["network", "sliders", "layers", "arrow"][i]));
-    top.append(badge, el("span", "path-num", "0" + (i + 1)));
-    const questions = DATA.questions.filter(q => q.topic === i);
-    const bottom = el("div", "path-bottom");
-    bottom.append(el("span", "", `${state.read.filter(id => questions.some(q => q.id === id)).length} / ${questions.length} ${t("questions")}`), el("span", "", "↗"));
-    b.append(top, el("h3", "", name), el("p", "", t("descriptions")[i]), bottom); root.append(b);
-  });
-}
-function renderFilters() {
-  const root = $("filters"); root.replaceChildren();
-  [["all", t("allTopics")], ...t("labels").map((name, i) => [String(i), name])].forEach(([value, name], i) => {
-    const b = button("", "filter" + (topic === value ? " active" : ""), () => setTopic(value));
-    b.setAttribute("aria-pressed", String(topic === value));
-    b.append(icon(["book", "network", "sliders", "layers", "arrow"][i]), el("span", "", name), el("span", "count", DATA.questions.filter(q => value === "all" || q.topic === Number(value)).length));
-    root.append(b);
-  });
-}
-function renderGuide() {
-  const g = GUIDES[lang][topic === "all" ? 0 : Number(topic)];
-  const card = el("section", "visual-guide"), top = el("div", "guide-top"), text = el("div");
-  text.append(el("div", "eyebrow accent", t("guideLabel")), el("h3", "", g.title), el("p", "", g.text));
-  top.append(text, el("span", "guide-tag", "CONCEPT MAP"));
-  const flow = el("ol", "flow");
-  g.steps.forEach(([title, subtitle, symbol]) => {
-    const step = el("li"); step.append(icon(symbol), el("span", "", title), el("small", "", subtitle)); flow.append(step);
-  });
-  // LoRA paths run in parallel; a branching diagram avoids suggesting sequential training.
-  if (topic === "1") {
-    flow.classList.add("lora-flow");
-    flow.setAttribute("aria-label", lang === "en" ? "Input branches into frozen and trainable paths; their outputs are added." : "輸入分成凍結主幹與訓練支路，兩路輸出相加。");
-  }
-  const foot = el("div", "guide-foot"); foot.append(icon("bulb"), el("span", "", t("guideHint")));
-  card.append(top, flow, foot); $("guide").replaceChildren(card);
-}
-const MINI_FLOWS = {
-  1:["Q × Kᵀ", "÷ √dₖ", "Softmax", "× V"],
-  20:["Past K / V", "Cache", "New token Q", "Attention"],
-  31:["W₀ frozen", "ΔW = (α/r)BA", "W₀ + ΔW"],
-  32:["4-bit NF4", "Frozen backbone", "Train LoRA"],
-  51:["Parse + index", "Retrieve", "DocStore", "LLM + evidence"],
-  54:["Schema + permissions", "Execute tool", "Validate result", "Return to LLM"],
-  56:["BM25 + Vector", "RRF", "Ranked candidates"],
-  57:["Retrieve", "Candidates", "Rerank", "Context"],
-  71:["Logical KV blocks", "Block table", "Physical KV blocks"],
-  74:["Queue + Prefill", "First token (TTFT)", "Decode (TPOT / ITL)"]
-};
-function emptyState(title, description, action) {
-  const root = el("div", "empty"); root.append(icon("book"), el("h3", "", title), el("p", "", description));
-  if (action) root.append(action);
-  return root;
-}
-function resetFilters() { $("search").value = ""; $("statusFilter").value = "all"; setTopic("all"); }
-function renderQuestions() {
-  const root = $("questionList"); root.replaceChildren();
-  const query = $("search").value.trim().toLowerCase(), status = $("statusFilter").value;
-  const rows = DATA.questions.filter(q => {
-    const searchText = `q${q.id} ${q.title} ${q.answer} ${q.en.title} ${q.en.answer}`.toLowerCase();
-    return (topic === "all" || q.topic === Number(topic)) && (!query || searchText.includes(query)) && (status === "all" || state.read.includes(q.id) === (status === "read"));
-  });
-  page = Math.max(0, Math.min(page, Math.ceil(rows.length / PAGE_SIZE) - 1));
-  $("resultCount").textContent = rows.length + " " + t("questions");
-  if (!rows.length) root.append(emptyState(t("noResults"), t("searchHint"), button(t("resetFilters"), "btn", resetFilters)));
-  rows.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).forEach(source => {
-    const q = localized(source), isRead = state.read.includes(q.id);
-    const card = el("article", "qa" + (isRead ? " is-read" : "")), heading = el("h3"), content = el("span", "question-copy");
-    content.append(el("span", "question-title", q.title), el("span", "meta", t("labels")[q.topic]));
-    const actions = el("span", "question-actions");
-    if (isRead) { const check = el("span", "read-check"); check.append(icon("check")); check.setAttribute("aria-label", t("read")); actions.append(check); }
-    const answerId = "answer-" + q.id, open = expanded.has(q.id);
-    const show = el("span", "reveal", open ? "−" : "+"); show.setAttribute("aria-hidden", "true");
-    const summary = button("", "question-summary", () => {
-      const opened = box.classList.contains("hide"); box.classList.toggle("hide", !opened);
-      opened ? expanded.add(q.id) : expanded.delete(q.id);
-      show.textContent = opened ? "−" : "+";
-      summary.setAttribute("aria-expanded", String(opened));
-      summary.setAttribute("aria-label", t(opened ? "hide" : "show") + ": " + q.title);
-    });
-    summary.setAttribute("aria-expanded", String(open)); summary.setAttribute("aria-controls", answerId);
-    summary.setAttribute("aria-label", t(open ? "hide" : "show") + ": " + q.title);
-    actions.append(show); summary.append(el("span", "question-number", String(q.id).padStart(2,"0")), content, actions);
-    heading.append(summary);
-    const box = el("div", "answer" + (open ? "" : " hide")); box.id = answerId;
-    box.append(el("div", "answer-label", t("answer")), el("p", "", q.answer));
-    if (MINI_FLOWS[q.id]) {
-      const flow = el("div", "mini-flow");
-      MINI_FLOWS[q.id].forEach((text, i) => { if (i) flow.append(el("b", "", "→")); flow.append(el("span", "", text)); }); box.append(flow);
-    }
-    if (q.sources) {
-      const sources = el("div", "answer-footer"); sources.append(el("span", "", t("references")));
-      q.sources.forEach(source => {
-        const link = el("a", "btn text", source.title);
-        link.href = source.url; link.target = "_blank"; link.rel = "noopener noreferrer";
-        sources.append(link);
-      }); box.append(sources);
-    }
-    const footer = el("div", "answer-footer");
-    const mark = button(t(isRead ? "marked" : "mark") + (isRead ? when("note:" + q.id) : ""), "btn mark", () => {
-      state.read = isRead ? state.read.filter(id => id !== q.id) : [...state.read, q.id];
-      save(); renderPaths(); renderQuestions();
-      document.querySelector(`#answer-${q.id} .mark`)?.focus({preventScroll:true});
-    }); mark.setAttribute("aria-pressed", String(isRead));
-    footer.append(el("span", "", t("reflect")), mark); box.append(footer);
-    const quiz = DATA.quiz.find(item => item.id === q.id);
-    if (quiz) box.append(button(t("practice"), "btn text", () => { if (beginSession([quiz])) { chooseTab("quiz"); scrollToWorkspace(); } }));
-    card.append(heading, box); root.append(card);
-  });
-  renderPagination(rows.length);
-}
-function renderPagination(count) {
-  const root = $("pagination"); root.replaceChildren();
-  if (count <= PAGE_SIZE) return;
-  const previous = button(t("previous"), "btn", () => { page--; renderQuestions(); $("learnTitle").scrollIntoView({block:"start"}); });
-  const next = button(t("next"), "btn", () => { page++; renderQuestions(); $("learnTitle").scrollIntoView({block:"start"}); });
-  previous.disabled = page === 0; next.disabled = (page + 1) * PAGE_SIZE >= count;
-  root.append(previous, el("span", "", `${page * PAGE_SIZE + 1}–${Math.min((page + 1) * PAGE_SIZE, count)} ${t("of")} ${count}`), next);
-}
-function chooseTab(value) {
-  tab = value;
-  ["learn", "quiz", "review"].forEach(name => {
-    $(name).classList.toggle("hide", name !== value);
-    document.querySelector(`[data-tab="${name}"]`).setAttribute("aria-current", name === value ? "page" : "false");
-  });
-  if (value === "review") renderWrong();
-  if (value === "learn") renderQuestions();
-}
-function shuffle(items) {
-  const result = [...items];
-  for (let i = result.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; }
-  return result;
-}
-function beginSession(pool) {
-  if (session && session.index < session.list.length && !confirm(t("restartConfirm"))) return false;
-  if (!pool.length) return false;
-  session = {list:shuffle(pool).slice(0,10).map(q => ({q, order:shuffle([0,1,2,3]), selected:null})), index:0, score:0};
-  renderQuiz(); return true;
-}
-function startQuiz() {
-  const mode = $("quizMode").value;
-  beginSession(DATA.quiz.filter(q => mode === "all" || DATA.questions.find(item => item.id === q.id).topic === Number(mode)));
-}
-function renderQuiz() {
-  const host = $("quizHost"); host.replaceChildren(); if (!session) return;
-  if (session.index >= session.list.length) {
-    const panel = el("div", "panel quiz-card");
-    panel.append(el("div", "eyebrow accent", t("results")), el("div", "score", `${session.score} / ${session.list.length}`), el("p", "", `${t("scoreNote")} ${Math.round(100 * session.score / session.list.length)}%`));
-    const actions = el("div", "row"); actions.append(button(t("again"), "btn primary", startQuiz), button(t("reviewResults"), "btn", () => chooseTab("review"))); panel.append(actions); host.append(panel); return;
-  }
-  const item = session.list[session.index], q = localized(item.q), answered = item.selected !== null;
-  const card = el("div", "panel quiz-card"), progress = el("div", "progress"), bar = el("div", "bar");
-  progress.setAttribute("role","progressbar"); progress.setAttribute("aria-valuemin","0"); progress.setAttribute("aria-valuemax",String(session.list.length)); progress.setAttribute("aria-valuenow",String(session.index + (answered ? 1 : 0))); progress.setAttribute("aria-label",t("quiz"));
-  bar.style.width = ((session.index + (answered ? 1 : 0)) / session.list.length * 100) + "%"; progress.append(bar);
-  card.append(el("div", "meta", `${t("question")} ${session.index + 1} / ${session.list.length} · Q${q.id}`), progress, el("h3", "", q.prompt));
-  item.order.forEach((optionIndex, displayIndex) => {
-    const b = button("", "quiz-option", () => {
-      if (item.selected !== null) return;
-      const tally = state.answers[q.id] ||= {attempts:0, correct:0};
-      item.selected = optionIndex; state.attempts++; tally.attempts++;
-      if (optionIndex === q.correct) { session.score++; state.correct++; tally.correct++; state.wrong = state.wrong.filter(id => id !== q.id); }
-      else if (!state.wrong.includes(q.id)) state.wrong.push(q.id);
-      save(); renderQuiz();
-      $("quizHost").querySelector(".feedback button").focus({preventScroll:true});
-    });
-    b.append(el("span", "option-letter", "ABCD"[displayIndex]), el("span", "", q.options[optionIndex]));
-    if (answered) { b.disabled = true; if (optionIndex === q.correct) { b.classList.add("correct"); b.append(el("span", "", "✓")); } else if (optionIndex === item.selected) { b.classList.add("wrong"); b.append(el("span", "", "×")); } }
-    card.append(b);
-  });
-  if (answered) {
-    const feedback = el("div", "feedback");
-    feedback.append(el("strong", "", t(item.selected === q.correct ? "correct" : "incorrect")), el("p", "", t("correctAnswer") + q.options[q.correct]), el("p", "", q.explain), button(t(session.index === session.list.length - 1 ? "seeResults" : "nextQuestion"), "btn primary", () => { session.index++; renderQuiz(); $("quizHost").scrollIntoView({block:"start"}); }));
-    card.append(feedback);
-  }
-  host.append(card);
-}
-function renderWrong() {
-  const root = $("wrongList"); root.replaceChildren();
-  $("retryWrong").classList.toggle("hide", !state.wrong.length); $("clearWrong").disabled = !state.wrong.length;
-  if (!state.wrong.length) { root.append(emptyState(t("noWrong"), t("noWrongHint"), button(t("startQuiz"), "btn primary", () => { chooseTab("quiz"); startQuiz(); }))); return; }
-  state.wrong.forEach(id => {
-    const q = localized(DATA.quiz.find(item => item.id === id)), card = el("article", "panel");
-    card.append(el("div", "meta", "Q" + id + when("quiz:" + id)), el("h3", "", q.prompt), el("p", "", t("correctAnswer") + q.options[q.correct]), el("p", "", q.explain), button(t("practice"), "btn", () => { if (beginSession([DATA.quiz.find(item => item.id === id)])) chooseTab("quiz"); })); root.append(card);
-  });
-}
-function setLanguage(value) {
-  const changed = lang !== value;
-  lang = value; document.documentElement.lang = lang === "en" ? "en" : "zh-Hant";
-  document.querySelectorAll("[data-i18n]").forEach(node => { node.textContent = t(node.dataset.i18n); });
-  document.querySelectorAll("[data-i18n-label]").forEach(node => node.setAttribute("aria-label", t(node.dataset.i18nLabel)));
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(node => node.placeholder = t(node.dataset.i18nPlaceholder));
-  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
-  const mode = $("quizMode").value || "all"; $("quizMode").replaceChildren();
-  [["all",t("allAreas")],...t("labels").map((name,i) => [String(i),name])].forEach(([value,name]) => {const option=el("option","",name);option.value=value;$("quizMode").append(option);});
-  $("quizMode").value = mode;
-  $("artTitle").textContent = lang === "en" ? "GenAI systems, connected" : "串連起來的 GenAI 系統";
-  $("artDesc").textContent = lang === "en" ? "Tokens flow through model architecture, retrieval and tools, then inference. A conceptual illustration of the learning journey." : "Token 串連模型架構、檢索與工具，再進入推論，呈現概念性的學習旅程。";
-  renderFilters(); renderPaths(); renderGuide(); renderQuestions(); renderQuiz(); renderWrong(); save(changed);
-}
-document.querySelectorAll("[data-icon]").forEach(node => node.replaceChildren(icon(node.dataset.icon)));
-document.querySelectorAll("[data-tab]").forEach(b => b.addEventListener("click", () => { chooseTab(b.dataset.tab); scrollToWorkspace(); }));
-document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => setLanguage(b.dataset.lang)));
-$("search").addEventListener("input", () => {page=0;renderQuestions();});
-$("statusFilter").addEventListener("change", () => {page=0;renderQuestions();});
-$("startQuiz").addEventListener("click", startQuiz);
-$("retryWrong").addEventListener("click", () => {if (beginSession(DATA.quiz.filter(q => state.wrong.includes(q.id)))) chooseTab("quiz");});
-$("clearWrong").addEventListener("click", () => { if (confirm(t("clearConfirm"))) { state.wrong=[];save();renderWrong(); } });
-$("continueLearning").addEventListener("click", () => {
-  $("search").value="";$("statusFilter").value="all";
-  const next=DATA.questions.find(q=>!state.read.includes(q.id));
-  setTopic(next ? String(next.topic) : "all", true);
-  if (next) { page=Math.floor(DATA.questions.filter(q=>q.topic===next.topic).findIndex(q=>q.id===next.id)/PAGE_SIZE); renderQuestions(); }
-});
-$("heroQuiz").addEventListener("click", () => {chooseTab("quiz");scrollToWorkspace();});
-$("exportProgress").addEventListener("click", exportProgress);
-$("restoreProgress").addEventListener("click", () => $("importProgress").click());
-$("importProgress").addEventListener("change", event => { const file = event.target.files[0]; if (file) restoreProgress(file); event.target.value = ""; });
-setLanguage(lang);
-</script>
+<script src="../shared/study.js"></script>
 <script type="module">
   import { startCloudSync } from "../shared/cloud-sync.js";
-  startCloudSync({ progress: genaiProgress, field: "genaiRecords", legacyField: "genaiKnowledge", legacyTimeField: "genaiKnowledgeUpdatedAt" });
+  startCloudSync({ progress: studyProgress, field: "genaiRecords", legacyField: "genaiKnowledge", legacyTimeField: "genaiKnowledgeUpdatedAt" });
 </script>
 </body>
 </html>

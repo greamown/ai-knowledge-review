@@ -1,14 +1,14 @@
 # AI Knowledge Review
 
-Three bilingual (Traditional Chinese / English) AI interview review sites in one place. The landing page lets you pick a topic; each topic keeps its own study, quiz, and review flow.
+Three bilingual (Traditional Chinese / English) AI interview review sites in one place. The landing page lets you pick a topic; all three share the same page design and study, quiz, and review flow.
 
 **[Open the website](https://greamown.github.io/ai-knowledge-review/)**
 
 | Topic | Path | Content |
 | --- | --- | --- |
-| Agent Knowledge Lab | [`agent/`](agent/) | 12 topics on AI agents: architecture, tool calling, context engineering, memory & RAG, multi-agent, security, evaluation, system design. Study Q&A plus a 15-question quiz. |
+| Agent Knowledge Lab | [`agent/`](agent/) | 27 notes and 15 quiz questions across 12 topics on AI agents: architecture, tool calling, context engineering, memory & RAG, multi-agent, security, evaluation, system design. |
 | GenAI Knowledge | [`genai/`](genai/) | 97 scenario-based notes and 34 quiz questions across model architecture, fine-tuning, RAG & agents, inference & deployment. |
-| VLA Knowledge Lab | [`vla/`](vla/) | 30 questions on Vision-Language-Action for robotics and Physical AI, with concept diagrams, practice sessions, and a mistake review list. |
+| VLA Knowledge Lab | [`vla/`](vla/) | 30 notes and 30 quiz questions on Vision-Language-Action for robotics and Physical AI, across 5 chapters. |
 
 No build step, package install, or backend. Everything is static and served from GitHub Pages.
 
@@ -16,29 +16,30 @@ No build step, package install, or backend. Everything is static and served from
 
 ```text
 .
-├── index.html                # Landing page: choose a topic
+├── index.html                # Landing page: choose a topic, with this browser's progress per topic
 ├── shared/
+│   ├── study.js / study.css  # The study, quiz, and review page shared by all three topics
 │   ├── progress-records.js   # Per-item progress records with timestamps and the merge used by sync
 │   ├── cloud-sync.js         # Google sign-in + Firestore sync, used by all three topics
 │   └── firebase-config.js    # Public Firebase Web App configuration
-├── agent/                    # Agent Knowledge Lab (index, learn, quiz pages)
-├── genai/                    # GenAI Knowledge (single page; content lives in script#seed)
-├── vla/                      # VLA Knowledge Lab (single page app)
+├── agent/                    # Each topic: index.html (page shell + content and settings in script#seed)
+├── genai/                    #   and art.svg (hero illustration, also shown on the landing page)
+├── vla/
 ├── tests/                    # Shared progress-record and cloud-sync checks
 ├── firestore.rules           # Per-user private backup access rules
 └── .github/workflows/pages.yml
 ```
 
-Each topic loads `shared/progress-records.js` and starts sync with one call:
+Each topic page holds its content in `script#seed` as `{site, questions, quiz}`: `site` has the storage key, backup name, topic-specific copy (hero, chapter labels and descriptions), and concept-map guides. The page loads `shared/study.js` and starts sync with one call:
 
 ```html
 <script type="module">
   import { startCloudSync } from "../shared/cloud-sync.js";
-  startCloudSync({ progress: agentProgress, field: "agentRecords", legacyField: "agentKnowledge", legacyTimeField: "agentKnowledgeUpdatedAt" });
+  startCloudSync({ progress: studyProgress, field: "agentRecords", legacyField: "agentKnowledge", legacyTimeField: "agentKnowledgeUpdatedAt" });
 </script>
 ```
 
-The topic exposes `progress` (`records()`, `apply(records)`, `fromLegacy(snapshot, at)`), calls `markProgressDirty()` after saving, and provides `#firebaseStatus`, `#firebaseLogin`, `#firebaseSync`, `#firebaseLogout` (optional: `#cloudAccount`, `#cloudLocalTime`, `#cloudRemoteTime`). Status text follows `<html lang>`.
+`studyProgress` provides `records()`, `apply(records)`, `fromLegacy(snapshot, at)`; the page calls `markProgressDirty()` after saving and provides `#firebaseStatus`, `#firebaseLogin`, `#firebaseSync`, `#firebaseLogout`, `#cloudLocalTime`, `#cloudRemoteTime`. Status text follows `<html lang>`.
 
 ## Run locally
 
@@ -62,13 +63,15 @@ The Firebase Web App values in `shared/firebase-config.js` are public client con
 node --test
 ```
 
-Runs the shared sync and record checks plus each topic's content and behavior checks (Node.js 22+). The Agent browser smoke test (`agent/tests/browser.cjs`) needs Playwright; run it with `BASE_URL=http://127.0.0.1:8000/agent`.
+Runs the shared sync and record checks, each topic's content checks, and checks that progress saved by the older Agent and VLA pages is still counted (Node.js 22+).
 
 ## Content maintenance
 
-- **Agent:** Chinese answers live in `agent/learn.html`, English in `agent/learn-content.js`; quiz bank in `agent/questions.js`.
-- **GenAI:** notes and quiz in `script#seed` inside `genai/index.html`; Chinese in the original fields, English in each item's `en` object.
-- **VLA:** keep `vla/questions.js` banks aligned by index across languages and add questions to the end (IDs are array indices); notes in `vla/learning.js`.
+All three topics use the same format in `script#seed` of their `index.html`:
+
+- **Notes** (`questions`): `id`, `title`, `answer` (plain text; blank lines separate paragraphs), `topic` (chapter index), optional `flows` (`[{caption?, steps: [...]}]`) and `sources` (`[{title, url}]`); English in each item's `en` object.
+- **Quiz** (`quiz`): `id` equals the note it practices, `prompt`, four `options`, `correct` (index), `explain`; English in `en`.
+- Notes are numbered by position. Never change or reuse an `id`: saved progress is keyed by it. Agent notes keep a `legacyKey` so progress from the older pages still counts; VLA ids start at 0 for the same reason.
 
 ## Deployment
 

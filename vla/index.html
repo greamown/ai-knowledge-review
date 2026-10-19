@@ -1,45 +1,1988 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f5ef">
-  <meta name="description" content="A bilingual field guide to Vision-Language-Action: learn robotics concepts, practice interviews, and review your progress.">
-  <title>VLA Knowledge Lab</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23253d30'/%3E%3Cpath d='m7 9 9 16 9-16' fill='none' stroke='%23ee8052' stroke-width='4'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
-  <script src="questions.js" defer></script>
-  <script src="learning.js" defer></script>
-  <script src="../shared/progress-records.js" defer></script>
-  <script src="app.js" defer></script>
-  <script type="module">
-  import { startCloudSync } from "../shared/cloud-sync.js";
-  startCloudSync({ progress: vlaProgress, field: "vlaRecords", legacyField: "vlaProgress", legacyTimeField: "vlaUpdatedAt" });
-</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f5ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23253d30'/%3E%3Cpath d='m7 9 9 16 9-16' fill='none' stroke='%23ee8052' stroke-width='4'/%3E%3C/svg%3E">
+<meta name="description" content="A bilingual field guide to Vision-Language-Action: learn robotics concepts, practice interviews, and review your progress.">
+<title>VLA Knowledge Lab</title>
+<link rel="stylesheet" href="../shared/study.css">
+</head>
 </head>
 <body>
-<a class="skip-link" href="#main" data-i18n="skip"></a>
-<header><div class="shell header-inner">
-  <a href="#home" class="brand" onclick="showTab('home')" aria-label="VLA Knowledge Lab home"><span class="brand-icon">V<span>↗</span></span><span>VLA <b>Knowledge Lab</b><small>THE PHYSICAL AI FIELD GUIDE</small></span></a>
-  <nav id="nav" aria-label="Main navigation"><a class="hub-link" href="../" data-i18n="allTopics"></a><button data-tab="home" data-i18n="home" class="active"></button><button data-tab="learn" data-i18n="learn"></button><button data-tab="quiz" data-i18n="quiz"></button><button data-tab="review" data-i18n="review"></button></nav>
-  <div class="language" role="group" aria-label="Language / 語言"><button data-lang="zh" lang="zh-Hant">中</button><span>/</span><button data-lang="en" lang="en">EN</button></div>
-</div></header>
-<main class="shell" id="main">
-<section id="home">
-  <div class="hero">
-    <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> A FIELD GUIDE TO PHYSICAL AI</div><h1 data-i18n="heroTitle"></h1><p class="hero-description" data-i18n="heroDesc"></p><div class="actions"><button class="btn primary" onclick="showTab('learn')" data-i18n="startLearn"></button><button class="text-btn" onclick="showTab('quiz')" data-i18n="startQuiz"></button></div><div class="hero-meta"><span>VISION</span><i>→</i><span>LANGUAGE</span><i>→</i><span>ACTION</span></div></div>
-    <figure class="hero-figure"><img src="assets/robot-lab.svg" width="640" height="520" data-alt="robotAlt" alt=""><figcaption><span data-i18n="figureCaption"></span><span class="figure-number">LAB / 001</span></figcaption></figure>
-  </div>
-  <div class="stats"><div><span class="stat-index">01</span><div><span class="metric" id="total"></span><span data-i18n="totalLabel"></span></div><small data-i18n="totalNote"></small></div><div><span class="stat-index">02</span><div><span class="metric" id="readCount"></span><span data-i18n="readLabel"></span></div><small data-i18n="readNote"></small></div><div><span class="stat-index">03</span><div><span class="metric" id="accuracy"></span><span data-i18n="accuracyLabel"></span></div><small data-i18n="accuracyNote"></small></div></div>
-  <div class="section-heading"><div><div class="eyebrow">YOUR LEARNING ROUTE</div><h2 data-i18n="routeTitle"></h2></div><span class="section-caption" data-i18n="routeCaption"></span></div>
-  <div class="route-grid"><button class="route-card" onclick="showTab('learn')"><span class="route-top"><span class="route-number">01 / READ</span><span>↗</span></span><span class="route-icon">⌘</span><h3 data-i18n="routeLearn"></h3><p data-i18n="routeLearnDesc"></p><span class="route-bottom" data-i18n="routeLearnFoot"></span></button><button class="route-card" onclick="showTab('quiz')"><span class="route-top"><span class="route-number">02 / PRACTICE</span><span>↗</span></span><span class="route-icon">↗</span><h3 data-i18n="routeQuiz"></h3><p data-i18n="routeQuizDesc"></p><span class="route-bottom" data-i18n="routeQuizFoot"></span></button><button class="route-card" onclick="showTab('review')"><span class="route-top"><span class="route-number">03 / REFINE</span><span>↗</span></span><span class="route-icon">↺</span><h3 data-i18n="routeReview"></h3><p data-i18n="routeReviewDesc"></p><span class="route-bottom" data-i18n="routeReviewFoot"></span></button></div>
-  <div class="pipeline"><div><div class="eyebrow">THE BIG PICTURE</div><h2 data-i18n="pipelineTitle"></h2><p data-i18n="pipelineDesc"></p></div><div class="pipeline-flow" role="list"><div role="listitem"><small>01 / INPUT</small><b data-i18n="observe"></b><span data-i18n="observeDesc"></span></div><span class="flow-arrow" aria-hidden="true">→</span><div role="listitem"><small>02 / POLICY</small><b data-i18n="reason"></b><span data-i18n="reasonDesc"></span></div><span class="flow-arrow" aria-hidden="true">→</span><div role="listitem"><small>03 / CONTROL</small><b data-i18n="act"></b><span data-i18n="actDesc"></span></div></div><div class="feedback-loop" data-i18n="feedbackLoop"></div></div>
+<a class="skip" href="#workspace" data-i18n="skip">跳至學習內容</a>
+<div class="shell">
+<header class="top">
+<a class="brand" href="#" aria-label="VLA Knowledge Lab"><span class="brand-symbol"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h9l5 5v11H5zM14 4v5h5M8 13h8M8 16h5"/></svg></span><span><strong>VLA Knowledge Lab<span style="color:var(--orange)">.</span></strong><small>THE PHYSICAL AI FIELD GUIDE</small></span></a>
+<div class="top-right"><nav class="tabs" data-i18n-label="navigation" aria-label="主選單"><button class="tab" data-tab="learn" aria-current="page" data-i18n="learn">知識筆記</button><button class="tab" data-tab="quiz" data-i18n="quiz">練習測驗</button><button class="tab" data-tab="review" data-i18n="review">錯題複習</button></nav><a class="progress-link" href="../" data-i18n="allTopics">全部主題</a><a class="progress-link" href="#progressBackup" data-i18n="progressTools">備份與同步</a><div class="language" role="group" aria-label="Language / 語言"><button data-lang="zh" lang="zh-Hant" aria-pressed="true">中文</button><button data-lang="en" lang="en" aria-pressed="false">EN</button></div></div>
+</header>
+<section class="hero" aria-labelledby="heroTitle">
+<div class="hero-copy"><div class="eyebrow accent">THE VLA FIELDNOTES · VOL. 01</div><h1 id="heroTitle"><span data-i18n="hero1">讓機器理解世界，</span><br><em data-i18n="hero2">讓你掌握下一步。</em></h1><p data-i18n="intro">從視覺與語言，到真實世界的動作。用一份有脈絡的學習手冊，建立 VLA 知識，準備你的下一場 Robotics 與 Edge AI 面試。</p><div class="hero-actions"><button class="btn primary" id="continueLearning"><span data-i18n="startLearning">開始學習</span><span aria-hidden="true">↗</span></button><button class="btn text" id="heroQuiz"><span data-i18n="testYourself">測試我的理解</span><span aria-hidden="true">→</span></button></div></div>
+<figure class="hero-art" style="margin:0"><img id="art" src="art.svg" width="640" height="520" alt=""><figcaption class="art-caption" data-i18n="artCaption">從感知到行動：VLA 的真實世界閉環。</figcaption></figure>
 </section>
-<section id="learn" class="hide"><div class="page-heading"><div class="eyebrow">01 / THE KNOWLEDGE LIBRARY</div><h1 data-i18n="learnTitle"></h1><p data-i18n="learnDesc"></p></div><div class="content"><aside class="side card"><label class="field-label" for="search" data-i18n="searchLabel"></label><input type="search" class="search" id="search" data-placeholder="searchPlaceholder" oninput="renderLearn()"><div class="field-label chapter-label" data-i18n="chapters"></div><div class="stack" id="chapters"></div></aside><div><div class="list-heading"><span id="resultCount" aria-live="polite"></span><small data-i18n="libraryHint"></small></div><div class="lesson-list" id="lessonList"></div></div></div></section>
-<section id="quiz" class="hide"><div class="page-heading"><div class="eyebrow">02 / PUT IT INTO PRACTICE</div><h1 data-i18n="quizTitle"></h1><p data-i18n="quizDesc"></p></div><div id="quizSetup" class="card quizbox"><div class="eyebrow">SESSION SETUP</div><h2 data-i18n="setupTitle"></h2><p data-i18n="setupDesc"></p><label for="quizCategory" data-i18n="chapters"></label><select id="quizCategory"></select><label for="quizCount" data-i18n="questionCount"></label><select id="quizCount"><option value="5" data-i18n="five"></option><option value="10" selected data-i18n="ten"></option><option value="20" data-i18n="twenty"></option><option value="999" data-i18n="allQuestions"></option></select><button class="btn primary" onclick="startQuiz()" data-i18n="startQuiz"></button></div><div id="quizRunning" class="card quizbox hide"><div class="row"><span id="quizProgress"></span><span id="quizScore"></span></div><div class="progress" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="100"><div id="quizBar"></div></div><div id="quizQuestion"></div><div id="quizOptions"></div><div id="quizFeedback" class="hide answer" role="status"></div><div class="actions"><button class="btn primary hide" id="nextBtn" onclick="nextQuestion()"></button></div></div><div id="quizResult" class="card quizbox hide" aria-live="polite"></div></section>
-<section id="review" class="hide"><div class="page-heading"><div class="eyebrow">03 / CLOSE THE KNOWLEDGE GAP</div><h1 data-i18n="reviewTitle"></h1><p data-i18n="reviewDesc"></p></div><div class="actions review-actions"><button class="btn primary" id="reviewQuiz" onclick="startQuiz(true)" data-i18n="practiceMistakes"></button></div><div id="reviewList" class="lesson-list"></div><section class="progress-backup" aria-labelledby="backupTitle"><div><div class="eyebrow">KEEP YOUR PLACE</div><h2 id="backupTitle" data-i18n="backupTitle"></h2><p data-i18n="backupDesc"></p><div class="actions"><button class="btn" type="button" onclick="exportProgress()" data-i18n="downloadBackup"></button><label class="btn restore-button"><span data-i18n="restoreBackup"></span><input type="file" accept=".json,application/json" onchange="importProgress(event)"></label></div><p id="progressBackupStatus" class="backup-status" role="status"></p></div><div class="cloud-backup"><h3 data-i18n="cloudTitle"></h3><p id="cloudAccount" class="cloud-account"></p><div class="cloud-ledger"><div><span data-i18n="localVersion"></span><time id="cloudLocalTime"></time></div><div><span data-i18n="cloudVersion"></span><time id="cloudRemoteTime"></time></div></div><p id="firebaseStatus" class="backup-status" role="status"></p><div class="cloud-actions"><button class="btn primary" id="firebaseLogin" type="button" data-i18n="googleLogin"></button><button class="btn primary" id="firebaseSync" type="button" data-i18n="cloudSync" hidden></button><button class="text-btn" id="firebaseLogout" type="button" data-i18n="cloudLogout"></button></div><p class="cloud-note" data-i18n="cloudNote"></p></div></section><div class="actions"><button class="text-btn danger" onclick="resetProgress()" data-i18n="reset"></button></div></section>
-<footer><a href="#home" onclick="showTab('home')">VLA <b>Knowledge Lab</b><span> / FIELD NOTES FOR BUILDERS</span></a><div><span data-i18n="localNote"></span><a href="https://github.com/greamown/ai-knowledge-review" data-i18n="source"></a></div></footer>
-<div id="storageNotice" class="storage-notice hide" role="status" data-i18n="storageError"></div>
-</main>
+<div class="stats" data-i18n-label="progressLabel" aria-label="學習進度"><div class="stat"><div class="stat-icon" data-icon="book"></div><div class="stat-copy"><b id="doneNum">0 / 30</b><span data-i18n="readCount">已掌握的知識筆記</span><div class="progress"><div class="bar" id="readBar"></div></div></div></div><div class="stat"><div class="stat-icon" data-icon="target"></div><div><b id="accuracy">—</b><span data-i18n="accuracy">累計測驗答對率</span></div></div><div class="stat"><div class="stat-icon" data-icon="repeat"></div><div><b id="wrongNum">0</b><span data-i18n="wrongCount">值得再練一次的觀念</span></div></div></div>
+<section aria-labelledby="pathTitle"><div class="section-head"><div><h2 id="pathTitle" data-i18n="pathTitle">你的 VLA 學習地圖</h2><p data-i18n="pathIntro">五個章節，從基礎到系統設計。選擇一站，開始探索。</p></div><span class="section-note">THE LEARNING PATH / 01—05</span></div><div class="paths" id="paths"></div></section>
+<div class="layout" id="workspace"><aside class="sidebar"><div class="eyebrow" data-i18n="chapters">學習章節</div><div id="filters"></div><div class="study-tip"><span data-icon="bulb"></span><h3 data-i18n="tipTitle">先想一下，再看答案。</h3><p data-i18n="tip">試著用自己的話解釋這個觀念。閱讀解析後，再按「已理解」記下進度，最後用測驗確認理解。</p></div><p class="sidebar-note" data-i18n="localNote">進度保存在此瀏覽器；登入 Google 可跨裝置自動同步，也可在頁尾下載備份。</p></aside>
+<main id="mainContent">
+<section id="learn" aria-labelledby="learnTitle"><div class="main-title"><h2 id="learnTitle" data-i18n="notes">知識筆記</h2><span class="pill" id="resultCount"></span></div><div class="tools"><div class="search-wrap"><span data-icon="search"></span><input id="search" type="search" data-i18n-placeholder="searchPlaceholder" data-i18n-label="searchLabel" placeholder="搜尋觀念、題號或關鍵字…" aria-label="搜尋題目"></div><select id="statusFilter" data-i18n-label="statusLabel" aria-label="閱讀狀態"><option value="all" data-i18n="allStatus">全部狀態</option><option value="unread" data-i18n="unread">尚未理解</option><option value="read" data-i18n="read">已理解</option></select></div><div id="guide"></div><div class="stack" id="questionList"></div><div class="pagination" id="pagination"></div></section>
+<section id="quiz" class="hide" aria-labelledby="quizTitle"><div class="panel"><div class="eyebrow accent">RETRIEVE. REASON. REMEMBER.</div><div class="row" style="margin-top:12px"><h2 id="quizTitle" data-i18n="quizTitle">把理解，變成直覺。</h2><select id="quizMode" data-i18n-label="quizScope" aria-label="測驗範圍"></select></div><p data-i18n="quizIntro">每回合最多 10 題，選項隨機排列。作答後立即看解析；答錯的觀念會留在複習區，陪你再練一次。</p><button class="btn primary" id="startQuiz" data-i18n="startQuiz">開始新測驗 →</button></div><div id="quizHost" aria-live="polite"></div></section>
+<section id="review" class="hide" aria-labelledby="reviewTitle"><div class="panel"><div class="row"><h2 id="reviewTitle" data-i18n="review">錯題複習</h2><button class="btn" id="clearWrong" data-i18n="clearWrong">清除錯題紀錄</button></div><p data-i18n="reviewIntro">錯題是一張學習地圖。重新回答這些題目，答對後就會自動移出。</p><button class="btn primary" id="retryWrong" data-i18n="retryWrong">練習這些錯題 →</button></div><div id="wrongList" class="stack" style="margin-top:20px"></div></section>
+</main></div>
+<section class="progress-tools" id="progressBackup" aria-labelledby="progressBackupTitle">
+<h2 id="progressBackupTitle" data-i18n="progressTools">備份與同步</h2>
+<p data-i18n="progressIntro">下載備份可離線保存（含每筆紀錄的時間）；從檔案還原會覆蓋此瀏覽器的學習進度。登入 Google 後，進度會在你的各裝置間自動同步。</p>
+<div class="progress-actions"><button class="btn" id="exportProgress" data-i18n="downloadBackup">下載進度備份 ↓</button><button class="btn" id="restoreProgress" data-i18n="restoreBackup">從檔案還原</button><input id="importProgress" type="file" accept="application/json,.json" hidden><span class="sync-status" id="backupStatus" role="status"></span></div>
+<div class="cloud-backup"><h3 data-i18n="cloudBackup">私人雲端同步</h3><p class="sync-meta"><span><span data-i18n="localUpdated">本機最後學習：</span><time id="cloudLocalTime">尚未產生紀錄</time></span><span><span data-i18n="cloudUpdated">上次同步：</span><time id="cloudRemoteTime">登入後同步</time></span></p><p class="sync-status" id="firebaseStatus" role="status">載入 Firebase 設定中…</p><div class="progress-actions"><button class="btn primary" id="firebaseLogin" data-i18n="googleLogin">使用 Google 登入</button><button class="btn primary" id="firebaseSync" data-i18n="syncNow" hidden>立即同步</button><button class="btn" id="firebaseLogout" data-i18n="logout" hidden>登出</button></div><p class="sync-meta" data-i18n="cloudWarning">每則筆記與每道題都記錄最後變更的時間；同步時逐項以較新的變更為準，不同裝置的進度會合併而不是互相覆蓋。</p></div>
+</section>
+<p id="storageNote" class="storage-note hide" role="status" data-i18n="storageNote">此瀏覽器無法儲存進度；本次仍可學習，但重新開啟後不會保留紀錄。</p>
+<footer class="foot"><span>Stay curious. Keep building.</span><span data-i18n="footer">VLA Knowledge Lab · 開源雙語學習手冊</span><a href="https://github.com/greamown/ai-knowledge-review" target="_blank" rel="noopener" data-i18n="source">GitHub 原始碼 ↗</a></footer>
+</div>
+<script id="seed" type="application/json">
+{
+  "site": {
+    "key": "vla-knowledge-lab-v1",
+    "app": "vla-knowledge-lab",
+    "copy": {
+      "zh": {
+        "name": "VLA Knowledge Lab",
+        "hero1": "讓機器理解世界，",
+        "hero2": "讓你掌握下一步。",
+        "intro": "從視覺與語言，到真實世界的動作。用一份有脈絡的學習手冊，建立 VLA 知識，準備你的下一場 Robotics 與 Edge AI 面試。",
+        "artCaption": "從感知到行動：VLA 的真實世界閉環。",
+        "artDesc": "等距機械手臂示意圖：觀察橘色方塊、推理抓取路徑，並透過夾爪執行動作。",
+        "pathTitle": "你的 VLA 學習地圖",
+        "pathIntro": "五個章節，從基礎到系統設計。選擇一站，開始探索。",
+        "footer": "VLA Knowledge Lab · 開源雙語學習手冊",
+        "source": "GitHub 原始碼 ↗",
+        "answer": "先記住這一句 × 完整解說",
+        "labels": [
+          "VLA 基礎",
+          "模型架構",
+          "訓練與資料",
+          "部署最佳化",
+          "系統設計"
+        ],
+        "shortLabels": [
+          "VLA 基礎",
+          "模型架構",
+          "訓練與資料",
+          "部署最佳化",
+          "系統設計"
+        ],
+        "descriptions": [
+          "VLA 與 VLM 的差別、動作表示與控制迴路。",
+          "OpenVLA、π0、GR00T 與 Gemini Robotics 的設計。",
+          "示範資料、時間對齊與訓練策略。",
+          "量化、記憶體與邊緣裝置上的即時推論。",
+          "把模型、控制器與安全機制組成完整系統。"
+        ]
+      },
+      "en": {
+        "name": "VLA Knowledge Lab",
+        "hero1": "Machines learn to act.",
+        "hero2": "You learn what’s next.",
+        "intro": "From vision and language to real-world action. Build a connected understanding of VLA, and prepare for your next robotics or edge AI interview.",
+        "artCaption": "From perception to action: the real-world VLA loop.",
+        "artDesc": "Isometric robotic arm observing an orange cube, reasoning about a grasp, and executing an action with its gripper.",
+        "pathTitle": "Your map to VLA",
+        "pathIntro": "Five chapters, from foundations to system design. Pick a place to begin.",
+        "footer": "VLA Knowledge Lab · An open-source bilingual field guide",
+        "source": "Source on GitHub ↗",
+        "answer": "THE ONE THING TO REMEMBER / FULL EXPLANATION",
+        "labels": [
+          "VLA foundations",
+          "Model architecture",
+          "Training & data",
+          "Deployment",
+          "System design"
+        ],
+        "shortLabels": [
+          "VLA foundations",
+          "Model architecture",
+          "Training & data",
+          "Deployment",
+          "System design"
+        ],
+        "descriptions": [
+          "How VLA differs from VLM, action representations, and control loops.",
+          "The designs behind OpenVLA, π0, GR00T, and Gemini Robotics.",
+          "Demonstration data, time alignment, and training strategy.",
+          "Quantization, memory, and real-time inference on edge devices.",
+          "Combine models, controllers, and safety into a complete system."
+        ]
+      }
+    },
+    "guides": {
+      "zh": [
+        {
+          "title": "VLA：從看到，到做到",
+          "text": "模型只是其中一環。理解完整資料流，才能設計能落地的機器人系統。",
+          "steps": [
+            [
+              "觀察",
+              "影像、指令與機器人狀態",
+              "search"
+            ],
+            [
+              "推理",
+              "多模態融合與動作預測",
+              "network"
+            ],
+            [
+              "行動",
+              "安全檢查與底層控制",
+              "arrow"
+            ],
+            [
+              "回饋",
+              "感測回饋 · 持續修正",
+              "repeat"
+            ]
+          ]
+        }
+      ],
+      "en": [
+        {
+          "title": "VLA: from seeing to doing",
+          "text": "The model is one part of the loop. Understand the entire flow to build robotics systems that work.",
+          "steps": [
+            [
+              "Observe",
+              "Images, instructions & robot state",
+              "search"
+            ],
+            [
+              "Reason",
+              "Multimodal fusion & action prediction",
+              "network"
+            ],
+            [
+              "Act",
+              "Safety checks & low-level control",
+              "arrow"
+            ],
+            [
+              "Feedback",
+              "Sensor feedback · correct · repeat",
+              "repeat"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": 0,
+      "title": "VLA 與 VLM 的核心差異？",
+      "answer": "VLA 多了「能執行的動作」，不只是理解畫面。\n\nVLM 偏重視覺與語言理解；VLA 額外預測機器人可執行的動作，例如末端位姿、關節目標或夾爪控制。VLA 不一定直接輸出馬達扭矩；常由底層 Controller 轉換與執行。\n\n動作輸出仍需交給底層控制器執行。\n\n面試延伸：VLA 不等於直接驅動馬達。區分 Policy Output 與 Low-level Actuation。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "VLM",
+          "steps": [
+            "影像 ＋ 語言",
+            "理解與文字回應"
+          ]
+        },
+        {
+          "caption": "VLA",
+          "steps": [
+            "影像 ＋ 語言 ＋ 機器人狀態",
+            "預測可執行的動作"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What is the core difference between VLA and VLM?",
+        "answer": "VLA adds executable actions to visual and language understanding.\n\nA VLM focuses on visual and language understanding. A VLA also predicts executable robot actions, such as end-effector poses, joint targets, or gripper commands. A low-level controller commonly converts these outputs into actuation.\n\nA low-level controller still executes the policy’s output.\n\nInterview insight: Distinguish policy outputs from low-level actuation. A VLA does not necessarily output motor torque.",
+        "flows": [
+          {
+            "caption": "VLM",
+            "steps": [
+              "Images + language",
+              "Understanding and text"
+            ]
+          },
+          {
+            "caption": "VLA",
+            "steps": [
+              "Images + language + robot state",
+              "Executable action predictions"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 1,
+      "title": "典型 VLA 的核心資料流是什麼？",
+      "answer": "把 VLA 想成一條有回饋的感知—行動鏈。\n\nCamera / Language / Robot State → 多模態編碼與融合 → Action Head → 安全檢查 / Controller → Actuation；執行後回讀感測狀態形成閉環。\n\n← 執行後讀回感測資訊，再更新下一次觀察。\n\n面試延伸：在面試中說清楚每一段的輸入、輸出、頻率與責任。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "走一次完整資料流",
+          "steps": [
+            "觀察 · 影像、指令、狀態",
+            "融合 · 多模態編碼",
+            "預測 · Action head",
+            "執行 · 安全檢查與控制"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What is the typical VLA data flow?",
+        "answer": "Think of VLA as a perception–action chain with feedback.\n\nCamera, language, and robot state → multimodal encoding and fusion → action head → safety checks and controller → actuation. New sensor observations close the loop.\n\n← Read sensors after execution to update the next observation.\n\nInterview insight: Explain the inputs, outputs, frequency, and responsibility of each stage.",
+        "flows": [
+          {
+            "caption": "Follow the complete data flow",
+            "steps": [
+              "Observe · Images, instruction, state",
+              "Fuse · Multimodal encoding",
+              "Predict · Action head",
+              "Execute · Safety checks and control"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Action Tokenization 如何表示連續動作？",
+      "answer": "連續數值切成離散格子，模型就能生成動作 Token。\n\n將連續數值正規化並量化成離散 Bin，讓 Transformer 可以像生成文字 Token 一樣生成動作 Token；代價是量化誤差及可能的自迴歸延遲。\n\n格子越粗，量化誤差可能越大；自迴歸生成也有延遲成本。\n\n面試延伸：256 Bin × 7 DoF 的組合數為 256^7，但不代表必須建立等量詞彙。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "從連續值到離散 Token",
+          "steps": [
+            "連續動作值",
+            "正規化 ＋ 量化",
+            "離散 Bin"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How does action tokenization represent continuous actions?",
+        "answer": "Turn continuous values into discrete bins the model can generate.\n\nNormalize and quantize continuous values into discrete bins, allowing a transformer to generate action tokens much like text tokens. Trade-offs include quantization error and autoregressive latency.\n\nQuantization introduces error; autoregressive generation can add latency.\n\nInterview insight: 256 bins across 7 degrees of freedom yield 256^7 combinations, without requiring that many vocabulary entries.",
+        "flows": [
+          {
+            "caption": "From continuous values to action tokens",
+            "steps": [
+              "Continuous action",
+              "Normalize + quantize",
+              "Discrete bin"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "title": "什麼是 Action Chunking？",
+      "answer": "一次想好幾步，執行途中仍要適時重新規劃。\n\n一次預測未來多個時間步的動作，而不是每一步都重新跑大型模型。能降低重新推論頻率，但 Chunk 變舊會造成反應慢；可配合 Receding Horizon 與重新規劃。\n\n示意：Chunk 太舊會讓反應變慢，可用新觀察重新規劃。\n\n面試延伸：降低推論頻率不等於每次推論成本下降。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "一次預測，多步執行",
+          "steps": [
+            "一次模型推論",
+            "動作 1",
+            "動作 2",
+            "動作 3",
+            "動作 4"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What is action chunking?",
+        "answer": "Predict several steps at once, and replan as observations change.\n\nPredict several future action steps in one inference pass. This reduces replanning frequency, but stale chunks can delay reactions. Receding-horizon execution and replanning help manage this trade-off.\n\nIllustration: stale chunks delay reactions; replan using new observations.\n\nInterview insight: Lower inference frequency does not imply lower cost per inference.",
+        "flows": [
+          {
+            "caption": "One prediction, multiple action steps",
+            "steps": [
+              "One model inference",
+              "Action 1",
+              "Action 2",
+              "Action 3",
+              "Action 4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Open-loop 與 Closed-loop 的差異？",
+      "answer": "差別在於：執行後，會不會用新回饋修正？\n\nOpen-loop 執行既定動作而不使用新的回饋修正；Closed-loop 根據新觀察持續修正。VLA 低頻策略與底層高頻閉環控制可以共存。\n\n低頻 VLA 與高頻閉環控制可以同時存在。\n\n面試延伸：明確說明哪個 Loop 達到哪個 Deadline。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "Open-loop",
+          "steps": [
+            "既定計畫 → 執行",
+            "不使用新回饋修正"
+          ]
+        },
+        {
+          "caption": "Closed-loop",
+          "steps": [
+            "觀察 → 執行 → 新觀察 ↺",
+            "依回饋持續調整"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How do open-loop and closed-loop control differ?",
+        "answer": "The key question: does new feedback correct the action?\n\nOpen-loop control executes a plan without using new feedback to correct it. Closed-loop control adjusts actions using new observations. A low-frequency VLA policy can coexist with high-frequency feedback control.\n\nLow-frequency VLA and high-frequency feedback control can coexist.\n\nInterview insight: Specify which loop must meet which deadline.",
+        "flows": [
+          {
+            "caption": "Open-loop",
+            "steps": [
+              "Plan → execute",
+              "No correction from new feedback"
+            ]
+          },
+          {
+            "caption": "Closed-loop",
+            "steps": [
+              "Observe → act → observe ↺",
+              "Continual feedback correction"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "title": "為什麼需要 Proprioception？",
+      "answer": "相機看到外界；Proprioception 告訴模型機器人自己的狀態。\n\n影像不一定能完整判斷關節位置、速度及姿態；Robot State 可降低觀測歧義。應用 timestamp 對齊影像與 Joint State。\n\n圖示為資料整合關係：不同來源先對齊，再一起交給策略。\n\n面試延伸：30FPS Camera 與 200Hz Joint State 要靠 timestamp、buffer、插值對齊。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "不同頻率，也要對齊時間",
+          "steps": [
+            "相機 · 30 FPS 影像",
+            "自身狀態 · 200 Hz 關節資訊",
+            "時間對齊 · Timestamp、Buffer、插值"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Why does a VLA need proprioception?",
+        "answer": "Vision shows the world; proprioception shows the robot’s own state.\n\nImages may not fully reveal joint positions, velocities, or poses. Robot state reduces observation ambiguity. Align camera frames and joint states using timestamps.\n\nData integration schematic: align both sources before policy input.\n\nInterview insight: Align 30 FPS camera frames with 200 Hz joint states using timestamps, buffers, and interpolation.",
+        "flows": [
+          {
+            "caption": "Different rates, aligned timestamps",
+            "steps": [
+              "Camera · 30 FPS images",
+              "Robot state · 200 Hz joint data",
+              "Align · Timestamps, buffers, interpolation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Diffusion Policy 的主要特色？",
+      "answer": "從雜訊逐步去噪，生成連續動作。\n\n以迭代去噪生成連續動作分布，能表示多峰操作策略，但推論成本受去噪步數影響。縮短步數需驗證成功率、平滑度與安全性。\n\n去噪是重複步驟；減少步數後仍要驗證成功率與安全性。\n\n面試延伸：問到 latency 時需說明 denoising steps 與單步執行時間。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "Diffusion 的生成路徑",
+          "steps": [
+            "雜訊 · 初始動作樣本",
+            "迭代去噪 · 根據觀察修正",
+            "動作 · 連續動作序列"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What characterizes a diffusion policy?",
+        "answer": "Iterative denoising turns noise into continuous actions.\n\nIterative denoising generates continuous action distributions and can represent multiple valid action modes. Inference cost depends on denoising steps; reducing them requires validating success, smoothness, and safety.\n\nDenoising repeats; fewer steps still require success and safety checks.\n\nInterview insight: Discuss both the number of denoising steps and the time per step when explaining latency.",
+        "flows": [
+          {
+            "caption": "The diffusion generation path",
+            "steps": [
+              "Noise · Initial action sample",
+              "Denoise · Condition on observations",
+              "Actions · Continuous action sequence"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Flow Matching 在 VLA 的用途？",
+      "answer": "學習「往哪裡流動」，再積分生成動作。\n\n學習速度場，將簡單的雜訊分布映射成真實動作分布；可用數值積分產生連續 Action Chunk。π0 是具代表性的案例。\n\n數值積分可能需要多次模型計算，並不保證單次前向傳播。\n\n面試延伸：Flow Matching 不代表必定是單次網路前向傳播。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "Flow Matching 的生成路徑",
+          "steps": [
+            "雜訊 · 簡單分布",
+            "速度場 · 學習轉換方向",
+            "數值積分 · 生成 Action chunk"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How is flow matching used in VLA?",
+        "answer": "Learn a velocity field, then integrate it to generate actions.\n\nLearn a velocity field that transports a simple noise distribution toward the action distribution. Numerical integration generates continuous action chunks. π0 is a representative example.\n\nNumerical integration can require multiple model evaluations.\n\nInterview insight: Flow matching does not necessarily mean a single network forward pass.",
+        "flows": [
+          {
+            "caption": "The flow-matching generation path",
+            "steps": [
+              "Noise · Simple distribution",
+              "Velocity field · Learn the transport direction",
+              "Integration · Generate an action chunk"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Action Expert 的角色是什麼？",
+      "answer": "語義理解與動作生成，可以由不同模組分工。\n\n在部分 VLA 設計中由 VLM Backbone 抽取語義條件，專用 Action Expert 進一步融合 Robot State 並預測動作；便於拆分語義理解與連續控制生成。\n\n這是部分 VLA 架構的設計方式，並非所有模型都相同。\n\n面試延伸：說明 Backbone / Action Head 的精度敏感性與推論頻率。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "Backbone 與 Action Expert",
+          "steps": [
+            "VLM backbone · 抽取語義條件",
+            "Action expert · 融合機器人狀態",
+            "Action output · 預測連續動作"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What does an action expert do?",
+        "answer": "Semantic understanding and action generation can use distinct modules.\n\nIn some VLA architectures, a VLM backbone extracts semantic conditioning and a dedicated action expert combines it with robot state to predict actions. This separates semantic understanding from continuous action generation.\n\nSome VLA architectures use this separation; it is not universal.\n\nInterview insight: Discuss precision sensitivity and inference frequency for the backbone and action head.",
+        "flows": [
+          {
+            "caption": "Backbone and action expert",
+            "steps": [
+              "VLM backbone · Semantic conditioning",
+              "Action expert · Fuse robot state",
+              "Action output · Predict continuous actions"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "title": "Temporal Ensembling 為何需要謹慎使用？",
+      "answer": "平均可以變平滑，也可能把有效動作平均成無效路徑。\n\n可融合不同 Action Chunk 對同一時刻的預測以改善平滑度，但平均互相衝突的動作模式可能產生無效軌跡，且會增加平滑延遲。\n\n評估 Tracking error 與 Response lag，不只看軌跡是否平滑。\n\n面試延伸：平滑不等於準確；評估 tracking error 與 response lag。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "潛在收益",
+          "steps": [
+            "融合重疊時間點的預測",
+            "動作更平滑"
+          ]
+        },
+        {
+          "caption": "潛在代價",
+          "steps": [
+            "互相衝突的動作模式被平均",
+            "無效軌跡或反應延遲"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Why should temporal ensembling be used carefully?",
+        "answer": "Averaging can smooth motion or turn valid modes into an invalid path.\n\nCombining predictions for the same time step across action chunks can improve smoothness. Averaging conflicting action modes may produce invalid trajectories, and smoothing can introduce response lag.\n\nMeasure tracking error and response lag, not smoothness alone.\n\nInterview insight: Smoothness is not accuracy. Measure tracking error and response lag.",
+        "flows": [
+          {
+            "caption": "Potential benefit",
+            "steps": [
+              "Fuse predictions for overlapping steps",
+              "Smoother motion"
+            ]
+          },
+          {
+            "caption": "Potential cost",
+            "steps": [
+              "Average conflicting action modes",
+              "Invalid paths or response lag"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "title": "Behavior Cloning 與 RL 的差異？",
+      "answer": "BC 學專家的示範；RL 學互動後的回報。\n\nBC 用專家示範做監督式訓練；RL 透過環境互動與 Reward 改善策略。BC 易遇到 Distribution Shift；RL 需處理探索安全及 Reward 設計。\n\n先說清楚資料與學習訊號從哪裡來。\n\n面試延伸：可補充 DAgger 將模型遇到的狀態加入專家標註。",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "Behavior cloning",
+          "steps": [
+            "專家示範 → 監督式學習",
+            "挑戰：分布偏移"
+          ]
+        },
+        {
+          "caption": "Reinforcement learning",
+          "steps": [
+            "環境互動 → Reward → 改善策略",
+            "挑戰：探索安全與獎勵設計"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How do behavior cloning and reinforcement learning differ?",
+        "answer": "BC learns expert demonstrations; RL learns from interaction and return.\n\nBehavior cloning uses supervised learning on expert demonstrations. RL improves a policy through interaction and rewards. BC faces distribution shift; RL requires safe exploration and careful reward design.\n\nExplain where the data and learning signal come from.\n\nInterview insight: DAgger can add expert labels for states encountered by the learned policy.",
+        "flows": [
+          {
+            "caption": "Behavior cloning",
+            "steps": [
+              "Expert demonstrations → supervision",
+              "Challenge: distribution shift"
+            ]
+          },
+          {
+            "caption": "Reinforcement learning",
+            "steps": [
+              "Interaction → rewards → policy improvement",
+              "Challenge: safe exploration and reward design"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "title": "Cross-Embodiment 學習的最大挑戰？",
+      "answer": "相同長度的動作向量，不一定代表相同的動作。\n\n不同機器人 DoF、關節排序、座標系、控制介面與動作限制不一致，需要 Embodiment-specific Encoding/Decoding、Normalization 與資料格式對齊。\n\n避免直接混合不同機器人的 Raw action vector。\n\n面試延伸：不能直接合併不同機器人的 raw action vector。",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "先統一語義，再整合資料",
+          "steps": [
+            "不同機器人 · DoF、關節順序、座標系",
+            "對齊與轉換 · 編解碼、正規化",
+            "動作語義 · 一致的資料表示"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What is the main challenge in cross-embodiment learning?",
+        "answer": "Equal-length action vectors need not mean the same thing.\n\nRobots differ in degrees of freedom, joint order, coordinate frames, control interfaces, and action limits. Embodiment-specific encoding and decoding, normalization, and data alignment are needed.\n\nDo not directly mix raw action vectors from different robots.\n\nInterview insight: Do not simply merge raw action vectors from different robots.",
+        "flows": [
+          {
+            "caption": "Align semantics before combining data",
+            "steps": [
+              "Different robots · DoF, joint order, frames",
+              "Align and convert · Encoding, decoding, normalization",
+              "Action semantics · Consistent representation"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "title": "100ms Camera/Action 時間錯位會造成什麼問題？",
+      "answer": "配錯時間的觀察與動作，會讓模型學到錯的關聯。\n\n模型學到錯誤的 Observation–Action 對應，導致定位偏差、跟隨延遲或震盪。要在 Capture Timestamp 與 Action Execution Timeline 上做對齊。\n\n示意的是錯誤的訓練資料配對；請對齊擷取與執行的時間軸。\n\n面試延伸：資料品質優先於盲目增加模型參數。",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "100 ms 錯位示意",
+          "steps": [
+            "影像擷取",
+            "錯配的動作",
+            "100 ms 時間錯位"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What happens with a 100 ms camera/action misalignment?",
+        "answer": "Mismatched observation and action timestamps teach the wrong association.\n\nThe model learns incorrect observation–action associations, causing positioning errors, response lag, or oscillation. Align capture timestamps with the action execution timeline.\n\nThis shows a training-pair mismatch; align capture and execution timelines.\n\nInterview insight: Prioritize data quality over blindly increasing model size.",
+        "flows": [
+          {
+            "caption": "A 100 ms misalignment",
+            "steps": [
+              "Image captured",
+              "Mismatched action",
+              "100 ms offset"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "title": "Sim-to-Real Gap 的典型來源？",
+      "answer": "模擬與真實的差異，分散在物理、感測與時序。\n\n摩擦、質量、馬達延遲、光照、深度誤差、控制迴圈及通訊差異。可用 Domain Randomization、System Identification、真實資料微調來降低。\n\n可用 Domain randomization、System identification 與真實資料微調降低落差。\n\n面試延伸：要能區分 Domain Randomization 與 Domain Adaptation。",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "Sim-to-real 的三個檢查面向",
+          "steps": [
+            "物理 · 摩擦、質量、馬達",
+            "感測 · 光照、深度誤差",
+            "時序 · 延遲、控制與通訊"
+          ]
+        }
+      ],
+      "en": {
+        "title": "What causes the sim-to-real gap?",
+        "answer": "The simulation gap spans physics, sensing, and timing.\n\nDifferences in friction, mass, motor delay, lighting, depth error, control loops, and communication. Domain randomization, system identification, and fine-tuning on real data can reduce the gap.\n\nUse domain randomization, system identification, and real-data fine-tuning.\n\nInterview insight: Distinguish domain randomization from domain adaptation.",
+        "flows": [
+          {
+            "caption": "Three dimensions of sim-to-real",
+            "steps": [
+              "Physics · Friction, mass, motors",
+              "Sensing · Lighting, depth errors",
+              "Timing · Delays, control, communication"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "title": "如何評估 VLA 系統效果？",
+      "answer": "模型誤差低，不代表機器人真的完成任務。\n\n不能只看 Training Loss 或 Action MSE；要追蹤 Task Success Rate、Completion Time、Collision Rate、Intervention Rate、P99 Latency 及 OOD Generalization。\n\n離線 Loss 與 Action MSE，要搭配真實 Rollout 的表現一起看。\n\n面試延伸：離線誤差低不一定代表真實 Rollout 成功率高。",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "評估完整系統",
+          "steps": [
+            "任務 · 成功率、完成時間",
+            "安全 · 碰撞率、介入率",
+            "延遲 · 端到端 P99",
+            "泛化 · 分布外情境"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How should a VLA system be evaluated?",
+        "answer": "Low model error does not guarantee successful task execution.\n\nGo beyond training loss or action MSE. Track task success, completion time, collision rate, intervention rate, P99 latency, and out-of-distribution generalization.\n\nPair offline loss and action MSE with real-world rollout performance.\n\nInterview insight: Low offline error does not guarantee successful real-world rollouts.",
+        "flows": [
+          {
+            "caption": "Evaluate the whole system",
+            "steps": [
+              "Task · Success, completion time",
+              "Safety · Collisions, interventions",
+              "Latency · End-to-end P99",
+              "Generalization · Out-of-distribution scenarios"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "title": "3B 模型 FP16 權重理論大小約為？",
+      "answer": "先算權重，再把執行時的額外記憶體加回來。\n\n3×10^9 parameters × 2 bytes = 6×10^9 bytes，約 6GB（十進位）。實際還需加入 Activation、KV Cache、Workspace 等。\n\n3 × 10⁹ × 2 bytes = 6 GB。長條僅比較原始權重，不含 Metadata、Activation、KV cache 與 Workspace。\n\n面試延伸：INT8 原始權重約 3GB；INT4 約 1.5GB，不含 metadata。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "3B 模型：原始權重大小",
+          "steps": [
+            "FP16",
+            "INT8",
+            "INT4"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How large are the FP16 weights of a 3B model?",
+        "answer": "Calculate weights first, then account for runtime memory.\n\n3 × 10^9 parameters × 2 bytes = 6 × 10^9 bytes, approximately 6 GB in decimal units. Activations, KV cache, and workspaces require additional memory.\n\n3 × 10⁹ × 2 bytes = 6 GB. Bars exclude metadata, activations, KV cache, and workspaces.\n\nInterview insight: Raw INT8 weights take about 3 GB; INT4 about 1.5 GB, excluding metadata.",
+        "flows": [
+          {
+            "caption": "3B model: raw weight storage",
+            "steps": [
+              "FP16",
+              "INT8",
+              "INT4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "title": "為什麼不能單靠 NPU TOPS 推估 VLA FPS？",
+      "answer": "TOPS 是算力指標；FPS 要看整條執行路徑。\n\n實際效能受 Operator Support、Fallback、DRAM Bandwidth、Layout Conversion、同步及 Thermal Throttling 限制。要量測 End-to-end P95/P99。\n\n量測 End-to-end P95 / P99，不能把 TOPS 直接換成 FPS。\n\n面試延伸：高 TOPS 並不保證低延遲。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "找出實際效能的瓶頸",
+          "steps": [
+            "算子支援 · Fallback 與格式轉換",
+            "記憶體 · DRAM 頻寬與搬移",
+            "同步 · 端到端等待時間",
+            "熱限制 · Thermal throttling"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Why can’t NPU TOPS alone predict VLA FPS?",
+        "answer": "TOPS describes compute capacity; FPS depends on the complete path.\n\nPerformance also depends on operator support, fallbacks, DRAM bandwidth, layout conversion, synchronization, and thermal throttling. Measure end-to-end P95 and P99 latency.\n\nMeasure end-to-end P95 / P99; TOPS cannot directly determine FPS.\n\nInterview insight: High TOPS does not guarantee low latency.",
+        "flows": [
+          {
+            "caption": "Find the actual performance bottleneck",
+            "steps": [
+              "Operators · Fallbacks and conversions",
+              "Memory · DRAM bandwidth and transfers",
+              "Synchronization · End-to-end waiting",
+              "Thermals · Thermal throttling"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "title": "Zero-copy 是否代表絕對沒有資料搬移？",
+      "answer": "Zero-copy 避免特定複製，不代表整條路徑都零成本。\n\n否。Zero-copy 通常表示避免特定冗餘複製；格式轉換、裝置邊界、同步、驅動限制仍可能帶來搬移或等待。\n\n這是檢查清單示意；實際路徑請用 Profiler 驗證。\n\n面試延伸：用 profiler 驗證完整 buffer lifetime 與 copy path。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "沿著 Buffer 生命週期追蹤",
+          "steps": [
+            "Buffer · 避免冗餘複製",
+            "格式轉換 · 仍可能有搬移",
+            "裝置邊界 · 驅動與存取限制",
+            "同步 · 仍可能等待"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Does zero-copy mean no data movement at all?",
+        "answer": "Zero-copy avoids certain copies, not all costs along the path.\n\nNo. Zero-copy usually avoids specific redundant copies. Format conversion, device boundaries, synchronization, and driver constraints may still cause movement or waiting.\n\nThis is a conceptual checklist; verify the real path with a profiler.\n\nInterview insight: Profile the complete buffer lifetime and copy path.",
+        "flows": [
+          {
+            "caption": "Trace the buffer lifetime",
+            "steps": [
+              "Buffer · Avoid redundant copies",
+              "Conversion · May still move data",
+              "Device boundary · Driver and access constraints",
+              "Synchronization · May still wait"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "title": "3B VLA 120ms 推論，如何維持 100Hz Controller？",
+      "answer": "讓慢速模型規劃，讓即時控制器持續執行。\n\n採非同步分層：VLA 低頻預測 Action Chunk，Realtime Controller 10ms 週期執行有效軌跡與局部回饋。使用期限檢查、Buffer、Watchdog、受控停止，避免 VLA 阻塞控制執行緒。\n\nAction chunk → 有效期限檢查與 Buffer → Controller。另需 Watchdog 與受控停止。\n\n面試延伸：100Hz Controller 不等於 VLA Sensor-to-New-Action 延遲 10ms。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "兩種頻率，兩個責任",
+          "steps": [
+            "VLA 策略 · 120 ms / 推論",
+            "即時控制器 · 10 ms / 控制週期"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How can a 120 ms VLA inference coexist with a 100 Hz controller?",
+        "answer": "Let the slower model plan while the real-time controller keeps running.\n\nUse asynchronous layers: the VLA predicts action chunks at a lower frequency, while the real-time controller executes valid trajectories and local feedback every 10 ms. Use expiry checks, buffers, a watchdog, and controlled stopping.\n\nAction chunk → expiry checks and buffer → controller. Add a watchdog and controlled stopping.\n\nInterview insight: A 100 Hz controller does not imply 10 ms sensor-to-new-action latency for the VLA.",
+        "flows": [
+          {
+            "caption": "Two rates, two responsibilities",
+            "steps": [
+              "VLA policy · 120 ms / inference",
+              "Real-time controller · 10 ms / control cycle"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "title": "VLA 量化後抓取成功率 95% → 82%，合理處置？",
+      "answer": "量化後變快，仍要確認任務品質與安全是否可接受。\n\n量化收益必須與安全及任務品質一起衡量。可採 Mixed Precision，保留敏感 Action Head 的 FP16、重新 Calibration，並用真實 Rollout 量測；不可只因推論快就上線。\n\n95% → 82%：回溯敏感層、嘗試混合精度、重新 Calibration，再驗證真實 Rollout。\n\n面試延伸：關鍵是評估 Pareto Trade-off：latency、memory、success、安全。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "情境：量化前後的抓取成功率",
+          "steps": [
+            "量化前",
+            "量化後"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Quantization drops grasp success from 95% to 82%. What next?",
+        "answer": "Faster quantized inference still needs task-quality and safety validation.\n\nEvaluate quantization gains alongside safety and task quality. Try mixed precision, retain FP16 in sensitive action heads, recalibrate, and measure real rollouts before deployment.\n\n95% → 82%: inspect sensitive layers, try mixed precision, recalibrate, and validate real rollouts.\n\nInterview insight: Evaluate the Pareto trade-off between latency, memory, success, and safety.",
+        "flows": [
+          {
+            "caption": "Scenario: grasp success before and after quantization",
+            "steps": [
+              "Before quantization",
+              "After quantization"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "title": "OpenVLA 如何把視覺與語言轉成動作？",
+      "answer": "OpenVLA：先把動作離散化，再像生成 Token 一樣預測。\n\n原版 OpenVLA 以預訓練 VLM 接收影像與語言指令，將正規化的連續動作逐維量化成 256 個 Bin，再自迴歸預測離散 Action Token，解碼並反正規化後交給控制器。訓練使用機器人示範進行 Behavior Cloning；適應新任務可使用 LoRA 或完整微調，需對齊動作語義與正規化統計。\n\n學習路線：Action Tokenization → Behavior Cloning → LoRA／完整微調。\n\n面試延伸：適合學 Action Tokenization、Behavior Cloning 與微調。比較量化誤差、自迴歸延遲與真實成功率；這裡指原版 OpenVLA，OFT 等衍生版本的動作輸出設計不同。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "原版 OpenVLA 的動作路徑",
+          "steps": [
+            "影像 ＋ 指令 · 預訓練 VLM",
+            "Action Token · 逐維 256 Bin、自迴歸",
+            "解碼與反正規化 · 控制器可執行的動作"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "官方介紹",
+          "url": "https://openvla.github.io/"
+        },
+        {
+          "title": "GitHub／微調指南",
+          "url": "https://github.com/openvla/openvla"
+        }
+      ],
+      "en": {
+        "title": "How does OpenVLA turn vision and language into actions?",
+        "answer": "OpenVLA discretizes actions and predicts them as tokens.\n\nOriginal OpenVLA takes images and instructions through a pretrained VLM, quantizes each normalized action dimension into 256 bins, and autoregressively predicts discrete action tokens. Decoding and unnormalization produce controller inputs. Robot demonstrations provide behavior-cloning supervision. Adaptation uses LoRA or full fine-tuning with aligned action semantics and normalization statistics.\n\nLearning route: action tokenization → behavior cloning → LoRA / full fine-tuning.\n\nInterview insight: Study action tokenization, behavior cloning, and fine-tuning. Compare quantization error, autoregressive latency, and rollout success. This describes original OpenVLA; derivatives such as OFT use different action outputs.",
+        "flows": [
+          {
+            "caption": "Original OpenVLA action path",
+            "steps": [
+              "Images + instruction · Pretrained VLM",
+              "Action tokens · 256 bins per dimension; autoregressive",
+              "Decode + unnormalize · Executable controller inputs"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Project overview",
+            "url": "https://openvla.github.io/"
+          },
+          {
+            "title": "GitHub / fine-tuning",
+            "url": "https://github.com/openvla/openvla"
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "title": "π0（Pi-zero）如何生成連續 Action Chunk？",
+      "answer": "π0：用 Flow Matching 的 Action Expert 生成連續動作。\n\nπ0 結合預訓練 VLM 與專用 Action Expert，以影像、語言與機器人狀態為條件，透過 Flow Matching 學習動作的速度場。推論從雜訊動作開始，經數值積分生成連續 Action Chunk，再執行其中一段並以新觀察重新規劃。openpi 提供模型、推論與微調範例。\n\n比較原版 OpenVLA 的離散 Token 與 π0 的連續生成；不要與 π0-FAST 混淆。\n\n面試延伸：適合學 Action Expert、Action Chunking 與 Continuous Control。說清楚積分步數、預測範圍與實際執行範圍；π0-FAST 使用不同的離散動作表示，不應混用。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "π0 的條件生成路徑",
+          "steps": [
+            "影像 ＋ 語言 · VLM 表示與機器人狀態",
+            "Action Expert · Flow Matching 速度場",
+            "連續 Action Chunk · 積分生成、部分執行、再規劃"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "官方介紹",
+          "url": "https://www.physicalintelligence.company/blog/pi0"
+        },
+        {
+          "title": "π0 論文",
+          "url": "https://arxiv.org/abs/2410.24164"
+        },
+        {
+          "title": "openpi／實作",
+          "url": "https://github.com/Physical-Intelligence/openpi"
+        }
+      ],
+      "en": {
+        "title": "How does π0 (Pi-zero) generate continuous action chunks?",
+        "answer": "π0 generates continuous actions with a flow-matching action expert.\n\nπ0 combines a pretrained VLM and a dedicated action expert. Conditioned on images, language, and robot state, flow matching learns an action velocity field. Inference integrates from noisy actions to a continuous action chunk, executes part of it, and replans with fresh observations. openpi provides models, inference, and fine-tuning examples.\n\nCompare original OpenVLA tokens with π0 continuous generation; distinguish π0-FAST.\n\nInterview insight: Study action experts, action chunking, and continuous control. Explain integration steps, prediction horizon, and execution horizon. π0-FAST uses a different discrete action representation.",
+        "flows": [
+          {
+            "caption": "π0 conditional generation",
+            "steps": [
+              "Images + language · VLM representations and robot state",
+              "Action expert · Flow-matching velocity field",
+              "Continuous action chunk · Integrate, execute part, replan"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Official introduction",
+            "url": "https://www.physicalintelligence.company/blog/pi0"
+          },
+          {
+            "title": "π0 paper",
+            "url": "https://arxiv.org/abs/2410.24164"
+          },
+          {
+            "title": "openpi / implementation",
+            "url": "https://github.com/Physical-Intelligence/openpi"
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "title": "NVIDIA Isaac GR00T N1.7 的架構與部署重點？",
+      "answer": "GR00T N1.7：VLM 負責理解，Diffusion Transformer 生成動作。\n\nGR00T N1.7 結合 Cosmos-Reason2-2B（Qwen3-VL 架構）的 VLM Backbone 與生成連續動作的 Diffusion Transformer Action Head。先對齊影像、狀態與動作並整理成 GR00T LeRobot 格式，再做推論、微調與評估。官方部署流程包含 ONNX 匯出、TensorRT Engine 建置、PyTorch／TensorRT 輸出比對與端到端效能量測。\n\n資料先對齊成 GR00T LeRobot 格式；沿著資料、推論、部署三條線準備面試。\n\n面試延伸：準備 NVIDIA 面試可沿著資料 → Backbone → Action Head → Controller 說明。比較去噪步數與各段延遲；TensorRT Engine 需配合目標 GPU 建置，輸出比對後仍需驗證實際任務成功率。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "GR00T N1.7 推論與部署",
+          "steps": [
+            "VLM Backbone · Cosmos-Reason2-2B",
+            "Diffusion Transformer · 以狀態為條件生成連續動作",
+            "部署驗證 · ONNX → TensorRT → 輸出比對與量測"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "官方 GitHub／資料格式",
+          "url": "https://github.com/NVIDIA/Isaac-GR00T"
+        },
+        {
+          "title": "TensorRT 部署指南",
+          "url": "https://github.com/NVIDIA/Isaac-GR00T/blob/main/scripts/deployment/README.md"
+        }
+      ],
+      "en": {
+        "title": "What matters in NVIDIA Isaac GR00T N1.7 architecture and deployment?",
+        "answer": "GR00T N1.7 couples VLM understanding with diffusion-transformer actions.\n\nGR00T N1.7 combines a Cosmos-Reason2-2B VLM backbone (Qwen3-VL architecture) with a diffusion transformer action head for continuous actions. Align images, state, and actions in GR00T LeRobot format before inference, fine-tuning, and evaluation. The official deployment workflow exports ONNX, builds TensorRT engines, compares PyTorch and TensorRT outputs, and benchmarks end-to-end performance.\n\nAlign data in GR00T LeRobot format; study data, inference, and deployment for interviews.\n\nInterview insight: For NVIDIA interviews, trace data → backbone → action head → controller. Discuss denoising steps and stage latency. Build TensorRT engines for the target GPU; output agreement still needs task-success validation.",
+        "flows": [
+          {
+            "caption": "GR00T N1.7 inference and deployment",
+            "steps": [
+              "VLM backbone · Cosmos-Reason2-2B",
+              "Diffusion transformer · State-conditioned continuous actions",
+              "Deployment validation · ONNX → TensorRT → compare and benchmark"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Official GitHub / data format",
+            "url": "https://github.com/NVIDIA/Isaac-GR00T"
+          },
+          {
+            "title": "TensorRT deployment guide",
+            "url": "https://github.com/NVIDIA/Isaac-GR00T/blob/main/scripts/deployment/README.md"
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "title": "Gemini Robotics 與 Robotics-ER 如何分工？",
+      "answer": "Gemini Robotics 案例：高階具身推理與動作策略分工。\n\nGemini Robotics 是把影像與語言連到機器人動作的 VLA；Gemini Robotics-ER 著重空間理解、具身推理與任務規劃。在官方 1.5 系統設計中，ER 作為高階規劃模組，將子任務交給 Robotics VLA 執行。這個案例適合研究高階 Embodied Reasoning 與動作控制之間的介面。\n\n這是官方 1.5 系統的概念示意；高階規劃不取代低階控制器。\n\n面試延伸：說明子任務、觀察回饋與完成判斷如何在模組間傳遞。Robotics-ER 的推理能力不等同於已完成低階控制，仍需動作策略、控制器與安全檢查。",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "Gemini Robotics 1.5 系統分工",
+          "steps": [
+            "觀察與指令 · 影像、語言與任務脈絡",
+            "Robotics-ER · 空間推理與子任務規劃",
+            "Robotics VLA · 動作執行與觀察回饋"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "官方介紹",
+          "url": "https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+        },
+        {
+          "title": "1.5 系統分工",
+          "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/"
+        }
+      ],
+      "en": {
+        "title": "How do Gemini Robotics and Robotics-ER divide responsibilities?",
+        "answer": "Gemini Robotics illustrates a split between embodied reasoning and actions.\n\nGemini Robotics is a VLA connecting images and language to robot actions. Gemini Robotics-ER focuses on spatial understanding, embodied reasoning, and task planning. In the official 1.5 system, ER plans at a higher level and hands subtasks to the Robotics VLA for execution. Study this as an interface between high-level embodied reasoning and action control.\n\nConceptual view of the official 1.5 system; high-level planning still needs low-level control.\n\nInterview insight: Explain how subtasks, observation feedback, and completion checks cross module boundaries. Robotics-ER reasoning still requires an action policy, controller, and safety checks for execution.",
+        "flows": [
+          {
+            "caption": "Gemini Robotics 1.5 system roles",
+            "steps": [
+              "Observations + instruction · Images, language, task context",
+              "Robotics-ER · Spatial reasoning and subtask planning",
+              "Robotics VLA · Action execution and observation feedback"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Official introduction",
+            "url": "https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/"
+          },
+          {
+            "title": "1.5 system design",
+            "url": "https://deepmind.google/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/"
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "title": "如何設計 Sensor-to-Actuation P99 < 20 ms 的 Physical AI 系統？",
+      "answer": "先定義邊界，再量測完整路徑。\n\n先定義起點是曝光開始或影像到達，終點是命令送出、驅動器接受或物理響應。初始預算可拆成擷取 4 ms、前處理 2 ms、推論 8 ms、規劃 3 ms、通訊／致動 2 ms，保留 1 ms 餘裕；這些只是待實機驗證的預算。以 frame ID 與對齊的時間戳追蹤完整路徑，包含排隊、資料搬移及同步；不可把各階段 P99 相加當成精確端到端 P99。限制佇列、優先最新影像，隔離即時工作，預配置記憶體並暖機。\n\n範例預算；P99 須端到端實測，各階段 P99 不可直接相加。\n\n面試延伸：原始面試 Q4。評分重點：Deadline、Jitter、Worst-case Latency。壓測 CPU／GPU 競爭、熱降頻與 I/O，記錄 P99、deadline miss rate 及資料年齡；P99 達標不代表最壞情況有界，實測最大值也不是 WCET 證明。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "20 ms 初始延遲預算",
+          "steps": [
+            "擷取＋前處理 · 4 + 2 ms",
+            "推論＋規劃 · 8 + 3 ms",
+            "通訊／致動＋餘裕 · 2 + 1 ms"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 即時設計",
+          "url": "https://design.ros2.org/articles/realtime_background.html"
+        }
+      ],
+      "en": {
+        "title": "How would you design a Physical AI system with sensor-to-actuation P99 < 20 ms?",
+        "answer": "Define boundaries, then measure the full path.\n\nDefine whether sensing starts at exposure or image arrival, and whether actuation ends at command dispatch, drive acceptance, or physical response. An initial budget is acquisition 4 ms, preprocessing 2 ms, inference 8 ms, planning 3 ms, communication/actuation 2 ms, plus 1 ms margin. Validate these budgets on hardware. Track frame IDs and aligned timestamps across the complete path, including queues, transfers, and synchronization. Summing stage P99 values does not give the exact end-to-end P99. Bound queues, prioritize fresh frames, isolate real-time work, preallocate memory, and warm up.\n\nIllustrative budget; measure end-to-end P99 rather than summing stage P99 values.\n\nInterview insight: Original interview Q4. Assess deadlines, jitter, and worst-case latency. Stress CPU/GPU contention, thermal throttling, and I/O; report P99, deadline misses, and data age. Passing P99 does not bound the worst case; an observed maximum is not a WCET proof.",
+        "flows": [
+          {
+            "caption": "Initial 20 ms latency budget",
+            "steps": [
+              "Capture + preprocessing · 4 + 2 ms",
+              "Inference + planning · 8 + 3 ms",
+              "Communication/actuation + margin · 2 + 1 ms"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "ROS 2 real-time design",
+            "url": "https://design.ros2.org/articles/realtime_background.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "title": "GPU 偶發排程延遲導致控制週期超時，如何維持安全？",
+      "answer": "GPU 超時時，獨立安全控制仍須準時運作。\n\n安全控制不得依賴 GPU 準時完成。由獨立即時 CPU 工作或 MCU 執行 Watchdog，檢查命令更新、感知資料年齡及有效期限；只看程序 heartbeat 不夠。每筆結果帶 frame ID 與期限，拒絕超時或亂序結果。在期限前預留 Fallback Controller 的執行與致動時間，依編碼器／IMU 等回饋降速、受控煞停或維持安全姿態。沿用上一筆命令必須有時間與狀態限制；連續有效結果及狀態檢查通過後才恢復。\n\n驗證最壞安全反應時間；停止方法由危害分析決定。\n\n面試延伸：原始 Q4 追問。注入 GPU 卡頓、相機中斷與通訊異常，驗證偵測＋切換＋安全動作的最壞反應時間符合危害容許範圍。Fallback 本身也需驗證；安全姿態或停止方式依機構與危害而定。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "超時安全路徑",
+          "steps": [
+            "期限與資料年齡 · 預留切換與致動時間",
+            "獨立 Watchdog · 即時 CPU 或 MCU",
+            "Fallback Controller · 回饋控制、降速或受控停止"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 即時設計",
+          "url": "https://design.ros2.org/articles/realtime_background.html"
+        }
+      ],
+      "en": {
+        "title": "How do you stay safe when occasional GPU scheduling delays miss a control deadline?",
+        "answer": "Independent safety control must stay timely during GPU overruns.\n\nSafety must not depend on timely GPU completion. An independent real-time CPU task or MCU watchdog checks command updates, perception age, and expiry; process heartbeat alone is insufficient. Tag results with frame IDs and deadlines and reject expired or out-of-order results. Reserve time before the deadline for a bounded fallback controller and actuation. Use encoder/IMU feedback to reduce speed, stop under control, or maintain a safe pose. Reusing the last command needs time and state limits. Recover only after consecutive valid results and state checks.\n\nValidate worst-case safety response time; stopping behavior follows hazard analysis.\n\nInterview insight: Original Q4 follow-up. Inject GPU stalls, camera loss, and communication faults; verify worst-case detection, switching, and safe-action time against the hazard tolerance. Validate the fallback itself; the safe pose or stopping method depends on the mechanism and hazard.",
+        "flows": [
+          {
+            "caption": "Safe overrun handling",
+            "steps": [
+              "Deadline + data age · Reserve switching and actuation time",
+              "Independent watchdog · Real-time CPU or MCU",
+              "Fallback controller · Feedback control, slow down, or controlled stop"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "ROS 2 real-time design",
+            "url": "https://design.ros2.org/articles/realtime_background.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "title": "如何將 Jetson 視覺模型移植至 AMD 異質運算平台？",
+      "answer": "先確認 AMD 目標裝置，再選部署工具。\n\n固定模型、資料集與前後處理，在 Jetson 建立 Accuracy、Latency、Memory、Power 基準，再確認目標 AMD 晶片、OS 與工具版本。檢查 ONNX opset、算子、動態 shape、layout，以及 TensorRT plugin／自訂 CUDA 的替代方案。支援的 GPU 可評估 ROCm／MIGraphX 或 ONNX Runtime MIGraphX EP；NPU 與 Adaptive SoC 依裝置確認 Ryzen AI／Vitis AI 路徑。先驗證正確性，再評估 FP16／INT8、記憶體配置、資料搬移與完整 pipeline。\n\nGPU、NPU 與 Adaptive SoC 的支援矩陣不同；工具名稱不能取代相容性驗證。\n\n面試延伸：原始面試 Q5。檢查 CPU fallback 與子圖切換，避免加速收益被同步及複製抵銷。ONNX Runtime 的 ROCm EP 已列為淘汰方向，官方建議改用 MIGraphX EP；依實際硬體及版本支援矩陣選擇，不能把 AMD 當成單一相容平台。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "跨平台移植流程",
+          "steps": [
+            "原始基準 · Accuracy／Latency／Memory／Power",
+            "相容性與精度 · ONNX、算子、FP16／INT8",
+            "完整 Pipeline · Fallback、搬移、同步與功耗"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AMD MIGraphX EP",
+          "url": "https://onnxruntime.ai/docs/execution-providers/MIGraphX-ExecutionProvider.html"
+        },
+        {
+          "title": "ROCm EP 淘汰說明",
+          "url": "https://onnxruntime.ai/docs/execution-providers/ROCm-ExecutionProvider.html"
+        },
+        {
+          "title": "Vitis AI EP",
+          "url": "https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html"
+        }
+      ],
+      "en": {
+        "title": "How would you port a Jetson vision model to an AMD heterogeneous platform?",
+        "answer": "Identify the AMD device before choosing deployment tools.\n\nFix the model, dataset, and preprocessing/postprocessing; establish Jetson accuracy, latency, memory, and power baselines. Identify the target AMD chip, OS, and tool versions. Check ONNX opset, operators, dynamic shapes, layout, and replacements for TensorRT plugins/custom CUDA. Supported GPUs can use ROCm/MIGraphX or ONNX Runtime MIGraphX EP; verify Ryzen AI/Vitis AI routes for the specific NPU or Adaptive SoC. Establish correctness before assessing FP16/INT8, allocation, transfers, and the full pipeline.\n\nGPU, NPU, and Adaptive SoC support matrices differ; validate device/version compatibility.\n\nInterview insight: Original interview Q5. Inspect CPU fallbacks and subgraph transitions for synchronization/copy overhead. ONNX Runtime lists ROCm EP for deprecation and recommends MIGraphX EP. Select using the actual device/version support matrix; AMD is not one compatibility target.",
+        "flows": [
+          {
+            "caption": "Cross-platform migration",
+            "steps": [
+              "Baseline · Accuracy / latency / memory / power",
+              "Compatibility + precision · ONNX, operators, FP16/INT8",
+              "Full pipeline · Fallbacks, transfers, synchronization, power"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "AMD MIGraphX EP",
+            "url": "https://onnxruntime.ai/docs/execution-providers/MIGraphX-ExecutionProvider.html"
+          },
+          {
+            "title": "ROCm EP deprecation",
+            "url": "https://onnxruntime.ai/docs/execution-providers/ROCm-ExecutionProvider.html"
+          },
+          {
+            "title": "Vitis AI EP",
+            "url": "https://onnxruntime.ai/docs/execution-providers/Vitis-AI-ExecutionProvider.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": 27,
+      "title": "推論耗時降低 40%，端到端耗時只降低 8%，如何定位瓶頸？",
+      "answer": "先釐清加速定義，再找端到端 critical path。\n\n先釐清提升 40% 指耗時降低或 throughput 增加。若推論耗時降低 40%、端到端降低 8%，在串行且其他成本不變的假設下，Amdahl's Law 給出推論原占比 f = 0.08 / 0.40 = 20%。若 throughput 增加 40%，單次耗時約降低 28.6%，同假設下 f 約 28%。以同批 frame 的時間線檢查前後處理、排隊、CPU／GPU 搬移、layout conversion、同步與 CPU fallback，並確認是否等待下一個固定控制週期。\n\n數值為假設下的例子；重疊 pipeline 應分析 critical path。\n\n面試延伸：原始 Q5 追問。若 pipeline 重疊或負載改變，不能直接套用簡單占比公式；應定位 critical path。分開比較 kernel time、推論 wall time、throughput 與端到端 P99，追查尾端 frame，避免只看平均值。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "Amdahl's Law 與資料搬移",
+          "steps": [
+            "推論耗時 −40% · 不是 throughput +40%",
+            "端到端耗時 −8% · 串行且其餘成本不變",
+            "原推論占比 20% · 再查搬移、同步與排隊"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Execution Provider 子圖分派",
+          "url": "https://onnxruntime.ai/docs/execution-providers/index.html"
+        }
+      ],
+      "en": {
+        "title": "Inference time falls 40%, but end-to-end time falls only 8%. Where is the bottleneck?",
+        "answer": "Clarify the speedup metric, then inspect the end-to-end critical path.\n\nClarify whether 40% means lower latency or higher throughput. If inference time falls 40% and end-to-end time falls 8%, Amdahl's law gives the original inference fraction f = 0.08 / 0.40 = 20%, assuming serial execution and unchanged other costs. A 40% throughput increase instead means about 28.6% less time per inference, yielding f about 28% under the same assumptions. Trace matching frames through preprocessing/postprocessing, queues, CPU/GPU transfers, layout conversion, synchronization, and CPU fallbacks. Check waits for fixed control ticks.\n\nConditional numerical example; overlapping pipelines require critical-path analysis.\n\nInterview insight: Original Q5 follow-up. Overlapping pipelines or changed load invalidate the simple fraction calculation; inspect the critical path. Distinguish kernel time, inference wall time, throughput, and end-to-end P99. Investigate tail frames rather than averages alone.",
+        "flows": [
+          {
+            "caption": "Amdahl's law and data movement",
+            "steps": [
+              "Inference time −40% · Different from throughput +40%",
+              "End-to-end time −8% · Serial execution, other costs unchanged",
+              "Original inference fraction 20% · Inspect transfers, synchronization, queues"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Execution provider subgraph assignment",
+            "url": "https://onnxruntime.ai/docs/execution-providers/index.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": 28,
+      "title": "ROS 2 感知節點偶爾發生 100 ms 延遲尖峰，如何排查？",
+      "answer": "把傳輸、排程等待與 callback 執行分開量測。\n\n先區分 callback 執行時間、等待排程時間與影像年齡。以訊息 ID 追蹤擷取、publish、接收／可取用、callback start、inference、callback end 與控制輸出。使用 ros2_tracing／LTTng，配合 kernel scheduling trace、DDS 統計及推論 profiler。傳輸慢查 DDS／重傳／背壓；訊息就緒後仍等待查 Executor、Callback Group 與 CPU contention；callback wall time 遠大於 CPU time 查鎖、I/O、GPU 等待與搶占；CPU time 增加查配置、page fault 與降頻。\n\n結合 ROS、OS、DDS 與推論 trace，以同一訊息 ID 對齊尖峰。\n\n面試延伸：原始面試 Q6。根據證據調整 QoS、Callback Group、Executor、CPU Affinity、Memory Preallocation 與 Real-time Scheduling。MultiThreadedExecutor 不保證降低延遲，互斥 Callback Group 仍可能串行。固定約 100 ms 的尖峰可檢查 timer／timeout，但不能只憑數字判定原因。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "ROS 2 尖峰診斷",
+          "steps": [
+            "傳輸 · publish → 接收／可取用",
+            "排程 · 就緒 → callback start",
+            "執行 · callback、推論與控制輸出"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ROS 2 官方追蹤工具",
+          "url": "https://github.com/ros2/ros2_tracing"
+        },
+        {
+          "title": "ROS 2 即時設計",
+          "url": "https://design.ros2.org/articles/realtime_background.html"
+        }
+      ],
+      "en": {
+        "title": "How would you investigate occasional 100 ms spikes in a ROS 2 perception node?",
+        "answer": "Measure transport, scheduling waits, and callback execution separately.\n\nDistinguish callback execution, scheduling wait, and image age. Trace message IDs through capture, publish, reception/availability, callback start, inference, callback end, and control output. Use ros2_tracing/LTTng with kernel scheduling traces, DDS statistics, and inference profiling. Slow transport suggests DDS/retransmission/backpressure; waiting after readiness suggests executor, callback groups, or CPU contention. Wall time much larger than CPU time suggests locks, I/O, GPU waits, or preemption. Increased CPU time suggests allocation, page faults, or throttling.\n\nCorrelate ROS, OS, DDS, and inference traces using the same message ID.\n\nInterview insight: Original interview Q6. Tune QoS, callback groups, executors, CPU affinity, preallocation, and real-time scheduling based on evidence. MultiThreadedExecutor does not guarantee lower latency; mutually exclusive callback groups can serialize work. Inspect timers/timeouts for roughly 100 ms spikes, without assuming the cause from the number alone.",
+        "flows": [
+          {
+            "caption": "ROS 2 spike diagnosis",
+            "steps": [
+              "Transport · Publish → reception/availability",
+              "Scheduling · Ready → callback start",
+              "Execution · Callback, inference, control output"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Official ROS 2 tracing tools",
+            "url": "https://github.com/ros2/ros2_tracing"
+          },
+          {
+            "title": "ROS 2 real-time design",
+            "url": "https://design.ros2.org/articles/realtime_background.html"
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "title": "Reliable QoS 一定比 Best Effort 更適合即時控制嗎？",
+      "answer": "可靠交付與準時完成要分別設計。\n\n不一定。Reliability 與 Deadline 是不同要求：Reliable 著重可靠交付，重傳、緩衝或背壓可能增加延遲；Best Effort 不保證交付，也不保證期限。高頻影像可評估 Best Effort 與小佇列以重視新鮮度，但需處理連續丟包。離散模式切換可採可靠傳輸、應用層確認、序號與逾時處理。依訊息語意、有效期限及失效後果選擇，並確認 publisher／subscriber QoS 相容。\n\nDeadline QoS 不保證 callback 或完整控制路徑準時完成。\n\n面試延伸：原始 Q6 追問。Deadline QoS 監測預期訊息間隔，不保證 callback 或端到端執行期限；Lifespan 限制訊息有效期，Liveliness 反映活性。兩種 reliability 都需資料年齡檢查、Watchdog 與安全 fallback；Reliable 不等於致動器已執行命令。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "QoS 與應用層安全",
+          "steps": [
+            "Reliability · Reliable／Best Effort 的交付取捨",
+            "Deadline／Lifespan · 訊息間隔與有效期",
+            "應用層控制 · 期限檢查、Watchdog、Fallback"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Deadline／Liveliness／Lifespan",
+          "url": "https://design.ros2.org/articles/qos_deadline_liveliness_lifespan.html"
+        }
+      ],
+      "en": {
+        "title": "Is Reliable QoS always better than Best Effort for real-time control?",
+        "answer": "Design reliable delivery and timely completion separately.\n\nNo. Reliability and deadlines are different requirements. Reliable targets delivery, while retransmission, buffering, or backpressure can add latency. Best Effort guarantees neither delivery nor deadlines. High-rate images may favor Best Effort with small queues for freshness, while handling consecutive losses. Discrete mode changes may need reliable transport, application acknowledgments, sequence numbers, and timeouts. Choose by message semantics, expiry, and failure consequences; verify publisher/subscriber QoS compatibility.\n\nDeadline QoS does not guarantee callback or complete control-path deadlines.\n\nInterview insight: Original Q6 follow-up. Deadline QoS monitors expected message intervals, not callback or end-to-end completion deadlines. Lifespan limits message validity; liveliness reflects activity. Both reliability choices need age checks, watchdogs, and safe fallback. Reliable delivery does not confirm actuator execution.",
+        "flows": [
+          {
+            "caption": "QoS and application safety",
+            "steps": [
+              "Reliability · Reliable / Best Effort delivery trade-offs",
+              "Deadline / lifespan · Message intervals and validity",
+              "Application control · Expiry checks, watchdog, fallback"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "Deadline / liveliness / lifespan",
+            "url": "https://design.ros2.org/articles/qos_deadline_liveliness_lifespan.html"
+          }
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "id": 0,
+      "prompt": "VLA 與 VLM 的核心差異？",
+      "options": [
+        "VLA 只能輸出文字",
+        "VLA 可根據觀察與指令生成動作",
+        "VLM 必須搭配 ROS 2",
+        "VLA 不需要機器人狀態"
+      ],
+      "correct": 1,
+      "explain": "VLA 多了「能執行的動作」，不只是理解畫面。\n\nVLM 偏重視覺與語言理解；VLA 額外預測機器人可執行的動作，例如末端位姿、關節目標或夾爪控制。VLA 不一定直接輸出馬達扭矩；常由底層 Controller 轉換與執行。\n\n動作輸出仍需交給底層控制器執行。\n\n面試延伸：VLA 不等於直接驅動馬達。區分 Policy Output 與 Low-level Actuation。",
+      "en": {
+        "prompt": "What is the core difference between VLA and VLM?",
+        "options": [
+          "VLA only produces text",
+          "VLA generates actions from observations and instructions",
+          "VLM requires ROS 2",
+          "VLA does not need robot state"
+        ],
+        "explain": "VLA adds executable actions to visual and language understanding.\n\nA VLM focuses on visual and language understanding. A VLA also predicts executable robot actions, such as end-effector poses, joint targets, or gripper commands. A low-level controller commonly converts these outputs into actuation.\n\nA low-level controller still executes the policy’s output.\n\nInterview insight: Distinguish policy outputs from low-level actuation. A VLA does not necessarily output motor torque."
+      }
+    },
+    {
+      "id": 1,
+      "prompt": "典型 VLA 的核心資料流是什麼？",
+      "options": [
+        "Image → LLM → HTML",
+        "相機與指令/機器人狀態 → 模型 → 動作 → Controller",
+        "GPU → CPU → NPU",
+        "只需要文字輸入"
+      ],
+      "correct": 1,
+      "explain": "把 VLA 想成一條有回饋的感知—行動鏈。\n\nCamera / Language / Robot State → 多模態編碼與融合 → Action Head → 安全檢查 / Controller → Actuation；執行後回讀感測狀態形成閉環。\n\n← 執行後讀回感測資訊，再更新下一次觀察。\n\n面試延伸：在面試中說清楚每一段的輸入、輸出、頻率與責任。",
+      "en": {
+        "prompt": "What is the typical VLA data flow?",
+        "options": [
+          "Image → LLM → HTML",
+          "Camera, instruction, and robot state → model → actions → controller",
+          "GPU → CPU → NPU",
+          "Text input alone"
+        ],
+        "explain": "Think of VLA as a perception–action chain with feedback.\n\nCamera, language, and robot state → multimodal encoding and fusion → action head → safety checks and controller → actuation. New sensor observations close the loop.\n\n← Read sensors after execution to update the next observation.\n\nInterview insight: Explain the inputs, outputs, frequency, and responsibility of each stage."
+      }
+    },
+    {
+      "id": 2,
+      "prompt": "Action Tokenization 如何表示連續動作？",
+      "options": [
+        "把影像切成 Patch",
+        "將連續 Action 值映射到離散 Bin",
+        "對動作加 Gaussian Noise",
+        "對馬達發送 TCP 封包"
+      ],
+      "correct": 1,
+      "explain": "連續數值切成離散格子，模型就能生成動作 Token。\n\n將連續數值正規化並量化成離散 Bin，讓 Transformer 可以像生成文字 Token 一樣生成動作 Token；代價是量化誤差及可能的自迴歸延遲。\n\n格子越粗，量化誤差可能越大；自迴歸生成也有延遲成本。\n\n面試延伸：256 Bin × 7 DoF 的組合數為 256^7，但不代表必須建立等量詞彙。",
+      "en": {
+        "prompt": "How does action tokenization represent continuous actions?",
+        "options": [
+          "Split images into patches",
+          "Map continuous action values to discrete bins",
+          "Add Gaussian noise to actions",
+          "Send TCP packets to motors"
+        ],
+        "explain": "Turn continuous values into discrete bins the model can generate.\n\nNormalize and quantize continuous values into discrete bins, allowing a transformer to generate action tokens much like text tokens. Trade-offs include quantization error and autoregressive latency.\n\nQuantization introduces error; autoregressive generation can add latency.\n\nInterview insight: 256 bins across 7 degrees of freedom yield 256^7 combinations, without requiring that many vocabulary entries."
+      }
+    },
+    {
+      "id": 3,
+      "prompt": "什麼是 Action Chunking？",
+      "options": [
+        "每步都重新完整推論",
+        "一次預測多步動作序列",
+        "把動作壓縮成影片",
+        "降低控制器頻率到 1Hz"
+      ],
+      "correct": 1,
+      "explain": "一次想好幾步，執行途中仍要適時重新規劃。\n\n一次預測未來多個時間步的動作，而不是每一步都重新跑大型模型。能降低重新推論頻率，但 Chunk 變舊會造成反應慢；可配合 Receding Horizon 與重新規劃。\n\n示意：Chunk 太舊會讓反應變慢，可用新觀察重新規劃。\n\n面試延伸：降低推論頻率不等於每次推論成本下降。",
+      "en": {
+        "prompt": "What is action chunking?",
+        "options": [
+          "Run full inference at every step",
+          "Predict a sequence of future actions at once",
+          "Compress actions into video",
+          "Reduce the controller to 1 Hz"
+        ],
+        "explain": "Predict several steps at once, and replan as observations change.\n\nPredict several future action steps in one inference pass. This reduces replanning frequency, but stale chunks can delay reactions. Receding-horizon execution and replanning help manage this trade-off.\n\nIllustration: stale chunks delay reactions; replan using new observations.\n\nInterview insight: Lower inference frequency does not imply lower cost per inference."
+      }
+    },
+    {
+      "id": 4,
+      "prompt": "Open-loop 與 Closed-loop 的差異？",
+      "options": [
+        "Closed-loop 不需要 Sensor",
+        "Open-loop 保證安全",
+        "Closed-loop 使用新回饋修正動作",
+        "兩者完全相同"
+      ],
+      "correct": 2,
+      "explain": "差別在於：執行後，會不會用新回饋修正？\n\nOpen-loop 執行既定動作而不使用新的回饋修正；Closed-loop 根據新觀察持續修正。VLA 低頻策略與底層高頻閉環控制可以共存。\n\n低頻 VLA 與高頻閉環控制可以同時存在。\n\n面試延伸：明確說明哪個 Loop 達到哪個 Deadline。",
+      "en": {
+        "prompt": "How do open-loop and closed-loop control differ?",
+        "options": [
+          "Closed-loop needs no sensors",
+          "Open-loop guarantees safety",
+          "Closed-loop corrects actions using new feedback",
+          "They are identical"
+        ],
+        "explain": "The key question: does new feedback correct the action?\n\nOpen-loop control executes a plan without using new feedback to correct it. Closed-loop control adjusts actions using new observations. A low-frequency VLA policy can coexist with high-frequency feedback control.\n\nLow-frequency VLA and high-frequency feedback control can coexist.\n\nInterview insight: Specify which loop must meet which deadline."
+      }
+    },
+    {
+      "id": 5,
+      "prompt": "為什麼需要 Proprioception？",
+      "options": [
+        "只有語音資料才需要",
+        "提供機器人自身關節與姿態資訊",
+        "取代 Camera",
+        "只用於模型訓練"
+      ],
+      "correct": 1,
+      "explain": "相機看到外界；Proprioception 告訴模型機器人自己的狀態。\n\n影像不一定能完整判斷關節位置、速度及姿態；Robot State 可降低觀測歧義。應用 timestamp 對齊影像與 Joint State。\n\n圖示為資料整合關係：不同來源先對齊，再一起交給策略。\n\n面試延伸：30FPS Camera 與 200Hz Joint State 要靠 timestamp、buffer、插值對齊。",
+      "en": {
+        "prompt": "Why does a VLA need proprioception?",
+        "options": [
+          "It is only needed for audio",
+          "It provides the robot’s joint and pose information",
+          "It replaces cameras",
+          "It is only used during training"
+        ],
+        "explain": "Vision shows the world; proprioception shows the robot’s own state.\n\nImages may not fully reveal joint positions, velocities, or poses. Robot state reduces observation ambiguity. Align camera frames and joint states using timestamps.\n\nData integration schematic: align both sources before policy input.\n\nInterview insight: Align 30 FPS camera frames with 200 Hz joint states using timestamps, buffers, and interpolation."
+      }
+    },
+    {
+      "id": 6,
+      "prompt": "Diffusion Policy 的主要特色？",
+      "options": [
+        "只支援離散動作",
+        "透過迭代去噪生成動作",
+        "不需要條件觀察",
+        "一定只要一步推論"
+      ],
+      "correct": 1,
+      "explain": "從雜訊逐步去噪，生成連續動作。\n\n以迭代去噪生成連續動作分布，能表示多峰操作策略，但推論成本受去噪步數影響。縮短步數需驗證成功率、平滑度與安全性。\n\n去噪是重複步驟；減少步數後仍要驗證成功率與安全性。\n\n面試延伸：問到 latency 時需說明 denoising steps 與單步執行時間。",
+      "en": {
+        "prompt": "What characterizes a diffusion policy?",
+        "options": [
+          "It only supports discrete actions",
+          "It generates actions through iterative denoising",
+          "It needs no observation conditioning",
+          "It always requires one inference step"
+        ],
+        "explain": "Iterative denoising turns noise into continuous actions.\n\nIterative denoising generates continuous action distributions and can represent multiple valid action modes. Inference cost depends on denoising steps; reducing them requires validating success, smoothness, and safety.\n\nDenoising repeats; fewer steps still require success and safety checks.\n\nInterview insight: Discuss both the number of denoising steps and the time per step when explaining latency."
+      }
+    },
+    {
+      "id": 7,
+      "prompt": "Flow Matching 在 VLA 的用途？",
+      "options": [
+        "直接計算 IK",
+        "學習機率路徑上的向量場以生成動作",
+        "只是一種量化方法",
+        "取代 Camera Calibration"
+      ],
+      "correct": 1,
+      "explain": "學習「往哪裡流動」，再積分生成動作。\n\n學習速度場，將簡單的雜訊分布映射成真實動作分布；可用數值積分產生連續 Action Chunk。π0 是具代表性的案例。\n\n數值積分可能需要多次模型計算，並不保證單次前向傳播。\n\n面試延伸：Flow Matching 不代表必定是單次網路前向傳播。",
+      "en": {
+        "prompt": "How is flow matching used in VLA?",
+        "options": [
+          "Directly solve inverse kinematics",
+          "Learn a vector field along a probability path to generate actions",
+          "It is only a quantization method",
+          "Replace camera calibration"
+        ],
+        "explain": "Learn a velocity field, then integrate it to generate actions.\n\nLearn a velocity field that transports a simple noise distribution toward the action distribution. Numerical integration generates continuous action chunks. π0 is a representative example.\n\nNumerical integration can require multiple model evaluations.\n\nInterview insight: Flow matching does not necessarily mean a single network forward pass."
+      }
+    },
+    {
+      "id": 8,
+      "prompt": "Action Expert 的角色是什麼？",
+      "options": [
+        "負責顯示 UI",
+        "動作生成的專用模組",
+        "馬達驅動程式",
+        "影像壓縮 Codec"
+      ],
+      "correct": 1,
+      "explain": "語義理解與動作生成，可以由不同模組分工。\n\n在部分 VLA 設計中由 VLM Backbone 抽取語義條件，專用 Action Expert 進一步融合 Robot State 並預測動作；便於拆分語義理解與連續控制生成。\n\n這是部分 VLA 架構的設計方式，並非所有模型都相同。\n\n面試延伸：說明 Backbone / Action Head 的精度敏感性與推論頻率。",
+      "en": {
+        "prompt": "What does an action expert do?",
+        "options": [
+          "Display the UI",
+          "Generate actions through a specialized module",
+          "Act as a motor driver",
+          "Compress images"
+        ],
+        "explain": "Semantic understanding and action generation can use distinct modules.\n\nIn some VLA architectures, a VLM backbone extracts semantic conditioning and a dedicated action expert combines it with robot state to predict actions. This separates semantic understanding from continuous action generation.\n\nSome VLA architectures use this separation; it is not universal.\n\nInterview insight: Discuss precision sensitivity and inference frequency for the backbone and action head."
+      }
+    },
+    {
+      "id": 9,
+      "prompt": "Temporal Ensembling 為何需要謹慎使用？",
+      "options": [
+        "保證零延遲",
+        "能無條件改善成功率",
+        "可能平均出不合理的動作",
+        "一定需要 4 張 GPU"
+      ],
+      "correct": 2,
+      "explain": "平均可以變平滑，也可能把有效動作平均成無效路徑。\n\n可融合不同 Action Chunk 對同一時刻的預測以改善平滑度，但平均互相衝突的動作模式可能產生無效軌跡，且會增加平滑延遲。\n\n評估 Tracking error 與 Response lag，不只看軌跡是否平滑。\n\n面試延伸：平滑不等於準確；評估 tracking error 與 response lag。",
+      "en": {
+        "prompt": "Why should temporal ensembling be used carefully?",
+        "options": [
+          "It guarantees zero latency",
+          "It always improves success",
+          "It can average actions into an invalid trajectory",
+          "It requires four GPUs"
+        ],
+        "explain": "Averaging can smooth motion or turn valid modes into an invalid path.\n\nCombining predictions for the same time step across action chunks can improve smoothness. Averaging conflicting action modes may produce invalid trajectories, and smoothing can introduce response lag.\n\nMeasure tracking error and response lag, not smoothness alone.\n\nInterview insight: Smoothness is not accuracy. Measure tracking error and response lag."
+      }
+    },
+    {
+      "id": 10,
+      "prompt": "Behavior Cloning 與 RL 的差異？",
+      "options": [
+        "BC 只訓練語言",
+        "BC 學示範；RL 最大化回報",
+        "RL 不需要環境互動",
+        "兩者沒有差別"
+      ],
+      "correct": 1,
+      "explain": "BC 學專家的示範；RL 學互動後的回報。\n\nBC 用專家示範做監督式訓練；RL 透過環境互動與 Reward 改善策略。BC 易遇到 Distribution Shift；RL 需處理探索安全及 Reward 設計。\n\n先說清楚資料與學習訊號從哪裡來。\n\n面試延伸：可補充 DAgger 將模型遇到的狀態加入專家標註。",
+      "en": {
+        "prompt": "How do behavior cloning and reinforcement learning differ?",
+        "options": [
+          "BC only trains language",
+          "BC learns demonstrations; RL maximizes return",
+          "RL needs no environment interaction",
+          "They are identical"
+        ],
+        "explain": "BC learns expert demonstrations; RL learns from interaction and return.\n\nBehavior cloning uses supervised learning on expert demonstrations. RL improves a policy through interaction and rewards. BC faces distribution shift; RL requires safe exploration and careful reward design.\n\nExplain where the data and learning signal come from.\n\nInterview insight: DAgger can add expert labels for states encountered by the learned policy."
+      }
+    },
+    {
+      "id": 11,
+      "prompt": "Cross-Embodiment 學習的最大挑戰？",
+      "options": [
+        "所有機器人的關節數一樣",
+        "不同機器人的 Action Semantics 不一致",
+        "不需要實體資料",
+        "必須使用相同相機"
+      ],
+      "correct": 1,
+      "explain": "相同長度的動作向量，不一定代表相同的動作。\n\n不同機器人 DoF、關節排序、座標系、控制介面與動作限制不一致，需要 Embodiment-specific Encoding/Decoding、Normalization 與資料格式對齊。\n\n避免直接混合不同機器人的 Raw action vector。\n\n面試延伸：不能直接合併不同機器人的 raw action vector。",
+      "en": {
+        "prompt": "What is the main challenge in cross-embodiment learning?",
+        "options": [
+          "All robots have the same joint count",
+          "Action semantics differ between robots",
+          "Physical data is unnecessary",
+          "All cameras must be identical"
+        ],
+        "explain": "Equal-length action vectors need not mean the same thing.\n\nRobots differ in degrees of freedom, joint order, coordinate frames, control interfaces, and action limits. Embodiment-specific encoding and decoding, normalization, and data alignment are needed.\n\nDo not directly mix raw action vectors from different robots.\n\nInterview insight: Do not simply merge raw action vectors from different robots."
+      }
+    },
+    {
+      "id": 12,
+      "prompt": "100ms Camera/Action 時間錯位會造成什麼問題？",
+      "options": [
+        "只會造成 UI 變慢",
+        "可能學到錯位的感測與動作對應",
+        "完全沒影響",
+        "能自動提高泛化"
+      ],
+      "correct": 1,
+      "explain": "配錯時間的觀察與動作，會讓模型學到錯的關聯。\n\n模型學到錯誤的 Observation–Action 對應，導致定位偏差、跟隨延遲或震盪。要在 Capture Timestamp 與 Action Execution Timeline 上做對齊。\n\n示意的是錯誤的訓練資料配對；請對齊擷取與執行的時間軸。\n\n面試延伸：資料品質優先於盲目增加模型參數。",
+      "en": {
+        "prompt": "What happens with a 100 ms camera/action misalignment?",
+        "options": [
+          "Only the UI becomes slower",
+          "The model may learn misaligned observation–action pairs",
+          "There is no effect",
+          "Generalization automatically improves"
+        ],
+        "explain": "Mismatched observation and action timestamps teach the wrong association.\n\nThe model learns incorrect observation–action associations, causing positioning errors, response lag, or oscillation. Align capture timestamps with the action execution timeline.\n\nThis shows a training-pair mismatch; align capture and execution timelines.\n\nInterview insight: Prioritize data quality over blindly increasing model size."
+      }
+    },
+    {
+      "id": 13,
+      "prompt": "Sim-to-Real Gap 的典型來源？",
+      "options": [
+        "只來自文字 Token",
+        "物理、感測與時序差異",
+        "只來自模型格式",
+        "只來自 UI"
+      ],
+      "correct": 1,
+      "explain": "模擬與真實的差異，分散在物理、感測與時序。\n\n摩擦、質量、馬達延遲、光照、深度誤差、控制迴圈及通訊差異。可用 Domain Randomization、System Identification、真實資料微調來降低。\n\n可用 Domain randomization、System identification 與真實資料微調降低落差。\n\n面試延伸：要能區分 Domain Randomization 與 Domain Adaptation。",
+      "en": {
+        "prompt": "What causes the sim-to-real gap?",
+        "options": [
+          "Only text tokens",
+          "Physics, sensing, and timing differences",
+          "Only model formats",
+          "Only the UI"
+        ],
+        "explain": "The simulation gap spans physics, sensing, and timing.\n\nDifferences in friction, mass, motor delay, lighting, depth error, control loops, and communication. Domain randomization, system identification, and fine-tuning on real data can reduce the gap.\n\nUse domain randomization, system identification, and real-data fine-tuning.\n\nInterview insight: Distinguish domain randomization from domain adaptation."
+      }
+    },
+    {
+      "id": 14,
+      "prompt": "如何評估 VLA 系統效果？",
+      "options": [
+        "只看 Loss",
+        "只看 TOPS",
+        "綜合成功率、安全、延遲與泛化",
+        "只看 VRAM"
+      ],
+      "correct": 2,
+      "explain": "模型誤差低，不代表機器人真的完成任務。\n\n不能只看 Training Loss 或 Action MSE；要追蹤 Task Success Rate、Completion Time、Collision Rate、Intervention Rate、P99 Latency 及 OOD Generalization。\n\n離線 Loss 與 Action MSE，要搭配真實 Rollout 的表現一起看。\n\n面試延伸：離線誤差低不一定代表真實 Rollout 成功率高。",
+      "en": {
+        "prompt": "How should a VLA system be evaluated?",
+        "options": [
+          "Only loss",
+          "Only TOPS",
+          "Success, safety, latency, and generalization together",
+          "Only VRAM"
+        ],
+        "explain": "Low model error does not guarantee successful task execution.\n\nGo beyond training loss or action MSE. Track task success, completion time, collision rate, intervention rate, P99 latency, and out-of-distribution generalization.\n\nPair offline loss and action MSE with real-world rollout performance.\n\nInterview insight: Low offline error does not guarantee successful real-world rollouts."
+      }
+    },
+    {
+      "id": 15,
+      "prompt": "3B 模型 FP16 權重理論大小約為？",
+      "options": [
+        "約 0.75GB",
+        "約 1.5GB",
+        "約 3GB",
+        "約 6GB"
+      ],
+      "correct": 3,
+      "explain": "先算權重，再把執行時的額外記憶體加回來。\n\n3×10^9 parameters × 2 bytes = 6×10^9 bytes，約 6GB（十進位）。實際還需加入 Activation、KV Cache、Workspace 等。\n\n3 × 10⁹ × 2 bytes = 6 GB。長條僅比較原始權重，不含 Metadata、Activation、KV cache 與 Workspace。\n\n面試延伸：INT8 原始權重約 3GB；INT4 約 1.5GB，不含 metadata。",
+      "en": {
+        "prompt": "How large are the FP16 weights of a 3B model?",
+        "options": [
+          "About 0.75 GB",
+          "About 1.5 GB",
+          "About 3 GB",
+          "About 6 GB"
+        ],
+        "explain": "Calculate weights first, then account for runtime memory.\n\n3 × 10^9 parameters × 2 bytes = 6 × 10^9 bytes, approximately 6 GB in decimal units. Activations, KV cache, and workspaces require additional memory.\n\n3 × 10⁹ × 2 bytes = 6 GB. Bars exclude metadata, activations, KV cache, and workspaces.\n\nInterview insight: Raw INT8 weights take about 3 GB; INT4 about 1.5 GB, excluding metadata."
+      }
+    },
+    {
+      "id": 16,
+      "prompt": "為什麼不能單靠 NPU TOPS 推估 VLA FPS？",
+      "options": [
+        "TOPS 等於 FPS",
+        "效能還受到記憶體、Fallback 與資料搬移影響",
+        "NPU 永遠比 GPU 慢",
+        "只需增加 Batch"
+      ],
+      "correct": 1,
+      "explain": "TOPS 是算力指標；FPS 要看整條執行路徑。\n\n實際效能受 Operator Support、Fallback、DRAM Bandwidth、Layout Conversion、同步及 Thermal Throttling 限制。要量測 End-to-end P95/P99。\n\n量測 End-to-end P95 / P99，不能把 TOPS 直接換成 FPS。\n\n面試延伸：高 TOPS 並不保證低延遲。",
+      "en": {
+        "prompt": "Why can’t NPU TOPS alone predict VLA FPS?",
+        "options": [
+          "TOPS equals FPS",
+          "Memory, fallbacks, and data movement also affect performance",
+          "NPUs are always slower than GPUs",
+          "Only batch size matters"
+        ],
+        "explain": "TOPS describes compute capacity; FPS depends on the complete path.\n\nPerformance also depends on operator support, fallbacks, DRAM bandwidth, layout conversion, synchronization, and thermal throttling. Measure end-to-end P95 and P99 latency.\n\nMeasure end-to-end P95 / P99; TOPS cannot directly determine FPS.\n\nInterview insight: High TOPS does not guarantee low latency."
+      }
+    },
+    {
+      "id": 17,
+      "prompt": "Zero-copy 是否代表絕對沒有資料搬移？",
+      "options": [
+        "是，完全不搬移",
+        "否，仍可能有格式轉換、同步與實際搬移",
+        "只適用雲端",
+        "只能用於文字"
+      ],
+      "correct": 1,
+      "explain": "Zero-copy 避免特定複製，不代表整條路徑都零成本。\n\n否。Zero-copy 通常表示避免特定冗餘複製；格式轉換、裝置邊界、同步、驅動限制仍可能帶來搬移或等待。\n\n這是檢查清單示意；實際路徑請用 Profiler 驗證。\n\n面試延伸：用 profiler 驗證完整 buffer lifetime 與 copy path。",
+      "en": {
+        "prompt": "Does zero-copy mean no data movement at all?",
+        "options": [
+          "Yes, no data moves",
+          "No; conversion, synchronization, and movement may remain",
+          "It only applies to the cloud",
+          "It only works for text"
+        ],
+        "explain": "Zero-copy avoids certain copies, not all costs along the path.\n\nNo. Zero-copy usually avoids specific redundant copies. Format conversion, device boundaries, synchronization, and driver constraints may still cause movement or waiting.\n\nThis is a conceptual checklist; verify the real path with a profiler.\n\nInterview insight: Profile the complete buffer lifetime and copy path."
+      }
+    },
+    {
+      "id": 18,
+      "prompt": "3B VLA 120ms 推論，如何維持 100Hz Controller？",
+      "options": [
+        "把 Controller 頻率改成 8Hz",
+        "讓 VLA 與 100Hz callback 同步阻塞",
+        "分離 VLA 與即時 Controller，緩衝有效軌跡並設 Watchdog",
+        "移除安全檢查"
+      ],
+      "correct": 2,
+      "explain": "讓慢速模型規劃，讓即時控制器持續執行。\n\n採非同步分層：VLA 低頻預測 Action Chunk，Realtime Controller 10ms 週期執行有效軌跡與局部回饋。使用期限檢查、Buffer、Watchdog、受控停止，避免 VLA 阻塞控制執行緒。\n\nAction chunk → 有效期限檢查與 Buffer → Controller。另需 Watchdog 與受控停止。\n\n面試延伸：100Hz Controller 不等於 VLA Sensor-to-New-Action 延遲 10ms。",
+      "en": {
+        "prompt": "How can a 120 ms VLA inference coexist with a 100 Hz controller?",
+        "options": [
+          "Reduce the controller to 8 Hz",
+          "Block the 100 Hz callback on VLA inference",
+          "Separate VLA and real-time control with buffered trajectories and a watchdog",
+          "Remove safety checks"
+        ],
+        "explain": "Let the slower model plan while the real-time controller keeps running.\n\nUse asynchronous layers: the VLA predicts action chunks at a lower frequency, while the real-time controller executes valid trajectories and local feedback every 10 ms. Use expiry checks, buffers, a watchdog, and controlled stopping.\n\nAction chunk → expiry checks and buffer → controller. Add a watchdog and controlled stopping.\n\nInterview insight: A 100 Hz controller does not imply 10 ms sensor-to-new-action latency for the VLA."
+      }
+    },
+    {
+      "id": 19,
+      "prompt": "VLA 量化後抓取成功率 95% → 82%，合理處置？",
+      "options": [
+        "立即全面部署",
+        "只看 FPS",
+        "回溯敏感層與混合精度，重新衡量成功率和安全",
+        "調高關節速度"
+      ],
+      "correct": 2,
+      "explain": "量化後變快，仍要確認任務品質與安全是否可接受。\n\n量化收益必須與安全及任務品質一起衡量。可採 Mixed Precision，保留敏感 Action Head 的 FP16、重新 Calibration，並用真實 Rollout 量測；不可只因推論快就上線。\n\n95% → 82%：回溯敏感層、嘗試混合精度、重新 Calibration，再驗證真實 Rollout。\n\n面試延伸：關鍵是評估 Pareto Trade-off：latency、memory、success、安全。",
+      "en": {
+        "prompt": "Quantization drops grasp success from 95% to 82%. What next?",
+        "options": [
+          "Deploy immediately",
+          "Consider only FPS",
+          "Investigate sensitive layers and mixed precision; reassess success and safety",
+          "Increase joint speed"
+        ],
+        "explain": "Faster quantized inference still needs task-quality and safety validation.\n\nEvaluate quantization gains alongside safety and task quality. Try mixed precision, retain FP16 in sensitive action heads, recalibrate, and measure real rollouts before deployment.\n\n95% → 82%: inspect sensitive layers, try mixed precision, recalibrate, and validate real rollouts.\n\nInterview insight: Evaluate the Pareto trade-off between latency, memory, success, and safety."
+      }
+    },
+    {
+      "id": 20,
+      "prompt": "OpenVLA 如何把視覺與語言轉成動作？",
+      "options": [
+        "以離散 Action Token 表示量化後的動作",
+        "用文字直接驅動馬達",
+        "只生成任務規劃，沒有動作輸出",
+        "所有版本都用 Diffusion Head"
+      ],
+      "correct": 0,
+      "explain": "OpenVLA：先把動作離散化，再像生成 Token 一樣預測。\n\n原版 OpenVLA 以預訓練 VLM 接收影像與語言指令，將正規化的連續動作逐維量化成 256 個 Bin，再自迴歸預測離散 Action Token，解碼並反正規化後交給控制器。訓練使用機器人示範進行 Behavior Cloning；適應新任務可使用 LoRA 或完整微調，需對齊動作語義與正規化統計。\n\n學習路線：Action Tokenization → Behavior Cloning → LoRA／完整微調。\n\n面試延伸：適合學 Action Tokenization、Behavior Cloning 與微調。比較量化誤差、自迴歸延遲與真實成功率；這裡指原版 OpenVLA，OFT 等衍生版本的動作輸出設計不同。",
+      "en": {
+        "prompt": "How does OpenVLA turn vision and language into actions?",
+        "options": [
+          "Represent quantized actions with discrete action tokens",
+          "Drive motors directly with text",
+          "Only generate plans without action outputs",
+          "Every version uses a diffusion head"
+        ],
+        "explain": "OpenVLA discretizes actions and predicts them as tokens.\n\nOriginal OpenVLA takes images and instructions through a pretrained VLM, quantizes each normalized action dimension into 256 bins, and autoregressively predicts discrete action tokens. Decoding and unnormalization produce controller inputs. Robot demonstrations provide behavior-cloning supervision. Adaptation uses LoRA or full fine-tuning with aligned action semantics and normalization statistics.\n\nLearning route: action tokenization → behavior cloning → LoRA / full fine-tuning.\n\nInterview insight: Study action tokenization, behavior cloning, and fine-tuning. Compare quantization error, autoregressive latency, and rollout success. This describes original OpenVLA; derivatives such as OFT use different action outputs."
+      }
+    },
+    {
+      "id": 21,
+      "prompt": "π0（Pi-zero）如何生成連續 Action Chunk？",
+      "options": [
+        "把每個動作固定編碼成文字",
+        "透過 Flow Matching 生成連續動作序列",
+        "只解逆運動學，沒有學習策略",
+        "Flow Matching 保證只需一次前向傳播"
+      ],
+      "correct": 1,
+      "explain": "π0：用 Flow Matching 的 Action Expert 生成連續動作。\n\nπ0 結合預訓練 VLM 與專用 Action Expert，以影像、語言與機器人狀態為條件，透過 Flow Matching 學習動作的速度場。推論從雜訊動作開始，經數值積分生成連續 Action Chunk，再執行其中一段並以新觀察重新規劃。openpi 提供模型、推論與微調範例。\n\n比較原版 OpenVLA 的離散 Token 與 π0 的連續生成；不要與 π0-FAST 混淆。\n\n面試延伸：適合學 Action Expert、Action Chunking 與 Continuous Control。說清楚積分步數、預測範圍與實際執行範圍；π0-FAST 使用不同的離散動作表示，不應混用。",
+      "en": {
+        "prompt": "How does π0 (Pi-zero) generate continuous action chunks?",
+        "options": [
+          "Encode every action as fixed text",
+          "Generate continuous action sequences through flow matching",
+          "Only solve inverse kinematics without a learned policy",
+          "Flow matching guarantees one forward pass"
+        ],
+        "explain": "π0 generates continuous actions with a flow-matching action expert.\n\nπ0 combines a pretrained VLM and a dedicated action expert. Conditioned on images, language, and robot state, flow matching learns an action velocity field. Inference integrates from noisy actions to a continuous action chunk, executes part of it, and replans with fresh observations. openpi provides models, inference, and fine-tuning examples.\n\nCompare original OpenVLA tokens with π0 continuous generation; distinguish π0-FAST.\n\nInterview insight: Study action experts, action chunking, and continuous control. Explain integration steps, prediction horizon, and execution horizon. π0-FAST uses a different discrete action representation."
+      }
+    },
+    {
+      "id": 22,
+      "prompt": "NVIDIA Isaac GR00T N1.7 的架構與部署重點？",
+      "options": [
+        "只需比較 GPU TOPS",
+        "把權重檔改名就完成 TensorRT 部署",
+        "理解 Backbone／Action Head、機器人資料與匯出驗證流程",
+        "不需要對齊機器人狀態與動作"
+      ],
+      "correct": 2,
+      "explain": "GR00T N1.7：VLM 負責理解，Diffusion Transformer 生成動作。\n\nGR00T N1.7 結合 Cosmos-Reason2-2B（Qwen3-VL 架構）的 VLM Backbone 與生成連續動作的 Diffusion Transformer Action Head。先對齊影像、狀態與動作並整理成 GR00T LeRobot 格式，再做推論、微調與評估。官方部署流程包含 ONNX 匯出、TensorRT Engine 建置、PyTorch／TensorRT 輸出比對與端到端效能量測。\n\n資料先對齊成 GR00T LeRobot 格式；沿著資料、推論、部署三條線準備面試。\n\n面試延伸：準備 NVIDIA 面試可沿著資料 → Backbone → Action Head → Controller 說明。比較去噪步數與各段延遲；TensorRT Engine 需配合目標 GPU 建置，輸出比對後仍需驗證實際任務成功率。",
+      "en": {
+        "prompt": "What matters in NVIDIA Isaac GR00T N1.7 architecture and deployment?",
+        "options": [
+          "Only compare GPU TOPS",
+          "Rename the weights to deploy with TensorRT",
+          "Understand the backbone/action head, robot data, and export validation",
+          "Skip robot state/action alignment"
+        ],
+        "explain": "GR00T N1.7 couples VLM understanding with diffusion-transformer actions.\n\nGR00T N1.7 combines a Cosmos-Reason2-2B VLM backbone (Qwen3-VL architecture) with a diffusion transformer action head for continuous actions. Align images, state, and actions in GR00T LeRobot format before inference, fine-tuning, and evaluation. The official deployment workflow exports ONNX, builds TensorRT engines, compares PyTorch and TensorRT outputs, and benchmarks end-to-end performance.\n\nAlign data in GR00T LeRobot format; study data, inference, and deployment for interviews.\n\nInterview insight: For NVIDIA interviews, trace data → backbone → action head → controller. Discuss denoising steps and stage latency. Build TensorRT engines for the target GPU; output agreement still needs task-success validation."
+      }
+    },
+    {
+      "id": 23,
+      "prompt": "Gemini Robotics 與 Robotics-ER 如何分工？",
+      "options": [
+        "兩者都只是馬達驅動程式",
+        "ER 必須在每個控制週期輸出扭矩",
+        "Robotics 只能理解文字，不能預測動作",
+        "ER 負責高階推理與規劃，Robotics VLA 負責動作執行"
+      ],
+      "correct": 3,
+      "explain": "Gemini Robotics 案例：高階具身推理與動作策略分工。\n\nGemini Robotics 是把影像與語言連到機器人動作的 VLA；Gemini Robotics-ER 著重空間理解、具身推理與任務規劃。在官方 1.5 系統設計中，ER 作為高階規劃模組，將子任務交給 Robotics VLA 執行。這個案例適合研究高階 Embodied Reasoning 與動作控制之間的介面。\n\n這是官方 1.5 系統的概念示意；高階規劃不取代低階控制器。\n\n面試延伸：說明子任務、觀察回饋與完成判斷如何在模組間傳遞。Robotics-ER 的推理能力不等同於已完成低階控制，仍需動作策略、控制器與安全檢查。",
+      "en": {
+        "prompt": "How do Gemini Robotics and Robotics-ER divide responsibilities?",
+        "options": [
+          "Both are only motor drivers",
+          "ER must output torque every control cycle",
+          "Robotics only understands text and cannot predict actions",
+          "ER handles high-level reasoning/planning; Robotics VLA executes actions"
+        ],
+        "explain": "Gemini Robotics illustrates a split between embodied reasoning and actions.\n\nGemini Robotics is a VLA connecting images and language to robot actions. Gemini Robotics-ER focuses on spatial understanding, embodied reasoning, and task planning. In the official 1.5 system, ER plans at a higher level and hands subtasks to the Robotics VLA for execution. Study this as an interface between high-level embodied reasoning and action control.\n\nConceptual view of the official 1.5 system; high-level planning still needs low-level control.\n\nInterview insight: Explain how subtasks, observation feedback, and completion checks cross module boundaries. Robotics-ER reasoning still requires an action policy, controller, and safety checks for execution."
+      }
+    },
+    {
+      "id": 24,
+      "prompt": "如何設計 Sensor-to-Actuation P99 < 20 ms 的 Physical AI 系統？",
+      "options": [
+        "把各階段 P99 相加即可證明達標",
+        "只量 GPU kernel 的時間",
+        "定義邊界並追蹤完整控制路徑，實測端到端分布",
+        "提高相機 FPS 就保證小於 20 ms"
+      ],
+      "correct": 2,
+      "explain": "先定義邊界，再量測完整路徑。\n\n先定義起點是曝光開始或影像到達，終點是命令送出、驅動器接受或物理響應。初始預算可拆成擷取 4 ms、前處理 2 ms、推論 8 ms、規劃 3 ms、通訊／致動 2 ms，保留 1 ms 餘裕；這些只是待實機驗證的預算。以 frame ID 與對齊的時間戳追蹤完整路徑，包含排隊、資料搬移及同步；不可把各階段 P99 相加當成精確端到端 P99。限制佇列、優先最新影像，隔離即時工作，預配置記憶體並暖機。\n\n範例預算；P99 須端到端實測，各階段 P99 不可直接相加。\n\n面試延伸：原始面試 Q4。評分重點：Deadline、Jitter、Worst-case Latency。壓測 CPU／GPU 競爭、熱降頻與 I/O，記錄 P99、deadline miss rate 及資料年齡；P99 達標不代表最壞情況有界，實測最大值也不是 WCET 證明。",
+      "en": {
+        "prompt": "How would you design a Physical AI system with sensor-to-actuation P99 < 20 ms?",
+        "options": [
+          "Sum stage P99 values to prove compliance",
+          "Measure only GPU kernel time",
+          "Define boundaries and trace the complete path to measure end-to-end latency",
+          "Higher camera FPS guarantees less than 20 ms"
+        ],
+        "explain": "Define boundaries, then measure the full path.\n\nDefine whether sensing starts at exposure or image arrival, and whether actuation ends at command dispatch, drive acceptance, or physical response. An initial budget is acquisition 4 ms, preprocessing 2 ms, inference 8 ms, planning 3 ms, communication/actuation 2 ms, plus 1 ms margin. Validate these budgets on hardware. Track frame IDs and aligned timestamps across the complete path, including queues, transfers, and synchronization. Summing stage P99 values does not give the exact end-to-end P99. Bound queues, prioritize fresh frames, isolate real-time work, preallocate memory, and warm up.\n\nIllustrative budget; measure end-to-end P99 rather than summing stage P99 values.\n\nInterview insight: Original interview Q4. Assess deadlines, jitter, and worst-case latency. Stress CPU/GPU contention, thermal throttling, and I/O; report P99, deadline misses, and data age. Passing P99 does not bound the worst case; an observed maximum is not a WCET proof."
+      }
+    },
+    {
+      "id": 25,
+      "prompt": "GPU 偶發排程延遲導致控制週期超時，如何維持安全？",
+      "options": [
+        "持續等待 GPU，直到結果完成",
+        "獨立 Watchdog 提前切換至有界的安全控制",
+        "無限沿用上一筆速度命令",
+        "提高 GPU stream priority 就保證安全"
+      ],
+      "correct": 1,
+      "explain": "GPU 超時時，獨立安全控制仍須準時運作。\n\n安全控制不得依賴 GPU 準時完成。由獨立即時 CPU 工作或 MCU 執行 Watchdog，檢查命令更新、感知資料年齡及有效期限；只看程序 heartbeat 不夠。每筆結果帶 frame ID 與期限，拒絕超時或亂序結果。在期限前預留 Fallback Controller 的執行與致動時間，依編碼器／IMU 等回饋降速、受控煞停或維持安全姿態。沿用上一筆命令必須有時間與狀態限制；連續有效結果及狀態檢查通過後才恢復。\n\n驗證最壞安全反應時間；停止方法由危害分析決定。\n\n面試延伸：原始 Q4 追問。注入 GPU 卡頓、相機中斷與通訊異常，驗證偵測＋切換＋安全動作的最壞反應時間符合危害容許範圍。Fallback 本身也需驗證；安全姿態或停止方式依機構與危害而定。",
+      "en": {
+        "prompt": "How do you stay safe when occasional GPU scheduling delays miss a control deadline?",
+        "options": [
+          "Wait indefinitely for the GPU",
+          "Use an independent watchdog to switch early to bounded safe control",
+          "Reuse the last velocity command indefinitely",
+          "GPU stream priority guarantees safety"
+        ],
+        "explain": "Independent safety control must stay timely during GPU overruns.\n\nSafety must not depend on timely GPU completion. An independent real-time CPU task or MCU watchdog checks command updates, perception age, and expiry; process heartbeat alone is insufficient. Tag results with frame IDs and deadlines and reject expired or out-of-order results. Reserve time before the deadline for a bounded fallback controller and actuation. Use encoder/IMU feedback to reduce speed, stop under control, or maintain a safe pose. Reusing the last command needs time and state limits. Recover only after consecutive valid results and state checks.\n\nValidate worst-case safety response time; stopping behavior follows hazard analysis.\n\nInterview insight: Original Q4 follow-up. Inject GPU stalls, camera loss, and communication faults; verify worst-case detection, switching, and safe-action time against the hazard tolerance. Validate the fallback itself; the safe pose or stopping method depends on the mechanism and hazard."
+      }
+    },
+    {
+      "id": 26,
+      "prompt": "如何將 Jetson 視覺模型移植至 AMD 異質運算平台？",
+      "options": [
+        "改權重副檔名即可部署",
+        "所有 AMD 裝置都用相同 runtime",
+        "先固定基準，再依目標硬體驗證相容性與完整 pipeline",
+        "只比較 NVIDIA 與 AMD 的 TOPS"
+      ],
+      "correct": 2,
+      "explain": "先確認 AMD 目標裝置，再選部署工具。\n\n固定模型、資料集與前後處理，在 Jetson 建立 Accuracy、Latency、Memory、Power 基準，再確認目標 AMD 晶片、OS 與工具版本。檢查 ONNX opset、算子、動態 shape、layout，以及 TensorRT plugin／自訂 CUDA 的替代方案。支援的 GPU 可評估 ROCm／MIGraphX 或 ONNX Runtime MIGraphX EP；NPU 與 Adaptive SoC 依裝置確認 Ryzen AI／Vitis AI 路徑。先驗證正確性，再評估 FP16／INT8、記憶體配置、資料搬移與完整 pipeline。\n\nGPU、NPU 與 Adaptive SoC 的支援矩陣不同；工具名稱不能取代相容性驗證。\n\n面試延伸：原始面試 Q5。檢查 CPU fallback 與子圖切換，避免加速收益被同步及複製抵銷。ONNX Runtime 的 ROCm EP 已列為淘汰方向，官方建議改用 MIGraphX EP；依實際硬體及版本支援矩陣選擇，不能把 AMD 當成單一相容平台。",
+      "en": {
+        "prompt": "How would you port a Jetson vision model to an AMD heterogeneous platform?",
+        "options": [
+          "Rename the weights file",
+          "Use one runtime for every AMD device",
+          "Establish a baseline, then validate target compatibility and the full pipeline",
+          "Compare only NVIDIA and AMD TOPS"
+        ],
+        "explain": "Identify the AMD device before choosing deployment tools.\n\nFix the model, dataset, and preprocessing/postprocessing; establish Jetson accuracy, latency, memory, and power baselines. Identify the target AMD chip, OS, and tool versions. Check ONNX opset, operators, dynamic shapes, layout, and replacements for TensorRT plugins/custom CUDA. Supported GPUs can use ROCm/MIGraphX or ONNX Runtime MIGraphX EP; verify Ryzen AI/Vitis AI routes for the specific NPU or Adaptive SoC. Establish correctness before assessing FP16/INT8, allocation, transfers, and the full pipeline.\n\nGPU, NPU, and Adaptive SoC support matrices differ; validate device/version compatibility.\n\nInterview insight: Original interview Q5. Inspect CPU fallbacks and subgraph transitions for synchronization/copy overhead. ONNX Runtime lists ROCm EP for deprecation and recommends MIGraphX EP. Select using the actual device/version support matrix; AMD is not one compatibility target."
+      }
+    },
+    {
+      "id": 27,
+      "prompt": "推論耗時降低 40%，端到端耗時只降低 8%，如何定位瓶頸？",
+      "options": [
+        "推論加速就應讓所有階段等比例加速",
+        "串行且其他成本不變時，推論原占比約 20%",
+        "端到端改善小代表模型精度一定下降",
+        "只需要再增加 batch size"
+      ],
+      "correct": 1,
+      "explain": "先釐清加速定義，再找端到端 critical path。\n\n先釐清提升 40% 指耗時降低或 throughput 增加。若推論耗時降低 40%、端到端降低 8%，在串行且其他成本不變的假設下，Amdahl's Law 給出推論原占比 f = 0.08 / 0.40 = 20%。若 throughput 增加 40%，單次耗時約降低 28.6%，同假設下 f 約 28%。以同批 frame 的時間線檢查前後處理、排隊、CPU／GPU 搬移、layout conversion、同步與 CPU fallback，並確認是否等待下一個固定控制週期。\n\n數值為假設下的例子；重疊 pipeline 應分析 critical path。\n\n面試延伸：原始 Q5 追問。若 pipeline 重疊或負載改變，不能直接套用簡單占比公式；應定位 critical path。分開比較 kernel time、推論 wall time、throughput 與端到端 P99，追查尾端 frame，避免只看平均值。",
+      "en": {
+        "prompt": "Inference time falls 40%, but end-to-end time falls only 8%. Where is the bottleneck?",
+        "options": [
+          "Every stage must improve proportionally",
+          "Inference originally took about 20% under serial, unchanged-cost assumptions",
+          "Small end-to-end gains prove accuracy loss",
+          "Only increase batch size"
+        ],
+        "explain": "Clarify the speedup metric, then inspect the end-to-end critical path.\n\nClarify whether 40% means lower latency or higher throughput. If inference time falls 40% and end-to-end time falls 8%, Amdahl's law gives the original inference fraction f = 0.08 / 0.40 = 20%, assuming serial execution and unchanged other costs. A 40% throughput increase instead means about 28.6% less time per inference, yielding f about 28% under the same assumptions. Trace matching frames through preprocessing/postprocessing, queues, CPU/GPU transfers, layout conversion, synchronization, and CPU fallbacks. Check waits for fixed control ticks.\n\nConditional numerical example; overlapping pipelines require critical-path analysis.\n\nInterview insight: Original Q5 follow-up. Overlapping pipelines or changed load invalidate the simple fraction calculation; inspect the critical path. Distinguish kernel time, inference wall time, throughput, and end-to-end P99. Investigate tail frames rather than averages alone."
+      }
+    },
+    {
+      "id": 28,
+      "prompt": "ROS 2 感知節點偶爾發生 100 ms 延遲尖峰，如何排查？",
+      "options": [
+        "直接把所有節點改成最高即時優先級",
+        "先追蹤完整時間線，區分傳輸、排程、執行與資料陳舊",
+        "只看平均 callback 時間",
+        "增加 DDS queue depth 一定能消除尖峰"
+      ],
+      "correct": 1,
+      "explain": "把傳輸、排程等待與 callback 執行分開量測。\n\n先區分 callback 執行時間、等待排程時間與影像年齡。以訊息 ID 追蹤擷取、publish、接收／可取用、callback start、inference、callback end 與控制輸出。使用 ros2_tracing／LTTng，配合 kernel scheduling trace、DDS 統計及推論 profiler。傳輸慢查 DDS／重傳／背壓；訊息就緒後仍等待查 Executor、Callback Group 與 CPU contention；callback wall time 遠大於 CPU time 查鎖、I/O、GPU 等待與搶占；CPU time 增加查配置、page fault 與降頻。\n\n結合 ROS、OS、DDS 與推論 trace，以同一訊息 ID 對齊尖峰。\n\n面試延伸：原始面試 Q6。根據證據調整 QoS、Callback Group、Executor、CPU Affinity、Memory Preallocation 與 Real-time Scheduling。MultiThreadedExecutor 不保證降低延遲，互斥 Callback Group 仍可能串行。固定約 100 ms 的尖峰可檢查 timer／timeout，但不能只憑數字判定原因。",
+      "en": {
+        "prompt": "How would you investigate occasional 100 ms spikes in a ROS 2 perception node?",
+        "options": [
+          "Set every node to maximum real-time priority immediately",
+          "Trace the full timeline to separate transport, scheduling, execution, and stale data",
+          "Measure only mean callback duration",
+          "Increasing DDS queue depth always removes spikes"
+        ],
+        "explain": "Measure transport, scheduling waits, and callback execution separately.\n\nDistinguish callback execution, scheduling wait, and image age. Trace message IDs through capture, publish, reception/availability, callback start, inference, callback end, and control output. Use ros2_tracing/LTTng with kernel scheduling traces, DDS statistics, and inference profiling. Slow transport suggests DDS/retransmission/backpressure; waiting after readiness suggests executor, callback groups, or CPU contention. Wall time much larger than CPU time suggests locks, I/O, GPU waits, or preemption. Increased CPU time suggests allocation, page faults, or throttling.\n\nCorrelate ROS, OS, DDS, and inference traces using the same message ID.\n\nInterview insight: Original interview Q6. Tune QoS, callback groups, executors, CPU affinity, preallocation, and real-time scheduling based on evidence. MultiThreadedExecutor does not guarantee lower latency; mutually exclusive callback groups can serialize work. Inspect timers/timeouts for roughly 100 ms spikes, without assuming the cause from the number alone."
+      }
+    },
+    {
+      "id": 29,
+      "prompt": "Reliable QoS 一定比 Best Effort 更適合即時控制嗎？",
+      "options": [
+        "Reliable 保證端到端控制 Deadline",
+        "Best Effort 保證低延遲與安全",
+        "所有訊息都應使用相同 QoS",
+        "依新鮮度、遺失後果與期限選擇，另設應用層安全機制"
+      ],
+      "correct": 3,
+      "explain": "可靠交付與準時完成要分別設計。\n\n不一定。Reliability 與 Deadline 是不同要求：Reliable 著重可靠交付，重傳、緩衝或背壓可能增加延遲；Best Effort 不保證交付，也不保證期限。高頻影像可評估 Best Effort 與小佇列以重視新鮮度，但需處理連續丟包。離散模式切換可採可靠傳輸、應用層確認、序號與逾時處理。依訊息語意、有效期限及失效後果選擇，並確認 publisher／subscriber QoS 相容。\n\nDeadline QoS 不保證 callback 或完整控制路徑準時完成。\n\n面試延伸：原始 Q6 追問。Deadline QoS 監測預期訊息間隔，不保證 callback 或端到端執行期限；Lifespan 限制訊息有效期，Liveliness 反映活性。兩種 reliability 都需資料年齡檢查、Watchdog 與安全 fallback；Reliable 不等於致動器已執行命令。",
+      "en": {
+        "prompt": "Is Reliable QoS always better than Best Effort for real-time control?",
+        "options": [
+          "Reliable guarantees end-to-end control deadlines",
+          "Best Effort guarantees low latency and safety",
+          "Use the same QoS for every message",
+          "Choose by freshness, loss consequences, and deadlines, with application safety mechanisms"
+        ],
+        "explain": "Design reliable delivery and timely completion separately.\n\nNo. Reliability and deadlines are different requirements. Reliable targets delivery, while retransmission, buffering, or backpressure can add latency. Best Effort guarantees neither delivery nor deadlines. High-rate images may favor Best Effort with small queues for freshness, while handling consecutive losses. Discrete mode changes may need reliable transport, application acknowledgments, sequence numbers, and timeouts. Choose by message semantics, expiry, and failure consequences; verify publisher/subscriber QoS compatibility.\n\nDeadline QoS does not guarantee callback or complete control-path deadlines.\n\nInterview insight: Original Q6 follow-up. Deadline QoS monitors expected message intervals, not callback or end-to-end completion deadlines. Lifespan limits message validity; liveliness reflects activity. Both reliability choices need age checks, watchdogs, and safe fallback. Reliable delivery does not confirm actuator execution."
+      }
+    }
+  ]
+}
+</script>
+<script src="../shared/progress-records.js"></script>
+<script src="../shared/study.js"></script>
+<script type="module">
+  import { startCloudSync } from "../shared/cloud-sync.js";
+  startCloudSync({ progress: studyProgress, field: "vlaRecords", legacyField: "vlaProgress", legacyTimeField: "vlaUpdatedAt" });
+</script>
 </body>
 </html>

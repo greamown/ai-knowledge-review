@@ -1,465 +1,1203 @@
 <!doctype html>
 <html lang="zh-Hant">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#f5f4ee" />
-    <title data-en="Overview · Agent Knowledge Lab">
-      首頁 · Agent Knowledge Lab
-    </title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="site.js" defer></script>
-  </head>
-  <body>
-    <a class="skip" href="#main"
-      ><span data-en="Skip to content">跳至內容</span></a
-    >
-    <nav class="nav" aria-label="Main navigation">
-      <div class="wrap">
-        <a class="brand" href="index.html"
-          ><span class="brand-mark" aria-hidden="true">a<span>·</span></span
-          >Agent Knowledge <em>Lab</em></a
-        >
-        <div class="navlinks">
-          <a href="../"><span data-en="All topics">全部主題</span></a
-          ><a href="index.html" class="active" aria-current="page"
-            ><span data-en="Overview">首頁</span></a
-          ><a href="learn.html"><span data-en="Study">問答學習</span></a
-          ><a href="quiz.html"><span data-en="Practice">選擇題測驗</span></a>
-        </div>
-        <button
-          class="lang-toggle"
-          id="language"
-          type="button"
-          aria-label="Switch to English"
-        >
-          EN <span aria-hidden="true">↗</span>
-        </button>
-      </div>
-    </nav>
-    <main id="main">
-      <header class="hero wrap">
-        <div class="hero-copy">
-          <span class="eyebrow"><i></i> THE AGENT ENGINEER’S FIELD GUIDE</span>
-          <h1
-            data-en='Beyond knowing agents.&lt;br&gt;&lt;span class="serif"&gt;Understand them.&lt;/span&gt;'
-          >
-            不只知道 Agent。<br />更要<span class="serif">真正理解。</span>
-          </h1>
-          <p
-            data-en="Connect scattered AI agent knowledge into systems thinking. From architecture diagrams to interview practice, build confidence one answer at a time."
-          >
-            把零散的 AI Agent
-            知識，連成完整的系統思維。從架構圖解到面試實戰，每一次練習，都讓答案更有底氣。
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="learn.html"
-              ><span data-en="Start learning">開始學習</span>
-              <span aria-hidden="true">↗</span></a
-            ><a class="text-link" href="#map"
-              ><span data-en="Explore the skill map">探索能力地圖</span>
-              <span aria-hidden="true">↓</span></a
-            >
-          </div>
-          <div class="hero-stats">
-            <span><b>27</b> <span data-en="core questions">核心問答</span></span
-            ><span><b>12</b> <span data-en="study topics">學習主題</span></span
-            ><span
-              ><b>15</b>
-              <span data-en="practice questions">實戰測驗</span></span
-            >
-          </div>
-        </div>
-        <figure class="blueprint">
-          <div class="figure-top">
-            <span class="mono">FIG. 01 / AGENT ANATOMY</span
-            ><span class="live-dot"
-              ><span data-en="Observe · Decide · Act"
-                >觀察・決策・行動</span
-              ></span
-            >
-          </div>
-          <svg
-            viewBox="0 0 480 400"
-            role="img"
-            aria-labelledby="diagram-title diagram-desc"
-          >
-            <title id="diagram-title">Agent architecture</title>
-            <desc id="diagram-desc">
-              A goal enters the agent core. Context and memory inform decisions.
-              Tool intent passes validation and authorization before execution;
-              observations feed back to the core.
-            </desc>
-            <defs>
-              <pattern
-                id="dots"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="1" cy="1" r="1" fill="#ced7cb" />
-              </pattern>
-              <marker
-                id="arrow"
-                viewBox="0 0 8 8"
-                refX="7"
-                refY="4"
-                markerWidth="6"
-                markerHeight="6"
-                orient="auto-start-reverse"
-              >
-                <path d="m0 0 8 4-8 4" fill="none" stroke="#66846b" />
-              </marker>
-            </defs>
-            <rect width="480" height="400" fill="url(#dots)" />
-            <g
-              fill="none"
-              stroke="#66846b"
-              stroke-width="1.5"
-              marker-end="url(#arrow)"
-            >
-              <path d="M240 64v39" />
-              <path d="M96 220v-74h39" />
-              <path d="M384 220v-74h-39" />
-              <path d="M240 186v55" />
-              <path d="M240 294v40" />
-              <path d="M160 357H44V146h83" stroke-dasharray="5 5" />
-            </g>
-            <g font-family="monospace" text-anchor="middle">
-              <rect
-                x="181"
-                y="24"
-                width="118"
-                height="40"
-                rx="20"
-                fill="#e9efdf"
-                stroke="#b6c4ac"
-              />
-              <text
-                x="240"
-                y="49"
-                fill="#31543e"
-                font-size="12"
-                data-en="USER GOAL"
-              >
-                使用者目標
-              </text>
-              <rect
-                x="135"
-                y="104"
-                width="210"
-                height="82"
-                rx="12"
-                fill="#203e30"
-              />
-              <text
-                x="240"
-                y="138"
-                fill="#f6f7eb"
-                font-size="20"
-                data-en="AGENT CORE"
-              >
-                AGENT 核心
-              </text>
-              <text
-                x="240"
-                y="162"
-                fill="#bfcfb9"
-                font-size="11"
-                data-en="Reason · Plan · Decide"
-              >
-                推理 · 規劃 · 決策
-              </text>
-              <rect
-                x="50"
-                y="220"
-                width="92"
-                height="47"
-                rx="7"
-                fill="#fafbf5"
-                stroke="#b6c4ac"
-              />
-              <text
-                x="96"
-                y="249"
-                fill="#31543e"
-                font-size="11"
-                data-en="CONTEXT"
-              >
-                上下文
-              </text>
-              <rect
-                x="338"
-                y="220"
-                width="92"
-                height="47"
-                rx="7"
-                fill="#fafbf5"
-                stroke="#b6c4ac"
-              />
-              <text
-                x="384"
-                y="249"
-                fill="#31543e"
-                font-size="11"
-                data-en="MEMORY"
-              >
-                記憶
-              </text>
-              <rect
-                x="157"
-                y="242"
-                width="166"
-                height="52"
-                rx="8"
-                fill="#e9efdf"
-                stroke="#b6c4ac"
-              />
-              <text
-                x="240"
-                y="263"
-                fill="#31543e"
-                font-size="12"
-                data-en="TOOL INTENT"
-              >
-                工具呼叫意圖
-              </text>
-              <text
-                x="240"
-                y="282"
-                fill="#57755a"
-                font-size="9"
-                data-en="VALIDATE + AUTHORIZE"
-              >
-                驗證 + 授權
-              </text>
-              <rect
-                x="160"
-                y="334"
-                width="160"
-                height="45"
-                rx="8"
-                fill="#fafbf5"
-                stroke="#b6c4ac"
-              />
-              <text x="240" y="362" fill="#31543e" font-size="12">
-                EXECUTE & OBSERVE
-              </text>
-            </g>
-            <text
-              x="32"
-              y="303"
-              transform="rotate(-90 32 303)"
-              fill="#6d8067"
-              font-size="9"
-              font-family="monospace"
-              data-en="FEEDBACK LOOP"
-            >
-              觀察回饋循環
-            </text>
-          </svg>
-          <figcaption>
-            <span class="figure-no">01</span
-            ><span data-en="One loop connects the essential agent capabilities."
-              >一個循環，串起 Agent 的核心能力。</span
-            >
-          </figcaption>
-        </figure>
-      </header>
-      <section class="learning-path wrap">
-        <div>
-          <span class="eyebrow">YOUR LEARNING LOOP</span>
-          <h2 data-en="Make the knowledge your own">把知識變成自己的答案</h2>
-        </div>
-        <ol>
-          <li>
-            <a href="#map"
-              ><span class="step">01</span>
-              <div>
-                <strong data-en="See the system">建立全貌</strong
-                ><small data-en="Understand how the pieces connect"
-                  >先理解模組如何連結</small
-                >
-              </div>
-              <span aria-hidden="true">↗</span></a
-            >
-          </li>
-          <li>
-            <a href="learn.html"
-              ><span class="step">02</span>
-              <div>
-                <strong data-en="Find your answer">練習表達</strong
-                ><small data-en="Speak first, then reveal the answer"
-                  >先口答，再對照解析</small
-                >
-              </div>
-              <span aria-hidden="true">↗</span></a
-            >
-          </li>
-          <li>
-            <a href="quiz.html"
-              ><span class="step">03</span>
-              <div>
-                <strong data-en="Test your thinking">驗證觀念</strong
-                ><small data-en="Get feedback and discover gaps"
-                  >即時回饋，找出盲點</small
-                >
-              </div>
-              <span aria-hidden="true">↗</span></a
-            >
-          </li>
-        </ol>
-      </section>
-      <section class="section wrap" id="map">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">THE KNOWLEDGE MAP</span>
-            <h2 data-en="Start at the core. Go deeper.">
-              從核心開始，逐步深入。
-            </h2>
-          </div>
-          <p data-en="Pick a topic for today’s practice.">
-            選一個主題，開始今天的練習。
-          </p>
-        </div>
-        <div class="visual-grid">
-          <a class="visual-card" href="learn.html#architecture"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="4" />
-                <path
-                  d="M12 2v4m0 12v4M2 12h4m12 0h4M5 5l3 3m8 8 3 3M5 19l3-3M16 8l3-3"
-                /></svg
-              ><span class="mono">01 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Agent Core</h3>
-            <p data-en="Understand the decision and action loop.">
-              理解決策與行動的循環。
-            </p>
-            <div class="flow">Goal → Decide → Act → Observe</div></a
-          ><a class="visual-card" href="learn.html#tools"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <path d="m8 5-6 7 6 7m8-14 6 7-6 7m-3-16-2 18" /></svg
-              ><span class="mono">02 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Tool Calling</h3>
-            <p data-en="Turn model intent into reliable execution.">
-              從模型意圖，到可靠執行。
-            </p>
-            <div class="flow">Intent → Validate → Authorize → Execute</div></a
-          ><a class="visual-card" href="learn.html#security"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6Z" />
-                <path d="m8 12 3 3 5-6" /></svg
-              ><span class="mono">03 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Security</h3>
-            <p data-en="Enforce boundaries at the execution layer.">
-              把安全邊界放在執行層。
-            </p>
-            <div class="flow">Policy → Permission → Sandbox → Audit</div></a
-          ><a class="visual-card" href="learn.html#context"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <rect x="3" y="3" width="18" height="5" rx="1" />
-                <rect x="3" y="11" width="11" height="4" rx="1" />
-                <rect x="3" y="18" width="15" height="3" rx="1" /></svg
-              ><span class="mono">04 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Context</h3>
-            <p data-en="Give the model the context that matters.">
-              給模型當下最相關的資訊。
-            </p>
-            <div class="flow">Recent + Summary + State + Memory</div></a
-          ><a class="visual-card" href="learn.html#rag"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <circle cx="10" cy="10" r="7" />
-                <path d="m15 15 7 7M7 10h6m-3-3v6" /></svg
-              ><span class="mono">05 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Memory & RAG</h3>
-            <p data-en="Retrieve knowledge that is truly relevant.">
-              找得到，也要找得準。
-            </p>
-            <div class="flow">Retrieve → Rerank → Top-K → Generate</div></a
-          ><a class="visual-card" href="learn.html#performance"
-            ><div class="card-top">
-              <svg
-                class="icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.4"
-                aria-hidden="true"
-              >
-                <path d="m13 2-9 12h7l-1 8 10-13h-7Z" /></svg
-              ><span class="mono">06 / <span class="card-arrow">↗</span></span>
-            </div>
-            <h3>Performance</h3>
-            <p data-en="Trace latency and the cost of each step.">
-              拆解延遲，理解每一步成本。
-            </p>
-            <div class="flow">LLM + Retrieval + Tools + Steps</div></a
-          >
-        </div>
-      </section>
-      <section class="practice-banner wrap">
-        <div>
-          <span class="eyebrow">READY WHEN YOU ARE</span>
-          <h2 data-en="Ready to put it into words?">看懂了，來試著回答。</h2>
-          <p data-en="15 questions to take your understanding further.">
-            15 道選擇題，讓你的理解更進一步。
-          </p>
-        </div>
-        <a class="btn" href="quiz.html"
-          ><span data-en="Start practice">開始測驗</span> ↗</a
-        >
-      </section>
-    </main>
-    <footer class="footer wrap">
-      <a class="brand" href="index.html">Agent Knowledge Lab</a
-      ><span data-en="From understanding to a confident answer."
-        >從理解，到真正能回答。</span
-      ><span class="mono">LEARN. REASON. BUILD.</span>
-    </footer>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f5ef">
+<link rel="icon" href="assets/favicon.svg">
+<meta name="description" content="A bilingual AI agent field guide: 27 core questions across 12 topics, with practice quizzes and mistake review. 中英文 AI Agent 面試學習手冊。">
+<title>Agent Knowledge Lab</title>
+<link rel="stylesheet" href="../shared/study.css">
+</head>
+</head>
+<body>
+<a class="skip" href="#workspace" data-i18n="skip">跳至學習內容</a>
+<div class="shell">
+<header class="top">
+<a class="brand" href="#" aria-label="Agent Knowledge Lab"><span class="brand-symbol"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h9l5 5v11H5zM14 4v5h5M8 13h8M8 16h5"/></svg></span><span><strong>Agent Knowledge Lab<span style="color:var(--orange)">.</span></strong><small>THE AGENT ENGINEER’S FIELD GUIDE</small></span></a>
+<div class="top-right"><nav class="tabs" data-i18n-label="navigation" aria-label="主選單"><button class="tab" data-tab="learn" aria-current="page" data-i18n="learn">知識筆記</button><button class="tab" data-tab="quiz" data-i18n="quiz">練習測驗</button><button class="tab" data-tab="review" data-i18n="review">錯題複習</button></nav><a class="progress-link" href="../" data-i18n="allTopics">全部主題</a><a class="progress-link" href="#progressBackup" data-i18n="progressTools">備份與同步</a><div class="language" role="group" aria-label="Language / 語言"><button data-lang="zh" lang="zh-Hant" aria-pressed="true">中文</button><button data-lang="en" lang="en" aria-pressed="false">EN</button></div></div>
+</header>
+<section class="hero" aria-labelledby="heroTitle">
+<div class="hero-copy"><div class="eyebrow accent">THE AGENT FIELDNOTES · VOL. 01</div><h1 id="heroTitle"><span data-i18n="hero1">不只知道 Agent，</span><br><em data-i18n="hero2">更要真正理解。</em></h1><p data-i18n="intro">把零散的 AI Agent 知識，連成完整的系統思維。從架構圖解到面試實戰，每一次練習，都讓答案更有底氣。</p><div class="hero-actions"><button class="btn primary" id="continueLearning"><span data-i18n="startLearning">開始學習</span><span aria-hidden="true">↗</span></button><button class="btn text" id="heroQuiz"><span data-i18n="testYourself">測試我的理解</span><span aria-hidden="true">→</span></button></div></div>
+<figure class="hero-art" style="margin:0"><img id="art" src="art.svg" width="480" height="400" alt=""><figcaption class="art-caption" data-i18n="artCaption">觀察、決策、行動，再回到觀察。</figcaption></figure>
+</section>
+<div class="stats" data-i18n-label="progressLabel" aria-label="學習進度"><div class="stat"><div class="stat-icon" data-icon="book"></div><div class="stat-copy"><b id="doneNum">0 / 27</b><span data-i18n="readCount">已掌握的知識筆記</span><div class="progress"><div class="bar" id="readBar"></div></div></div></div><div class="stat"><div class="stat-icon" data-icon="target"></div><div><b id="accuracy">—</b><span data-i18n="accuracy">累計測驗答對率</span></div></div><div class="stat"><div class="stat-icon" data-icon="repeat"></div><div><b id="wrongNum">0</b><span data-i18n="wrongCount">值得再練一次的觀念</span></div></div></div>
+<section aria-labelledby="pathTitle"><div class="section-head"><div><h2 id="pathTitle" data-i18n="pathTitle">你的 Agent 學習地圖</h2><p data-i18n="pathIntro">十二個主題，從架構到系統設計。選擇一站，開始探索。</p></div><span class="section-note">THE LEARNING PATH / 01—12</span></div><div class="paths" id="paths"></div></section>
+<div class="layout" id="workspace"><aside class="sidebar"><div class="eyebrow" data-i18n="chapters">學習章節</div><div id="filters"></div><div class="study-tip"><span data-icon="bulb"></span><h3 data-i18n="tipTitle">先想一下，再看答案。</h3><p data-i18n="tip">試著用自己的話解釋這個觀念。閱讀解析後，再按「已理解」記下進度，最後用測驗確認理解。</p></div><p class="sidebar-note" data-i18n="localNote">進度保存在此瀏覽器；登入 Google 可跨裝置自動同步，也可在頁尾下載備份。</p></aside>
+<main id="mainContent">
+<section id="learn" aria-labelledby="learnTitle"><div class="main-title"><h2 id="learnTitle" data-i18n="notes">知識筆記</h2><span class="pill" id="resultCount"></span></div><div class="tools"><div class="search-wrap"><span data-icon="search"></span><input id="search" type="search" data-i18n-placeholder="searchPlaceholder" data-i18n-label="searchLabel" placeholder="搜尋觀念、題號或關鍵字…" aria-label="搜尋題目"></div><select id="statusFilter" data-i18n-label="statusLabel" aria-label="閱讀狀態"><option value="all" data-i18n="allStatus">全部狀態</option><option value="unread" data-i18n="unread">尚未理解</option><option value="read" data-i18n="read">已理解</option></select></div><div id="guide"></div><div class="stack" id="questionList"></div><div class="pagination" id="pagination"></div></section>
+<section id="quiz" class="hide" aria-labelledby="quizTitle"><div class="panel"><div class="eyebrow accent">RETRIEVE. REASON. REMEMBER.</div><div class="row" style="margin-top:12px"><h2 id="quizTitle" data-i18n="quizTitle">把理解，變成直覺。</h2><select id="quizMode" data-i18n-label="quizScope" aria-label="測驗範圍"></select></div><p data-i18n="quizIntro">每回合最多 10 題，選項隨機排列。作答後立即看解析；答錯的觀念會留在複習區，陪你再練一次。</p><button class="btn primary" id="startQuiz" data-i18n="startQuiz">開始新測驗 →</button></div><div id="quizHost" aria-live="polite"></div></section>
+<section id="review" class="hide" aria-labelledby="reviewTitle"><div class="panel"><div class="row"><h2 id="reviewTitle" data-i18n="review">錯題複習</h2><button class="btn" id="clearWrong" data-i18n="clearWrong">清除錯題紀錄</button></div><p data-i18n="reviewIntro">錯題是一張學習地圖。重新回答這些題目，答對後就會自動移出。</p><button class="btn primary" id="retryWrong" data-i18n="retryWrong">練習這些錯題 →</button></div><div id="wrongList" class="stack" style="margin-top:20px"></div></section>
+</main></div>
+<section class="progress-tools" id="progressBackup" aria-labelledby="progressBackupTitle">
+<h2 id="progressBackupTitle" data-i18n="progressTools">備份與同步</h2>
+<p data-i18n="progressIntro">下載備份可離線保存（含每筆紀錄的時間）；從檔案還原會覆蓋此瀏覽器的學習進度。登入 Google 後，進度會在你的各裝置間自動同步。</p>
+<div class="progress-actions"><button class="btn" id="exportProgress" data-i18n="downloadBackup">下載進度備份 ↓</button><button class="btn" id="restoreProgress" data-i18n="restoreBackup">從檔案還原</button><input id="importProgress" type="file" accept="application/json,.json" hidden><span class="sync-status" id="backupStatus" role="status"></span></div>
+<div class="cloud-backup"><h3 data-i18n="cloudBackup">私人雲端同步</h3><p class="sync-meta"><span><span data-i18n="localUpdated">本機最後學習：</span><time id="cloudLocalTime">尚未產生紀錄</time></span><span><span data-i18n="cloudUpdated">上次同步：</span><time id="cloudRemoteTime">登入後同步</time></span></p><p class="sync-status" id="firebaseStatus" role="status">載入 Firebase 設定中…</p><div class="progress-actions"><button class="btn primary" id="firebaseLogin" data-i18n="googleLogin">使用 Google 登入</button><button class="btn primary" id="firebaseSync" data-i18n="syncNow" hidden>立即同步</button><button class="btn" id="firebaseLogout" data-i18n="logout" hidden>登出</button></div><p class="sync-meta" data-i18n="cloudWarning">每則筆記與每道題都記錄最後變更的時間；同步時逐項以較新的變更為準，不同裝置的進度會合併而不是互相覆蓋。</p></div>
+</section>
+<p id="storageNote" class="storage-note hide" role="status" data-i18n="storageNote">此瀏覽器無法儲存進度；本次仍可學習，但重新開啟後不會保留紀錄。</p>
+<footer class="foot"><span>Stay curious. Keep building.</span><span data-i18n="footer">Agent Knowledge Lab · 開源雙語學習手冊</span><a href="https://github.com/greamown/ai-knowledge-review" target="_blank" rel="noopener" data-i18n="source">GitHub 原始碼 ↗</a></footer>
+</div>
+<script id="seed" type="application/json">
+{
+  "site": {
+    "key": "agent-learning",
+    "app": "agent-knowledge",
+    "copy": {
+      "zh": {
+        "name": "Agent Knowledge Lab",
+        "hero1": "不只知道 Agent，",
+        "hero2": "更要真正理解。",
+        "intro": "把零散的 AI Agent 知識，連成完整的系統思維。從架構圖解到面試實戰，每一次練習，都讓答案更有底氣。",
+        "artCaption": "觀察、決策、行動，再回到觀察。",
+        "artDesc": "目標進入 Agent 核心，Context 與 Memory 協助決策；工具意圖先經驗證與授權才執行，觀察結果再回到核心。",
+        "pathTitle": "你的 Agent 學習地圖",
+        "pathIntro": "十二個主題，從架構到系統設計。選擇一站，開始探索。",
+        "footer": "Agent Knowledge Lab · 開源雙語學習手冊",
+        "source": "GitHub 原始碼 ↗",
+        "answer": "參考答案",
+        "labels": [
+          "Agent Architecture",
+          "Coding Agent / Harness",
+          "Tool Calling",
+          "Agent Security",
+          "Context Engineering",
+          "Memory & RAG",
+          "Multimodal RAG",
+          "Planning / Multi-Agent",
+          "Performance",
+          "Reliability",
+          "Evaluation",
+          "System Design"
+        ],
+        "shortLabels": [
+          "Agent Architecture",
+          "Coding Agent / Harness",
+          "Tool Calling",
+          "Agent Security",
+          "Context Engineering",
+          "Memory & RAG",
+          "Multimodal RAG",
+          "Planning / Multi-Agent",
+          "Performance",
+          "Reliability",
+          "Evaluation",
+          "System Design"
+        ],
+        "descriptions": [
+          "Chatbot 與 Agent 的差別，以及 Production 架構的全貌。",
+          "Coding Agent 的本質，與 Harness 如何管住執行。",
+          "何時呼叫工具，如何驗證模型產生的參數。",
+          "安全邊界放在權限與執行層，而不是 Prompt。",
+          "對話變長時，保留真正相關的資訊。",
+          "History、Memory、RAG 的分工與長期記憶設計。",
+          "處理含圖片與表格的 PDF 與多模態檢索。",
+          "ReAct、Planner 與多代理的取捨。",
+          "拆解延遲，找到值得優化的那一段。",
+          "Timeout、重試與降級，讓 Agent 穩定運作。",
+          "監控指標與評估方法，不只看最終答案。",
+          "把觀念組合成一個完整的系統設計。"
+        ]
+      },
+      "en": {
+        "name": "Agent Knowledge Lab",
+        "hero1": "Beyond knowing agents.",
+        "hero2": "Understand them.",
+        "intro": "Connect scattered AI agent knowledge into systems thinking. From architecture diagrams to interview practice, build confidence one answer at a time.",
+        "artCaption": "Observe, decide, act, and observe again.",
+        "artDesc": "A goal enters the agent core. Context and memory inform decisions. Tool intent passes validation and authorization before execution; observations feed back to the core.",
+        "pathTitle": "Your map to agents",
+        "pathIntro": "Twelve topics, from architecture to system design. Pick a place to begin.",
+        "footer": "Agent Knowledge Lab · An open-source bilingual field guide",
+        "source": "Source on GitHub ↗",
+        "answer": "REFERENCE ANSWER",
+        "labels": [
+          "Agent Architecture",
+          "Coding Agent / Harness",
+          "Tool Calling",
+          "Agent Security",
+          "Context Engineering",
+          "Memory & RAG",
+          "Multimodal RAG",
+          "Planning / Multi-Agent",
+          "Performance",
+          "Reliability",
+          "Evaluation",
+          "System Design"
+        ],
+        "shortLabels": [
+          "Agent Architecture",
+          "Coding Agent / Harness",
+          "Tool Calling",
+          "Agent Security",
+          "Context Engineering",
+          "Memory & RAG",
+          "Multimodal RAG",
+          "Planning / Multi-Agent",
+          "Performance",
+          "Reliability",
+          "Evaluation",
+          "System Design"
+        ],
+        "descriptions": [
+          "How agents differ from chatbots, and a production architecture.",
+          "What a coding agent is, and how the harness controls execution.",
+          "When to call a tool, and how to validate generated arguments.",
+          "Put the security boundary in permissions and execution, not prompts.",
+          "Keep what matters as conversations grow.",
+          "History, memory, RAG, and designing long-term memory.",
+          "RAG over PDFs with images, tables, and other modalities.",
+          "ReAct, planners, and the trade-offs of multiple agents.",
+          "Break latency down and find what to optimize.",
+          "Timeouts, retries, and fallbacks that keep agents dependable.",
+          "Metrics and evaluation beyond the final answer.",
+          "Combine the concepts into a complete system design."
+        ]
+      }
+    },
+    "guides": {
+      "zh": [
+        {
+          "title": "回答框架：從架構到指標",
+          "text": "回答 Agent 面試題時，先畫出架構，再說明為什麼、取捨、失敗情境，最後用指標證明。",
+          "steps": [
+            [
+              "架構",
+              "Architecture",
+              "layers"
+            ],
+            [
+              "為什麼",
+              "Why",
+              "bulb"
+            ],
+            [
+              "取捨",
+              "Trade-off",
+              "sliders"
+            ],
+            [
+              "失敗情境",
+              "Failure case",
+              "lock"
+            ],
+            [
+              "指標",
+              "Metrics",
+              "target"
+            ]
+          ]
+        }
+      ],
+      "en": [
+        {
+          "title": "The answer framework",
+          "text": "Answer agent questions by drawing the architecture, then explaining why, the trade-offs, the failure cases, and the metrics that prove it.",
+          "steps": [
+            [
+              "Architecture",
+              "Draw the system",
+              "layers"
+            ],
+            [
+              "Why",
+              "Explain the choice",
+              "bulb"
+            ],
+            [
+              "Trade-off",
+              "Name the cost",
+              "sliders"
+            ],
+            [
+              "Failure case",
+              "What breaks",
+              "lock"
+            ],
+            [
+              "Metrics",
+              "Prove it",
+              "target"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "title": "什麼是 AI Agent？和一般 Chatbot 有什麼不同？",
+      "answer": "Chatbot 多半是 User → Prompt → LLM → Response。Agent 則多了 State、Tool、Decision/Planning 與 Observation-Action Loop。\n\n試著再回答：用你做過的專案，說明哪一步讓它從 Chatbot 變成 Agent。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "Chatbot：一次回應",
+          "steps": [
+            "User",
+            "Prompt → LLM",
+            "Response"
+          ]
+        },
+        {
+          "caption": "Agent：持續循環",
+          "steps": [
+            "目標與狀態",
+            "決策 → 工具執行",
+            "觀察 → 更新狀態 ↺"
+          ]
+        }
+      ],
+      "legacyKey": "architecture:What is an AI agent? How does it differ from a chatbot?",
+      "en": {
+        "title": "What is an AI agent? How does it differ from a chatbot?",
+        "answer": "A chatbot typically follows User → Prompt → LLM → Response. An agent adds state, tools, decision-making or planning, and an observation–action loop.\n\nThink one step further: Use a project you know to explain what turns a chatbot into an agent.",
+        "flows": [
+          {
+            "caption": "Chatbot: a response",
+            "steps": [
+              "User",
+              "Prompt → LLM",
+              "Response"
+            ]
+          },
+          {
+            "caption": "Agent: a continuing loop",
+            "steps": [
+              "Goal & state",
+              "Decide → use tools",
+              "Observe → update state ↺"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "請設計一個 Production Agent Architecture。",
+      "answer": "User → API Gateway → Agent Orchestrator → Context Manager → LLM → Tool Router → Schema Validation → Policy/Permission → Tool Execution → Observation → State Update；旁邊還要有 Memory、RAG、Observability、Audit Log、Evaluation。\n\n支援層：Memory · RAG · Observability · Audit Log · Evaluation\n\n試著再回答：沿著一個 tool call 走完架構，指出驗證、授權與紀錄發生在哪裡。",
+      "topic": 0,
+      "flows": [
+        {
+          "caption": "01 / 接收與決策",
+          "steps": [
+            "User → API Gateway",
+            "Agent Orchestrator",
+            "Context Manager → LLM"
+          ]
+        },
+        {
+          "caption": "02 / 驗證與執行",
+          "steps": [
+            "Tool Router",
+            "Schema Validation → Policy",
+            "Tool Execution"
+          ]
+        },
+        {
+          "caption": "03 / 觀察回饋",
+          "steps": [
+            "Observation",
+            "State Update",
+            "Agent Orchestrator ↺"
+          ]
+        }
+      ],
+      "legacyKey": "architecture:Design a production agent architecture.",
+      "en": {
+        "title": "Design a production agent architecture.",
+        "answer": "User → API Gateway → Agent Orchestrator → Context Manager → LLM → Tool Router → Schema Validation → Policy / Permission → Tool Execution → Observation → State Update. Supporting components include memory, RAG, observability, audit logs, and evaluation.\n\nSupporting layer: Memory · RAG · Observability · Audit Log · Evaluation\n\nThink one step further: Trace one tool call through the architecture. Where do validation, authorization, and logging happen?",
+        "flows": [
+          {
+            "caption": "01 / Receive & decide",
+            "steps": [
+              "User → API Gateway",
+              "Agent Orchestrator",
+              "Context Manager → LLM"
+            ]
+          },
+          {
+            "caption": "02 / Validate & execute",
+            "steps": [
+              "Tool Router",
+              "Schema Validation → Policy",
+              "Tool Execution"
+            ]
+          },
+          {
+            "caption": "03 / Observation feedback",
+            "steps": [
+              "Observation",
+              "State Update",
+              "Agent Orchestrator ↺"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Coding Agent 本質上是什麼？",
+      "answer": "LLM + Harness + Tools + Context。LLM 負責 decision；Harness 負責 filesystem、terminal、git、test runner 等 execution environment。\n\nLLM：決定下一步\nHarness：提供執行環境\nTools + Context：工具能力與決策資訊\n\n試著再回答：如果換一個模型，哪些部分仍然屬於 Harness？",
+      "topic": 1,
+      "legacyKey": "harness:What is a coding agent at its core?",
+      "en": {
+        "title": "What is a coding agent at its core?",
+        "answer": "LLM + Harness + Tools + Context. The LLM makes decisions; the harness provides an execution environment with filesystem access, terminal, Git, and test runners.\n\nLLM: Decides the next step\nHarness: Provides the execution environment\nTools + Context: Capabilities and information for decisions\n\nThink one step further: If you swap the model, which parts still belong to the harness?"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Harness 在 Agent 裡負責什麼？",
+      "answer": "Tool definition、execution、filesystem access、command execution、context feeding、error handling、permission control、agent loop orchestration。\n\n執行：Tools · Filesystem · Terminal\n控制：Permissions · Error handling\n協調：Context feeding · Agent loop\n\n試著再回答：模型提出動作之後，Harness 需要檢查哪些事情？",
+      "topic": 1,
+      "legacyKey": "harness:What does the harness do in an agent system?",
+      "en": {
+        "title": "What does the harness do in an agent system?",
+        "answer": "Tool definitions and execution, filesystem access, command execution, context feeding, error handling, permission control, and agent-loop orchestration.\n\nExecution: Tools · Filesystem · Terminal\nControl: Permissions · Error handling\nCoordination: Context feeding · Agent loop\n\nThink one step further: What should the harness check after the model proposes an action?"
+      }
+    },
+    {
+      "id": 5,
+      "title": "為什麼不應直接讓 Agent 執行 arbitrary shell command？",
+      "answer": "LLM output 應視為 untrusted input。應使用 capability-based tools，並透過 Policy、Allowlist、Sandbox、Resource Limit 控制執行。\n\n試著再回答：把任意 shell 換成明確能力介面，會如何改變權限控制？",
+      "topic": 1,
+      "flows": [
+        {
+          "caption": "建立執行邊界",
+          "steps": [
+            "Untrusted LLM output",
+            "Capability-based tools",
+            "Policy · Allowlist · Sandbox"
+          ]
+        }
+      ],
+      "legacyKey": "harness:Why should agents not execute arbitrary shell commands directly?",
+      "en": {
+        "title": "Why should agents not execute arbitrary shell commands directly?",
+        "answer": "Treat LLM output as untrusted input. Use capability-based tools and control execution through policies, allowlists, sandboxes, and resource limits.\n\nThink one step further: How does replacing arbitrary shell access with explicit capabilities change permission control?",
+        "flows": [
+          {
+            "caption": "Establish execution boundaries",
+            "steps": [
+              "Untrusted LLM output",
+              "Capability-based tools",
+              "Policy · Allowlist · Sandbox"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Agent 怎麼決定什麼時候呼叫 Tool？",
+      "answer": "根據 User Query + Tool Schema + Current Context 決定直接回答或 tool call；Production 要做 validation 與 authorization。\n\n試著再回答：什麼情況不需要 tool call？需要時，又由誰核准執行？",
+      "topic": 2,
+      "flows": [
+        {
+          "caption": "先決策，再驗證",
+          "steps": [
+            "Query + Schema + Context",
+            "直接回答 / Tool intent",
+            "Validation + Authorization"
+          ]
+        }
+      ],
+      "legacyKey": "tools:How does an agent decide when to call a tool?",
+      "en": {
+        "title": "How does an agent decide when to call a tool?",
+        "answer": "It uses the user query, tool schemas, and current context to choose between a direct answer and a tool call. Production systems must validate and authorize the call.\n\nThink one step further: When is a tool call unnecessary? When it is needed, who authorizes execution?",
+        "flows": [
+          {
+            "caption": "Decide, then validate",
+            "steps": [
+              "Query + Schema + Context",
+              "Direct answer / Tool intent",
+              "Validation + Authorization"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "title": "如果 LLM hallucinate 不存在的 API parameter 怎麼辦？",
+      "answer": "做 JSON Schema / Type / Business Validation，並 reject unknown fields。\n\nSchema：欄位是否符合定義？\nType：資料型別是否正確？\nBusiness：是否符合業務規則？\n\n試著再回答：舉一個型別正確、但業務規則不允許的參數例子。",
+      "topic": 2,
+      "legacyKey": "tools:What if the LLM invents an API parameter?",
+      "en": {
+        "title": "What if the LLM invents an API parameter?",
+        "answer": "Apply JSON Schema, type, and business validation. Reject unknown fields.\n\nSchema: Do the fields match the definition?\nType: Are the data types valid?\nBusiness: Does the request satisfy business rules?\n\nThink one step further: Give an example of a correctly typed parameter that violates a business rule."
+      }
+    },
+    {
+      "id": 8,
+      "title": "System Prompt 寫『不要做危險操作』夠不夠？",
+      "answer": "不夠。Prompt 不是 security boundary；需要 Permission、Policy Engine、Sandbox、Human Confirmation、Audit Log。\n\nSystem Prompt：行為指引\nPermission / Policy：控制能做什麼\nSandbox / Human Confirmation：隔離與核准\nAudit Log：追蹤實際行為\n\n試著再回答：即使模型忽略了 Prompt，哪一層仍然可以擋住危險操作？",
+      "topic": 3,
+      "legacyKey": "security:Is a system prompt saying “do not perform dangerous actions” enough?",
+      "en": {
+        "title": "Is a system prompt saying “do not perform dangerous actions” enough?",
+        "answer": "No. Prompts are not a security boundary. Enforce permissions, a policy engine, sandboxing, human confirmation, and audit logs.\n\nSystem prompt: Behavioral guidance\nPermission / policy: Control permitted actions\nSandbox / human confirmation: Isolation and approval\nAudit log: Track actual behavior\n\nThink one step further: If the model ignores the prompt, which layer can still block a dangerous action?"
+      }
+    },
+    {
+      "id": 9,
+      "title": "Agent Tool Permission 怎麼設計？",
+      "answer": "採 Least Privilege；依 read-only、reversible write、high-risk side effect、financial/irreversible 做不同核准級別。\n\n試著再回答：讀檔、修改設定、刪除資料，各自應使用什麼核准級別？",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "依操作風險分級",
+          "steps": [
+            "Read-only",
+            "Reversible write",
+            "High-risk / Irreversible"
+          ]
+        }
+      ],
+      "legacyKey": "security:How should agent tool permissions be designed?",
+      "en": {
+        "title": "How should agent tool permissions be designed?",
+        "answer": "Apply least privilege. Use different approval levels for read-only operations, reversible writes, high-risk side effects, and financial or irreversible actions.\n\nThink one step further: Which approval levels would you assign to reading files, changing settings, and deleting data?",
+        "flows": [
+          {
+            "caption": "Classify by operation risk",
+            "steps": [
+              "Read-only",
+              "Reversible write",
+              "High-risk / Irreversible"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "title": "如何防止 Agent 執行危險系統指令？",
+      "answer": "Capability API → Policy → Sandbox → Resource Limit → Execution；可搭配 container、read-only filesystem、seccomp、cgroup、network isolation、timeout。\n\n隔離：Container · Read-only FS · Network isolation\n限制：seccomp · cgroup · Timeout\n\n試著再回答：選一個工具，說明它需要的最小權限與資源限制。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "防護流程",
+          "steps": [
+            "Capability API → Policy",
+            "Sandbox → Resource Limit",
+            "Execution"
+          ]
+        }
+      ],
+      "legacyKey": "security:How do you prevent dangerous system commands?",
+      "en": {
+        "title": "How do you prevent dangerous system commands?",
+        "answer": "Capability API → Policy → Sandbox → Resource Limit → Execution. Options include containers, read-only filesystems, seccomp, cgroups, network isolation, and timeouts.\n\nIsolation: Container · Read-only FS · Network isolation\nLimits: seccomp · cgroup · Timeout\n\nThink one step further: Choose a tool and describe its minimum permissions and resource limits.",
+        "flows": [
+          {
+            "caption": "Defense sequence",
+            "steps": [
+              "Capability API → Policy",
+              "Sandbox → Resource Limit",
+              "Execution"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "title": "Agent 對話越來越長怎麼辦？",
+      "answer": "拆 Recent Messages、Running Summary、Task State、Relevant Memory、Retrieved Knowledge；目標是 relevant context，而不是最大 context。\n\n當前資訊：Recent messages · Task state\n濃縮資訊：Running summary\n相關知識：Relevant memory · Retrieved knowledge\n\n試著再回答：如果只能留下少量 context，你會如何決定保留哪些資訊？",
+      "topic": 4,
+      "legacyKey": "context:What happens when an agent conversation gets too long?",
+      "en": {
+        "title": "What happens when an agent conversation gets too long?",
+        "answer": "Separate recent messages, a running summary, task state, relevant memory, and retrieved knowledge. Aim for relevant context rather than the largest context.\n\nCurrent information: Recent messages · Task state\nCompressed information: Running summary\nRelevant knowledge: Relevant memory · Retrieved knowledge\n\nThink one step further: If only a small context budget remains, how would you decide what to keep?"
+      }
+    },
+    {
+      "id": 12,
+      "title": "Sliding Window 有什麼問題？",
+      "answer": "可能截掉早期但重要的 policy、constraint、decision；應分 Persistent 與 Ephemeral Context。\n\nPersistent：保留 Policy、Constraint、Decision\nEphemeral：隨任務更新短期資訊\n\n試著再回答：對話最早出現的限制，如何避免被新的訊息擠掉？",
+      "topic": 4,
+      "legacyKey": "context:What is the problem with a sliding window?",
+      "en": {
+        "title": "What is the problem with a sliding window?",
+        "answer": "It may remove early but important policies, constraints, or decisions. Separate persistent context from ephemeral context.\n\nPersistent: Retain policies, constraints, and decisions\nEphemeral: Refresh short-lived task information\n\nThink one step further: How would you keep an early constraint from being displaced by newer messages?"
+      }
+    },
+    {
+      "id": 13,
+      "title": "Summary Memory 有什麼風險？",
+      "answer": "Information Loss；Natural Language Summary 最好搭配 Structured Memory。\n\nNatural-language summary：保留整體脈絡\nStructured memory：保留需要精確記錄的欄位\n\n試著再回答：哪些資訊適合摘要，哪些資訊需要結構化保存？",
+      "topic": 4,
+      "legacyKey": "context:What is the risk of summary memory?",
+      "en": {
+        "title": "What is the risk of summary memory?",
+        "answer": "Information loss. Pair natural-language summaries with structured memory when precision matters.\n\nNatural-language summary: Retain the overall context\nStructured memory: Retain fields that require precision\n\nThink one step further: Which information belongs in a summary, and which needs structured storage?"
+      }
+    },
+    {
+      "id": 14,
+      "title": "Conversation History、Memory、RAG 有什麼差別？",
+      "answer": "History = what we talked about；Memory = what should be remembered；RAG = what external knowledge is relevant。\n\nHistory：我們聊過什麼？\nMemory：什麼值得記住？\nRAG：哪些外部知識與現在相關？\n\n試著再回答：用同一個使用者問題，分別說明 History、Memory、RAG 的用途。",
+      "topic": 5,
+      "legacyKey": "rag:How do conversation history, memory, and RAG differ?",
+      "en": {
+        "title": "How do conversation history, memory, and RAG differ?",
+        "answer": "History is what we talked about. Memory is what should be remembered. RAG retrieves relevant external knowledge.\n\nHistory: What did we talk about?\nMemory: What should be remembered?\nRAG: What external knowledge is relevant now?\n\nThink one step further: Use one user question to explain the distinct roles of history, memory, and RAG."
+      }
+    },
+    {
+      "id": 15,
+      "title": "Long-term Memory 怎麼設計？",
+      "answer": "Conversation → Memory Extractor → Importance Filter → Memory Store；retrieval 可綜合 similarity、importance、recency。\n\nSimilarity：語意相關程度\nImportance：資訊重要性\nRecency：時間接近程度\n\n試著再回答：如果一段記憶很新但不相關，你會如何處理？",
+      "topic": 5,
+      "flows": [
+        {
+          "caption": "記憶寫入",
+          "steps": [
+            "Conversation",
+            "Extractor → Importance Filter",
+            "Memory Store"
+          ]
+        }
+      ],
+      "legacyKey": "rag:How would you design long-term memory?",
+      "en": {
+        "title": "How would you design long-term memory?",
+        "answer": "Conversation → Memory Extractor → Importance Filter → Memory Store. Retrieval can combine similarity, importance, and recency.\n\nSimilarity: Semantic relevance\nImportance: Value of the information\nRecency: How recent the information is\n\nThink one step further: How would you handle a memory that is recent but irrelevant?",
+        "flows": [
+          {
+            "caption": "Memory write path",
+            "steps": [
+              "Conversation",
+              "Extractor → Importance Filter",
+              "Memory Store"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "title": "Production RAG Pipeline 是什麼？",
+      "answer": "Document → Parsing → Chunking → Embedding → Vector DB；Query → Dense + BM25 → Candidates → Reranker → Top-K → LLM。\n\n試著再回答：回答不準時，你會先檢查檢索結果，還是生成答案？為什麼？",
+      "topic": 5,
+      "flows": [
+        {
+          "caption": "01 / 文件索引",
+          "steps": [
+            "Document → Parsing",
+            "Chunking → Embedding",
+            "Vector DB"
+          ]
+        },
+        {
+          "caption": "02 / 查詢檢索",
+          "steps": [
+            "Query → Dense + BM25",
+            "Candidates → Reranker",
+            "Top-K → LLM"
+          ]
+        }
+      ],
+      "legacyKey": "rag:What does a production RAG pipeline look like?",
+      "en": {
+        "title": "What does a production RAG pipeline look like?",
+        "answer": "Document → Parsing → Chunking → Embedding → Vector DB. Query → Dense + BM25 → Candidates → Reranker → Top-K → LLM.\n\nThink one step further: When an answer is inaccurate, would you inspect retrieval or generation first? Why?",
+        "flows": [
+          {
+            "caption": "01 / Document indexing",
+            "steps": [
+              "Document → Parsing",
+              "Chunking → Embedding",
+              "Vector DB"
+            ]
+          },
+          {
+            "caption": "02 / Query retrieval",
+            "steps": [
+              "Query → Dense + BM25",
+              "Candidates → Reranker",
+              "Top-K → LLM"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "title": "RAG 的 Top-K 越大越好嗎？",
+      "answer": "不是。Top-K 大可能提高 Recall，但 Noise、Token、Latency、Context Dilution 也會上升。\n\n可能的收益：Recall ↑\n同時的成本：Noise · Tokens · Latency ↑\n需要留意：Context dilution\n\n試著再回答：你會用什麼指標判斷 Top-K 的增加是否值得？",
+      "topic": 5,
+      "legacyKey": "rag:Is a larger RAG Top-K always better?",
+      "en": {
+        "title": "Is a larger RAG Top-K always better?",
+        "answer": "No. A larger Top-K may improve recall, but also increases noise, tokens, latency, and context dilution.\n\nPotential benefit: Recall ↑\nAdditional costs: Noise · Tokens · Latency ↑\nWatch for: Context dilution\n\nThink one step further: Which metrics would tell you whether increasing Top-K is worthwhile?"
+      }
+    },
+    {
+      "id": 18,
+      "title": "PDF 裡包含圖片與表格，怎麼做 RAG？",
+      "answer": "Layout Parsing 後拆 Text、Table、Image、Metadata，分別索引，再做 multimodal retrieval + metadata filter + reranker。\n\n試著再回答：如果把表格全部轉成純文字，可能會失去哪些資訊？",
+      "topic": 6,
+      "flows": [
+        {
+          "caption": "保留文件結構",
+          "steps": [
+            "Layout Parsing",
+            "Text · Table · Image · Metadata",
+            "分別索引 → Retrieval → Reranker"
+          ]
+        }
+      ],
+      "legacyKey": "multimodal:How do you build RAG for PDFs with images and tables?",
+      "en": {
+        "title": "How do you build RAG for PDFs with images and tables?",
+        "answer": "Use layout parsing to separate text, tables, images, and metadata. Index them separately, then apply multimodal retrieval, metadata filters, and reranking.\n\nThink one step further: What information might be lost when a table is flattened into plain text?",
+        "flows": [
+          {
+            "caption": "Preserve document structure",
+            "steps": [
+              "Layout parsing",
+              "Text · Table · Image · Metadata",
+              "Separate indexes → Retrieval → Reranker"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "title": "ReAct 是什麼？",
+      "answer": "Reason → Act → Observe → Reason 的 action-observation loop。\n\n試著再回答：工具回傳結果後，下一次推理應該更新哪些狀態？",
+      "topic": 7,
+      "flows": [
+        {
+          "caption": "觀察結果，回到推理",
+          "steps": [
+            "Reason",
+            "Act",
+            "Observe → Reason ↺"
+          ]
+        }
+      ],
+      "legacyKey": "planning:What is ReAct?",
+      "en": {
+        "title": "What is ReAct?",
+        "answer": "Reason → Act → Observe → Reason: an action–observation loop.\n\nThink one step further: After a tool returns a result, which state should inform the next reasoning step?",
+        "flows": [
+          {
+            "caption": "Observe the result, then reason again",
+            "steps": [
+              "Reason",
+              "Act",
+              "Observe → Reason ↺"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "title": "什麼時候需要 Planner Agent？",
+      "answer": "只有 task decomposition 本身有不確定性時；固定流程優先 deterministic workflow/state machine。\n\n流程固定、可預測：Workflow / State machine\n拆解方式不確定：Planner agent\n\n試著再回答：你的專案需要動態規劃，還是固定流程就能完成？",
+      "topic": 7,
+      "legacyKey": "planning:When do you need a planner agent?",
+      "en": {
+        "title": "When do you need a planner agent?",
+        "answer": "When task decomposition itself is uncertain. Prefer a deterministic workflow or state machine for a fixed process.\n\nFixed, predictable process: Workflow / state machine\nUncertain task decomposition: Planner agent\n\nThink one step further: Does your project need dynamic planning, or would a fixed workflow suffice?"
+      }
+    },
+    {
+      "id": 21,
+      "title": "Multi-Agent 一定比 Single-Agent 好嗎？",
+      "answer": "不是；雖可做 domain separation 與 permission isolation，但 token、latency、coordination complexity、failure probability 都會上升。\n\n可能的收益：Domain separation · Permission isolation\n額外成本：Tokens · Latency · Coordination\n可靠性考量：Failure probability\n\n試著再回答：你會用什麼證據說服團隊增加第二個 Agent？",
+      "topic": 7,
+      "legacyKey": "planning:Are multiple agents always better than a single agent?",
+      "en": {
+        "title": "Are multiple agents always better than a single agent?",
+        "answer": "No. Domain separation and permission isolation can help, but token usage, latency, coordination complexity, and the probability of failure also increase.\n\nPotential benefits: Domain separation · Permission isolation\nAdded costs: Tokens · Latency · Coordination\nReliability concern: Failure probability\n\nThink one step further: What evidence would justify introducing a second agent?"
+      }
+    },
+    {
+      "id": 22,
+      "title": "Agent Latency 怎麼拆？",
+      "answer": "Total Latency = LLM + Retrieval + Tool + Network + Queue + Agent Steps。\n\n推論與知識：LLM · Retrieval\n外部與等待：Tool · Network · Queue\n流程長度：Agent steps\n\n試著再回答：如果總延遲很高，你會如何定位最值得優化的部分？",
+      "topic": 8,
+      "legacyKey": "performance:How do you break down agent latency?",
+      "en": {
+        "title": "How do you break down agent latency?",
+        "answer": "Total latency = LLM + Retrieval + Tool + Network + Queue + Agent Steps.\n\nInference & knowledge: LLM · Retrieval\nExternal work & waiting: Tool · Network · Queue\nWorkflow length: Agent steps\n\nThink one step further: If total latency is high, how would you identify the best optimization target?"
+      }
+    },
+    {
+      "id": 23,
+      "title": "三個互相獨立的 API 怎麼降低 latency？",
+      "answer": "平行執行；500/800/600ms sequential 約1900ms，parallel 約800ms。\n\n依序執行：1,900 ms（500 + 800 + 600）\n平行執行：≈ 800 ms\n\n試著再回答：這個估算假設 API 互相獨立。若 B 需要 A 的結果，還能全部平行嗎？",
+      "topic": 8,
+      "legacyKey": "performance:How do you reduce latency for three independent APIs?",
+      "en": {
+        "title": "How do you reduce latency for three independent APIs?",
+        "answer": "Run them in parallel. Calls taking 500 / 800 / 600 ms take about 1,900 ms sequentially, or about 800 ms in parallel.\n\nSequential: 1,900 ms (500 + 800 + 600)\nParallel: ≈ 800 ms\n\nThink one step further: This estimate assumes independent APIs. Can all calls run in parallel if B depends on A?"
+      }
+    },
+    {
+      "id": 24,
+      "title": "Tool API timeout 怎麼處理？",
+      "answer": "Timeout → Retry Policy → Exponential Backoff → Circuit Breaker → Fallback / Partial Result。\n\n試著再回答：如果工具持續失敗，何時停止重試、何時回傳部分結果？",
+      "topic": 9,
+      "flows": [
+        {
+          "caption": "有界重試與降級",
+          "steps": [
+            "Timeout → Retry Policy",
+            "Backoff → Circuit Breaker",
+            "Fallback / Partial Result"
+          ]
+        }
+      ],
+      "legacyKey": "reliability:How should a tool API timeout be handled?",
+      "en": {
+        "title": "How should a tool API timeout be handled?",
+        "answer": "Timeout → Retry Policy → Exponential Backoff → Circuit Breaker → Fallback / Partial Result.\n\nThink one step further: If a tool keeps failing, when should you stop retrying or return a partial result?",
+        "flows": [
+          {
+            "caption": "Bounded retries and graceful fallback",
+            "steps": [
+              "Timeout → Retry Policy",
+              "Backoff → Circuit Breaker",
+              "Fallback / Partial Result"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "title": "Agent 要監控哪些 Metrics？",
+      "answer": "P50/P95/P99、TTFT、ITL、Tokens、Cost/request、LLM calls、Tool calls、Average Steps、Success Rate、Tool Failure Rate、Recall@K、MRR、NDCG、Policy Violation Rate。\n\n速度：P50 / P95 / P99 · TTFT · ITL\n用量與成本：Tokens · Cost/request · Calls · Steps\n成功與安全：Success / Failure rate · Policy violations\n檢索品質：Recall@K · MRR · NDCG\n\n試著再回答：如果只能先做一個 dashboard，你最想看到哪三個指標？",
+      "topic": 10,
+      "legacyKey": "evaluation:Which metrics should you monitor for an agent?",
+      "en": {
+        "title": "Which metrics should you monitor for an agent?",
+        "answer": "P50 / P95 / P99, TTFT, ITL, tokens, cost per request, LLM calls, tool calls, average steps, success rate, tool failure rate, Recall@K, MRR, NDCG, and policy violation rate.\n\nSpeed: P50 / P95 / P99 · TTFT · ITL\nUsage & cost: Tokens · Cost/request · Calls · Steps\nSuccess & safety: Success / failure rate · Policy violations\nRetrieval quality: Recall@K · MRR · NDCG\n\nThink one step further: If you could build only one dashboard first, which three metrics would you include?"
+      }
+    },
+    {
+      "id": 26,
+      "title": "怎麼評估一個 Agent 好不好？",
+      "answer": "Task Success、Tool Selection、Parameter Accuracy、Retrieval Accuracy、Average Steps、Latency、Cost、Safety Violation Rate。\n\n結果品質：Task success · Retrieval accuracy\n執行品質：Tool selection · Parameter accuracy\n效率與安全：Steps · Latency · Cost · Safety\n\n試著再回答：一個答案正確但成本很高的 Agent，你會如何評估？",
+      "topic": 10,
+      "legacyKey": "evaluation:How do you evaluate an agent?",
+      "en": {
+        "title": "How do you evaluate an agent?",
+        "answer": "Task success, tool selection, parameter accuracy, retrieval accuracy, average steps, latency, cost, and safety violation rate.\n\nOutcome quality: Task success · Retrieval accuracy\nExecution quality: Tool selection · Parameter accuracy\nEfficiency & safety: Steps · Latency · Cost · Safety\n\nThink one step further: How would you evaluate an agent that answers correctly but at high cost?"
+      }
+    },
+    {
+      "id": 27,
+      "title": "設計 Enterprise Meeting Copilot，可以即時產生 Summary、TODO、Decision，並記住歷史會議。",
+      "answer": "Audio → ASR → Transcript → Event Bus → Meeting Processor → Context Manager → LLM → Summary/TODO/Decision → Structured Store → Vector DB/Project Memory。\n\n試著再回答：即時產出的 TODO，和歷史會議的長期記憶，應如何分別保存？",
+      "topic": 11,
+      "flows": [
+        {
+          "caption": "01 / 會議輸入",
+          "steps": [
+            "Audio → ASR",
+            "Transcript → Event Bus",
+            "Meeting Processor"
+          ]
+        },
+        {
+          "caption": "02 / 理解與產出",
+          "steps": [
+            "Context Manager",
+            "LLM",
+            "Summary · TODO · Decision"
+          ]
+        },
+        {
+          "caption": "03 / 儲存與記憶",
+          "steps": [
+            "Structured Store",
+            "Vector DB",
+            "Project Memory"
+          ]
+        }
+      ],
+      "legacyKey": "system-design:Design an enterprise meeting copilot that produces live summaries, TODOs, and decisions, and remembers past meetings.",
+      "en": {
+        "title": "Design an enterprise meeting copilot that produces live summaries, TODOs, and decisions, and remembers past meetings.",
+        "answer": "Audio → ASR → Transcript → Event Bus → Meeting Processor → Context Manager → LLM → Summary / TODO / Decision → Structured Store → Vector DB / Project Memory.\n\nThink one step further: How would you store live TODOs separately from long-term meeting memory?",
+        "flows": [
+          {
+            "caption": "01 / Meeting input",
+            "steps": [
+              "Audio → ASR",
+              "Transcript → Event Bus",
+              "Meeting Processor"
+            ]
+          },
+          {
+            "caption": "02 / Understanding & output",
+            "steps": [
+              "Context Manager",
+              "LLM",
+              "Summary · TODO · Decision"
+            ]
+          },
+          {
+            "caption": "03 / Storage & memory",
+            "steps": [
+              "Structured Store",
+              "Vector DB",
+              "Project Memory"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quiz": [
+    {
+      "id": 4,
+      "prompt": "Coding Agent 的 Harness 是？",
+      "options": [
+        "System Prompt",
+        "模型外圍負責 tool、filesystem、terminal、permission、loop 的執行層",
+        "Vector DB",
+        "GPU Kernel"
+      ],
+      "correct": 1,
+      "explain": "模型做 decision，Harness 管 execution。",
+      "en": {
+        "prompt": "What is a coding agent harness?",
+        "options": [
+          "The system prompt",
+          "The execution layer around the model that manages tools, filesystem, terminal, permissions, and the loop",
+          "A vector database",
+          "A GPU kernel"
+        ],
+        "explain": "The model makes decisions; the harness manages execution."
+      }
+    },
+    {
+      "id": 5,
+      "prompt": "為什麼不建議 execute_shell(anything)？",
+      "options": [
+        "shell 太慢",
+        "攻擊面大，應用 capability-based tools",
+        "shell 不支援 JSON",
+        "Agent 不能產文字"
+      ],
+      "correct": 1,
+      "explain": "明確能力介面更容易做 permission、audit、sandbox。",
+      "en": {
+        "prompt": "Why avoid execute_shell(anything)?",
+        "options": [
+          "The shell is too slow",
+          "It creates a large attack surface; prefer capability-based tools",
+          "The shell does not support JSON",
+          "Agents cannot generate text"
+        ],
+        "explain": "Explicit capability interfaces make permissions, auditing, and sandboxing easier."
+      }
+    },
+    {
+      "id": 7,
+      "prompt": "LLM 產生 tool call 後，Production 系統最合理的下一步是？",
+      "options": [
+        "直接呼叫 API",
+        "先做 schema validation 與 authorization",
+        "存進 Vector DB",
+        "重新訓練模型"
+      ],
+      "correct": 1,
+      "explain": "LLM output 要視為 untrusted input。",
+      "en": {
+        "prompt": "After an LLM generates a tool call, what should a production system do next?",
+        "options": [
+          "Call the API immediately",
+          "Validate the schema and authorize the call",
+          "Store it in a vector database",
+          "Retrain the model"
+        ],
+        "explain": "Treat LLM output as untrusted input."
+      }
+    },
+    {
+      "id": 8,
+      "prompt": "Production Agent 中，哪一層最適合作為真正的安全邊界？",
+      "options": [
+        "System Prompt",
+        "Policy / Permission Layer",
+        "LLM Temperature",
+        "Conversation Summary"
+      ],
+      "correct": 1,
+      "explain": "Prompt 不是 security boundary。真正的安全限制要落在 Policy、Permission、Sandbox 與執行層。",
+      "en": {
+        "prompt": "In a production agent, which layer is the best security boundary?",
+        "options": [
+          "System prompt",
+          "Policy / permission layer",
+          "LLM temperature",
+          "Conversation summary"
+        ],
+        "explain": "Prompts are not a security boundary. Enforce restrictions in policies, permissions, sandboxes, and the execution layer."
+      }
+    },
+    {
+      "id": 11,
+      "prompt": "哪一項最符合 Context Engineering 的核心？",
+      "options": [
+        "永遠放全部歷史",
+        "只保留最新一輪",
+        "讓模型看到當下最相關資訊",
+        "Context 越長越準"
+      ],
+      "correct": 2,
+      "explain": "目標是 relevance，不是單純最大化 context。",
+      "en": {
+        "prompt": "Which best describes the goal of context engineering?",
+        "options": [
+          "Always include the full history",
+          "Keep only the latest turn",
+          "Provide the most relevant information for the current task",
+          "Longer context is always more accurate"
+        ],
+        "explain": "The goal is relevance, rather than simply maximizing context."
+      }
+    },
+    {
+      "id": 12,
+      "prompt": "Sliding Window 最大的風險是？",
+      "options": [
+        "GPU 溫度上升",
+        "遺失早期重要 constraint",
+        "不能做 embedding",
+        "不能用 tool"
+      ],
+      "correct": 1,
+      "explain": "FIFO truncate 可能把重要 policy 或 decision 刪掉。",
+      "en": {
+        "prompt": "What is the greatest risk of a sliding window?",
+        "options": [
+          "Higher GPU temperature",
+          "Losing important early constraints",
+          "Inability to create embeddings",
+          "Inability to use tools"
+        ],
+        "explain": "FIFO truncation can remove important policies or decisions."
+      }
+    },
+    {
+      "id": 13,
+      "prompt": "Summary Memory 最主要的風險是？",
+      "options": [
+        "Bandwidth",
+        "Information Loss",
+        "無法做 JSON",
+        "必須用 GPU"
+      ],
+      "correct": 1,
+      "explain": "精確欄位容易在摘要時遺失。",
+      "en": {
+        "prompt": "What is the main risk of summary memory?",
+        "options": [
+          "Bandwidth",
+          "Information loss",
+          "JSON cannot be used",
+          "A GPU is required"
+        ],
+        "explain": "Precise fields can be lost when summarizing."
+      }
+    },
+    {
+      "id": 14,
+      "prompt": "History、Memory、RAG 的正確對應是？",
+      "options": [
+        "外部知識/最近對話/模型參數",
+        "最近對話/應記住資訊/外部相關知識",
+        "三者一樣",
+        "RAG 只用於圖片"
+      ],
+      "correct": 1,
+      "explain": "這三者用途不同。",
+      "en": {
+        "prompt": "Which correctly maps history, memory, and RAG?",
+        "options": [
+          "External knowledge / recent conversation / model parameters",
+          "Recent conversation / information to remember / relevant external knowledge",
+          "All three are the same",
+          "RAG is only for images"
+        ],
+        "explain": "Each serves a different purpose: past conversations, retained information, and external knowledge."
+      }
+    },
+    {
+      "id": 17,
+      "prompt": "RAG 的 Top-K 越大通常會帶來什麼？",
+      "options": [
+        "一定更準",
+        "Noise、Token、Latency 可能上升",
+        "沒影響",
+        "只會降低 Recall"
+      ],
+      "correct": 1,
+      "explain": "Recall 可能提高，但同時有 context dilution。",
+      "en": {
+        "prompt": "What can increasing RAG Top-K cause?",
+        "options": [
+          "Guaranteed higher accuracy",
+          "More noise, tokens, and latency",
+          "No effect",
+          "Only lower recall"
+        ],
+        "explain": "Recall may improve, but context dilution can also increase."
+      }
+    },
+    {
+      "id": 18,
+      "prompt": "Multimodal RAG 對 PDF 的較佳做法是？",
+      "options": [
+        "全部 OCR 成文字",
+        "Layout Parsing 後分別處理 text/table/image/metadata",
+        "把 PDF 當一張圖",
+        "只保留 caption"
+      ],
+      "correct": 1,
+      "explain": "不同模態應保留各自結構。",
+      "en": {
+        "prompt": "What is a good approach to multimodal RAG for PDFs?",
+        "options": [
+          "OCR everything into plain text",
+          "Parse the layout and handle text, tables, images, and metadata separately",
+          "Treat the PDF as a single image",
+          "Keep only captions"
+        ],
+        "explain": "Preserve the structure of each modality."
+      }
+    },
+    {
+      "id": 20,
+      "prompt": "固定且可預測的流程，通常優先使用？",
+      "options": [
+        "Multi-Agent Debate",
+        "Deterministic Workflow / State Machine",
+        "無限 ReAct",
+        "Planner Agent"
+      ],
+      "correct": 1,
+      "explain": "可預測流程沒必要付出 Planner 額外成本。",
+      "en": {
+        "prompt": "For a fixed, predictable process, what should you usually prefer?",
+        "options": [
+          "Multi-agent debate",
+          "A deterministic workflow or state machine",
+          "An infinite ReAct loop",
+          "A planner agent"
+        ],
+        "explain": "Predictable processes rarely justify the extra cost of a planner."
+      }
+    },
+    {
+      "id": 21,
+      "prompt": "每個 sequential step 成功率 95%，10 步都成功約多少？",
+      "options": [
+        "95%",
+        "90%",
+        "60%",
+        "10%"
+      ],
+      "correct": 2,
+      "explain": "0.95^10 ≈ 59.9%。",
+      "en": {
+        "prompt": "If each sequential step succeeds 95% of the time, what is the approximate probability that all 10 succeed?",
+        "options": [
+          "95%",
+          "90%",
+          "60%",
+          "10%"
+        ],
+        "explain": "Assuming independent steps, 0.95^10 ≈ 59.9%."
+      }
+    },
+    {
+      "id": 23,
+      "prompt": "三個獨立 API 為 500/800/600ms，平行執行理論 latency 約？",
+      "options": [
+        "1900ms",
+        "800ms",
+        "600ms",
+        "500ms"
+      ],
+      "correct": 1,
+      "explain": "平行執行主要由最慢的一個決定。",
+      "en": {
+        "prompt": "Three independent APIs take 500 / 800 / 600 ms. What is their theoretical parallel latency?",
+        "options": [
+          "1,900 ms",
+          "800 ms",
+          "600 ms",
+          "500 ms"
+        ],
+        "explain": "Parallel execution is mainly limited by the slowest call."
+      }
+    },
+    {
+      "id": 24,
+      "prompt": "Tool API timeout 最合理的策略是？",
+      "options": [
+        "無限 retry",
+        "Exponential Backoff + Circuit Breaker + Fallback",
+        "完全不 retry",
+        "重新訓練 LLM"
+      ],
+      "correct": 1,
+      "explain": "重試要有限制並避免故障擴散。",
+      "en": {
+        "prompt": "What is a sensible strategy for a tool API timeout?",
+        "options": [
+          "Retry forever",
+          "Exponential backoff + circuit breaker + fallback",
+          "Never retry",
+          "Retrain the LLM"
+        ],
+        "explain": "Bound retries to avoid cascading failures."
+      }
+    },
+    {
+      "id": 26,
+      "prompt": "為什麼 Agent Evaluation 不能只看 final answer？",
+      "options": [
+        "還要看 tool selection、parameters、latency、cost、safety",
+        "final answer 不重要",
+        "只能看 token",
+        "只能人工測"
+      ],
+      "correct": 0,
+      "explain": "Production evaluation 要拆 end-to-end 與各子能力指標。",
+      "en": {
+        "prompt": "Why should agent evaluation go beyond the final answer?",
+        "options": [
+          "It must also assess tool selection, parameters, latency, cost, and safety",
+          "The final answer does not matter",
+          "Only tokens matter",
+          "Only manual testing is possible"
+        ],
+        "explain": "Production evaluation covers both end-to-end outcomes and individual capabilities."
+      }
+    }
+  ]
+}
+</script>
+<script src="../shared/progress-records.js"></script>
+<script src="../shared/study.js"></script>
+<script type="module">
+  import { startCloudSync } from "../shared/cloud-sync.js";
+  startCloudSync({ progress: studyProgress, field: "agentRecords", legacyField: "agentKnowledge", legacyTimeField: "agentKnowledgeUpdatedAt" });
+</script>
+</body>
 </html>

@@ -1,65 +1,143 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f5ef">
-  <meta name="description" content="AI 面試複習：Agent、GenAI、VLA 三個雙語知識庫。">
-  <title>AI Knowledge Review</title>
-  <link rel="icon" href="agent/assets/favicon.svg" type="image/svg+xml">
-  <style>
-    :root { --paper: #f6f5ef; --ink: #263d30; --muted: #647065; --line: #d9ddd2; --accent: #c34b23; --white: #fcfcf8; }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font-family: system-ui, "Noto Sans TC", sans-serif; }
-    main { max-width: 1040px; margin: auto; padding: 72px 24px 48px; }
-    .eyebrow { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--muted); }
-    h1 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -1px; line-height: 1.3; margin: 14px 0 12px; }
-    h1 em { font-style: normal; color: var(--accent); }
-    .lead { color: var(--muted); line-height: 1.8; max-width: 560px; margin: 0 0 44px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .card { display: flex; flex-direction: column; padding: 26px; background: var(--white); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: inherit; transition: border-color .18s, transform .18s; }
-    .card:hover { border-color: #8b9e84; transform: translateY(-2px); }
-    .card:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-    .card .num { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 1.5px; color: var(--muted); }
-    .card .num span:last-child { color: var(--accent); font-size: 20px; }
-    .card h2 { font-size: 22px; margin: 22px 0 4px; }
-    .card small { color: var(--muted); font-size: 12px; }
-    .card p { flex: 1; color: var(--muted); font-size: 14px; line-height: 1.8; margin: 14px 0 20px; }
-    .card .meta { border-top: 1px solid var(--line); padding-top: 14px; font-size: 12px; color: var(--muted); }
-    footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    footer a { color: var(--ink); }
-    @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f5ef">
+<meta name="description" content="AI 面試複習：Agent、GenAI、VLA 三個雙語知識庫。Bilingual AI interview field guides for agents, GenAI, and VLA.">
+<title>AI Knowledge Review</title>
+<link rel="icon" href="agent/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="shared/study.css">
+<style>
+  .hub-hero{padding:64px 0 40px;max-width:640px}
+  .hub-hero h1{font-family:Georgia,"Noto Serif TC","Songti TC",serif;font-size:clamp(32px,4vw,50px);font-weight:500;letter-spacing:-1.5px;margin-bottom:18px}
+  .hub-hero p{font-size:14px;color:var(--muted);line-height:1.9;max-width:520px}
+  .shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .topic{display:flex;flex-direction:column;padding:16px 16px 22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:inherit;text-decoration:none;transition:border-color .2s}
+  .topic:hover{border-color:#9fb393}
+  .topic:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  .topic.recent{border-color:var(--green);box-shadow:0 3px 0 var(--green)}
+  .topic-art{display:grid;place-items:center;aspect-ratio:4/3;margin-bottom:20px;border-radius:8px;background:var(--paper) radial-gradient(#c3ccbd .7px,transparent .7px) 0 0/15px 15px}
+  .topic-art img{width:84%;height:84%;object-fit:contain}
+  .topic h2{font-family:Georgia,"Noto Serif TC",serif;font-size:22px;font-weight:500;letter-spacing:-.4px;padding:0 4px}
+  .topic small{display:block;color:var(--muted);font-size:11px;margin:2px 0 12px;padding:0 4px}
+  .topic>p{flex:1;font-size:13px;color:var(--muted);line-height:1.8;padding:0 4px}
+  .topic-progress{margin:20px 4px 0;padding-top:16px;border-top:1px solid var(--line)}
+  .topic-status{font-size:12px;margin-top:9px}
+  .topic-count{font-size:11px;color:var(--muted)}
+  .topic .btn{margin:18px 4px 0;align-self:flex-start;pointer-events:none}
+  .recent-tag{align-self:flex-start;margin:0 4px 8px;font-size:11px;font-weight:600;padding:2px 10px;border-radius:20px;background:var(--green);color:white}
+  @media(max-width:900px){.shelf{grid-template-columns:1fr;max-width:520px}}
+  @media(max-width:440px){.hub-hero{padding:36px 0 28px}}
+  @media(prefers-reduced-motion:reduce){.topic{transition:none}}
+</style>
 </head>
 <body>
+<div class="shell">
+<header class="top">
+  <a class="brand" href="./"><span class="brand-symbol"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 4h9l5 5v11H5zM14 4v5h5M8 13h8M8 16h5"/></svg></span><span><strong>AI Knowledge Review<span style="color:var(--orange)">.</span></strong><small>INTERVIEW FIELD GUIDES</small></span></a>
+  <div class="language" role="group" aria-label="Language / 語言"><button data-lang="zh" lang="zh-Hant" aria-pressed="true">中文</button><button data-lang="en" lang="en" aria-pressed="false">EN</button></div>
+</header>
 <main>
-  <div class="eyebrow">AI INTERVIEW REVIEW</div>
-  <h1>今天要複習<em>哪一個</em>？</h1>
-  <p class="lead">三個雙語（中文 / English）面試知識庫：讀觀念、做測驗、回顧錯題。登入 Google 後，各主題的進度會分別跨裝置同步。</p>
-  <div class="grid">
-    <a class="card" href="agent/">
-      <span class="num"><span>01 / AGENT</span><span aria-hidden="true">↗</span></span>
-      <h2>Agent Knowledge Lab</h2>
-      <small>AI Agent / GenAI Engineer</small>
-      <p>Agent 架構、Tool Calling、Context Engineering、Memory &amp; RAG、多代理、安全、評估與系統設計。</p>
-      <span class="meta">12 個主題 · 問答學習 · 選擇題測驗</span>
+  <section class="hub-hero">
+    <h1 data-i18n="title">今天要複習哪一個主題？</h1>
+    <p data-i18n="intro">三個中英雙語的 AI 面試知識庫：讀筆記、做測驗、回頭練錯題。進度存在這個瀏覽器；在主題頁登入 Google，就能跨裝置同步。</p>
+  </section>
+  <div class="shelf">
+    <!-- data-notes / data-quiz match each topic's script#seed (checked by tests/study.test.cjs). -->
+    <a class="topic" href="agent/" data-records="agent-learning-records" data-notes="27" data-quiz="15">
+      <span class="topic-art"><img src="agent/art.svg" width="480" height="400" alt=""></span>
+      <h2>Agent Knowledge Lab</h2><small>AI Agent / GenAI Engineer</small>
+      <p data-i18n="agent">Agent 架構、Tool Calling、Context Engineering、Memory 與 RAG、多代理、安全、評估與系統設計。</p>
+      <div class="topic-progress"><span class="topic-count"></span><div class="progress"><div class="bar"></div></div><p class="topic-status"></p></div>
+      <span class="btn primary"></span>
     </a>
-    <a class="card" href="genai/">
-      <span class="num"><span>02 / GENAI</span><span aria-hidden="true">↗</span></span>
-      <h2>GenAI Knowledge</h2>
-      <small>Generative AI systems</small>
-      <p>模型架構、微調與對齊、RAG 與 Agent、推論與部署，搭配情境式說明與圖解。</p>
-      <span class="meta">97 則筆記 · 34 題測驗 · 錯題複習</span>
+    <a class="topic" href="genai/" data-records="genai-learning-v1-records" data-notes="97" data-quiz="34">
+      <span class="topic-art"><img src="genai/art.svg" width="490" height="355" alt=""></span>
+      <h2>GenAI Knowledge</h2><small>Generative AI systems</small>
+      <p data-i18n="genai">模型架構、微調與對齊、RAG 與 Agent、推論與部署，搭配情境式說明與圖解。</p>
+      <div class="topic-progress"><span class="topic-count"></span><div class="progress"><div class="bar"></div></div><p class="topic-status"></p></div>
+      <span class="btn primary"></span>
     </a>
-    <a class="card" href="vla/">
-      <span class="num"><span>03 / VLA</span><span aria-hidden="true">↗</span></span>
-      <h2>VLA Knowledge Lab</h2>
-      <small>Vision-Language-Action · Physical AI</small>
-      <p>VLA 基礎、模型架構（OpenVLA、π0、GR00T、Gemini Robotics）、訓練資料、邊緣部署與系統設計。</p>
-      <span class="meta">30 題 · 5 個章節 · 錯題複習</span>
+    <a class="topic" href="vla/" data-records="vla-knowledge-lab-v1-records" data-notes="30" data-quiz="30">
+      <span class="topic-art"><img src="vla/art.svg" width="640" height="520" alt=""></span>
+      <h2>VLA Knowledge Lab</h2><small>Vision-Language-Action · Physical AI</small>
+      <p data-i18n="vla">VLA 基礎、模型架構（OpenVLA、π0、GR00T、Gemini Robotics）、訓練資料、邊緣部署與系統設計。</p>
+      <div class="topic-progress"><span class="topic-count"></span><div class="progress"><div class="bar"></div></div><p class="topic-status"></p></div>
+      <span class="btn primary"></span>
     </a>
   </div>
-  <footer><span>AI Knowledge Review</span><a href="https://github.com/greamown/ai-knowledge-review">GitHub</a></footer>
 </main>
+<footer class="foot"><span>Stay curious. Keep building.</span><span data-i18n="footer">AI Knowledge Review · 開源雙語學習手冊</span><a href="https://github.com/greamown/ai-knowledge-review" target="_blank" rel="noopener">GitHub ↗</a></footer>
+</div>
+<script src="shared/progress-records.js"></script>
+<script>
+"use strict";
+const COPY = {
+  zh: {
+    title: "今天要複習哪一個主題？",
+    intro: "三個中英雙語的 AI 面試知識庫：讀筆記、做測驗、回頭練錯題。進度存在這個瀏覽器；在主題頁登入 Google，就能跨裝置同步。",
+    agent: "Agent 架構、Tool Calling、Context Engineering、Memory 與 RAG、多代理、安全、評估與系統設計。",
+    genai: "模型架構、微調與對齊、RAG 與 Agent、推論與部署，搭配情境式說明與圖解。",
+    vla: "VLA 基礎、模型架構（OpenVLA、π0、GR00T、Gemini Robotics）、訓練資料、邊緣部署與系統設計。",
+    footer: "AI Knowledge Review · 開源雙語學習手冊",
+    count: (n, q) => `${n} 則筆記，${q} 題測驗`,
+    status: (r, n, w) => `已理解 ${r} / ${n}` + (w ? `，${w} 題待複習` : ""),
+    start: "開始學習", resume: "繼續學習", recent: "上次學到這裡"
+  },
+  en: {
+    title: "Which topic will you review today?",
+    intro: "Three bilingual AI interview field guides. Read the notes, take a quiz, and practice what you missed. Progress stays in this browser; sign in with Google on any topic page to sync across devices.",
+    agent: "Agent architecture, tool calling, context engineering, memory and RAG, multi-agent systems, security, evaluation, and system design.",
+    genai: "Model architecture, fine-tuning and alignment, RAG and agents, inference and deployment, explained through scenarios and diagrams.",
+    vla: "VLA foundations, model architectures (OpenVLA, π0, GR00T, Gemini Robotics), training data, edge deployment, and system design.",
+    footer: "AI Knowledge Review · An open-source bilingual field guide",
+    count: (n, q) => `${n} notes, ${q} quiz questions`,
+    status: (r, n, w) => `${r} of ${n} understood` + (w ? `, ${w} to review` : ""),
+    start: "Start learning", resume: "Continue learning", recent: "Where you left off"
+  }
+};
+const LANG_KEY = "ai-knowledge-review-lang";
+let lang = "zh";
+try { if (localStorage.getItem(LANG_KEY) === "en") lang = "en"; } catch {}
+// Reads the same per-item records the topic pages save: notes count when read (Agent's older records say state "understood").
+// ponytail: a topic last used before records existed shows 0 here until it is opened and saved once.
+function progress(key) {
+  let records = {};
+  try { records = ProgressRecords.clean(JSON.parse(localStorage.getItem(key))); } catch {}
+  const live = Object.entries(ProgressRecords.live(records));
+  return {
+    read: live.filter(([k, r]) => !k.startsWith("quiz:") && (r.read === true || r.state === "understood")).length,
+    wrong: live.filter(([k, r]) => k.startsWith("quiz:") && r.wrong).length,
+    latest: ProgressRecords.latest(records)
+  };
+}
+function render() {
+  const t = COPY[lang];
+  document.documentElement.lang = lang === "en" ? "en" : "zh-Hant";
+  document.querySelectorAll("[data-i18n]").forEach(node => node.textContent = t[node.dataset.i18n]);
+  document.querySelectorAll("[data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  const cards = [...document.querySelectorAll(".topic")].map(card => ({card, ...progress(card.dataset.records)}));
+  const recent = cards.reduce((best, c) => c.latest > (best?.latest || 0) ? c : best, null);
+  for (const {card, read, wrong, latest} of cards) {
+    const notes = Number(card.dataset.notes);
+    card.querySelector(".topic-count").textContent = t.count(notes, card.dataset.quiz);
+    card.querySelector(".bar").style.width = Math.min(read / notes, 1) * 100 + "%";
+    card.querySelector(".topic-status").textContent = t.status(Math.min(read, notes), notes, wrong);
+    card.querySelector(".btn").textContent = latest ? t.resume : t.start;
+    card.classList.toggle("recent", card === recent?.card);
+    card.querySelector(".recent-tag")?.remove();
+    if (card === recent?.card) { const tag = document.createElement("span"); tag.className = "recent-tag"; tag.textContent = t.recent; card.querySelector("h2").before(tag); }
+  }
+}
+document.querySelectorAll("[data-lang]").forEach(b => b.addEventListener("click", () => {
+  lang = b.dataset.lang;
+  try { localStorage.setItem(LANG_KEY, lang); } catch {}
+  render();
+}));
+// Returning from a topic with the back button can restore this page from cache; refresh its progress.
+addEventListener("pageshow", render);
+render();
+</script>
 </body>
 </html>
