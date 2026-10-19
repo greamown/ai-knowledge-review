@@ -4,10 +4,10 @@ const vm = require('node:vm');
 const html = fs.readFileSync(require('node:path').join(__dirname, '../index.html'), 'utf8');
 const seed = html.match(/<script id="seed" type="application\/json">([\s\S]*?)<\/script>/)[1];
 const data = JSON.parse(seed);
-assert.equal(data.questions.length, 97);
-assert.equal(data.quiz.length, 34);
-assert.equal(new Set(data.questions.map(q => q.id)).size, 97);
-assert.equal(new Set(data.quiz.map(q => q.id)).size, 34);
+assert.equal(data.questions.length, 106);
+assert.equal(data.quiz.length, 48);
+assert.equal(new Set(data.questions.map(q => q.id)).size, 106);
+assert.equal(new Set(data.quiz.map(q => q.id)).size, 48);
 for (const q of data.questions) {
   assert.ok(Number.isInteger(q.id) && q.topic >= 0 && q.topic <= 3);
   for (const fields of [q, q.en]) for (const key of ['title', 'answer']) assert.ok(fields[key]?.trim(), `Q${q.id}: missing ${key}`);

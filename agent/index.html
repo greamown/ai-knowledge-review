@@ -857,6 +857,96 @@
           }
         ]
       }
+    },
+    {
+      "id": 28,
+      "title": "Production Agent 要保留歷史操作，又不能跨 Tenant 洩漏，Memory 怎麼設計？",
+      "answer": "分層存放：Session Memory、Long-term Memory、Knowledge Base 分開管理；每筆記憶帶 tenant_id、TTL 與 Provenance（來源、時間、寫入者）。隔離放在檢索層：Tenant-aware Retrieval 加上每次讀取的 RBAC／ABAC 授權檢查，不靠 Prompt 提醒模型。\n\n分層：Session · Long-term Memory · Knowledge Base\n隔離：Tenant filter · 每次讀取授權 · Isolation test\n降級：Vector DB 故障 → Session + 結構化資料，並告知使用者\n指標：Retrieval P99 · Recall@K · Isolation test pass rate\n\n試著再回答：Vector DB 成為單點故障時，Agent 如何降級，仍不違反 tenant 隔離？",
+      "topic": 5,
+      "flows": [
+        {
+          "caption": "記憶讀取路徑",
+          "steps": [
+            "Request + tenant_id",
+            "授權檢查 → Tenant-aware Retrieval",
+            "Memory · Knowledge Base"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Production agent memory: keeping history without leaking across tenants",
+        "answer": "Store in layers: manage session memory, long-term memory, and the knowledge base separately, and tag every memory with tenant_id, a TTL, and provenance (source, time, writer). Enforce isolation in the retrieval layer: tenant-aware retrieval plus an RBAC/ABAC authorization check on every read, not a reminder in the prompt.\n\nLayers: Session · Long-term memory · Knowledge base\nIsolation: Tenant filter · Authorize every read · Isolation tests\nDegradation: Vector DB down → session + structured data, and tell the user\nMetrics: Retrieval P99 · Recall@K · Isolation test pass rate\n\nThink one step further: If the vector DB becomes a single point of failure, how should the agent degrade without breaking tenant isolation?",
+        "flows": [
+          {
+            "caption": "Memory read path",
+            "steps": [
+              "Request + tenant_id",
+              "Authorization → Tenant-aware retrieval",
+              "Memory · Knowledge base"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "title": "Agent 能執行 Docker／Shell，外部文件可能含 Prompt Injection，怎麼保護？",
+      "answer": "把檢索到的文件與工具輸出都視為 untrusted input，它們只能當資料，不能改變 Agent 的權限。每次 tool call 都經過 Schema Validation 與 Policy，再進 Sandbox 執行；高風險操作需要 Human Approval，全程留 Audit Log。\n\n驗證：Tool Schema · Command Allowlist\n隔離：Sandbox · Least Privilege · Filesystem / Network 限制\n管控：Human Approval · Audit Log\n指標：Injection attack success rate · Unauthorized execution rate\n\n試著再回答：合法任務需要動態組 Shell Command 時，如何兼顧安全與可用性？",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "Tool call 防護",
+          "steps": [
+            "Untrusted document / tool output",
+            "Schema Validation → Policy / Allowlist",
+            "Sandbox → Human Approval → Audit"
+          ]
+        }
+      ],
+      "en": {
+        "title": "An agent runs Docker and shell commands while external documents may carry prompt injection: how do you protect it?",
+        "answer": "Treat retrieved documents and tool outputs as untrusted input: they are data and must never change the agent's permissions. Every tool call passes schema validation and policy checks before running in a sandbox; high-risk operations need human approval, and everything goes to an audit log.\n\nValidation: Tool schema · Command allowlist\nIsolation: Sandbox · Least privilege · Filesystem / network limits\nControl: Human approval · Audit log\nMetrics: Injection attack success rate · Unauthorized execution rate\n\nThink one step further: When a legitimate task needs dynamically built shell commands, how do you balance safety and usability?",
+        "flows": [
+          {
+            "caption": "Tool-call protection",
+            "steps": [
+              "Untrusted document / tool output",
+              "Schema validation → Policy / Allowlist",
+              "Sandbox → Human approval → Audit"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 30,
+      "title": "Agent 測試成功率 95%，正式環境只有 78%，怎麼排查？",
+      "answer": "先補可觀測性：每個任務都有 End-to-End Trace，記錄 retrieval、模型決策、tool call 與結果。再把失敗案例分類：Tool Failure、Retrieval Quality、Model Decision、Environment Difference、Permission Issue，並把正式環境的失敗樣本加入 Regression Suite。\n\n分類：Tool · Retrieval · Model decision · Environment · Permission\n評估：Regression suite · 人工標註 · LLM-as-Judge 交叉驗證\n指標：Task success · Tool success · P99 · Cost per successful task\n\n試著再回答：LLM-as-Judge 和人工評估不一致時，你會如何修正評估方式？",
+      "topic": 10,
+      "flows": [
+        {
+          "caption": "排查循環",
+          "steps": [
+            "End-to-End Trace",
+            "失敗分類 → 根因",
+            "Regression Suite → 持續評估"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Agent success is 95% in testing but 78% in production: how do you investigate?",
+        "answer": "Add observability first: every task gets an end-to-end trace of retrieval, model decisions, tool calls, and results. Then classify failures as tool failure, retrieval quality, model decision, environment difference, or permission issue, and add production failures to the regression suite.\n\nClassify: Tool · Retrieval · Model decision · Environment · Permission\nEvaluate: Regression suite · Human labels · LLM-as-judge cross-checks\nMetrics: Task success · Tool success · P99 · Cost per successful task\n\nThink one step further: When LLM-as-judge and human evaluation disagree, how would you fix the evaluation?",
+        "flows": [
+          {
+            "caption": "Investigation loop",
+            "steps": [
+              "End-to-end trace",
+              "Classify failures → Root cause",
+              "Regression suite → Continuous evaluation"
+            ]
+          }
+        ]
+      }
     }
   ],
   "quiz": [
@@ -1188,6 +1278,72 @@
           "Only manual testing is possible"
         ],
         "explain": "Production evaluation covers both end-to-end outcomes and individual capabilities."
+      }
+    },
+    {
+      "id": 28,
+      "prompt": "多 Tenant Agent Memory 的隔離應放在哪裡？",
+      "options": [
+        "System Prompt 提醒模型不要洩漏",
+        "檢索層的 tenant 過濾與每次讀取授權檢查",
+        "只靠使用者自律",
+        "把所有 tenant 放同一個向量索引即可"
+      ],
+      "correct": 1,
+      "explain": "隔離要在資料與檢索層強制執行，Prompt 不是安全邊界。",
+      "en": {
+        "prompt": "Where should tenant isolation for agent memory be enforced?",
+        "options": [
+          "A system prompt telling the model not to leak",
+          "Tenant filtering and per-read authorization in the retrieval layer",
+          "User self-discipline",
+          "Putting every tenant in one shared vector index"
+        ],
+        "explain": "Enforce isolation in the data and retrieval layers; a prompt is not a security boundary."
+      }
+    },
+    {
+      "id": 29,
+      "prompt": "Agent 讀到的外部文件含有指令時，應如何處理？",
+      "options": [
+        "照文件指令執行",
+        "只要模型夠大就安全",
+        "視為 untrusted data，tool call 仍需驗證、權限與 sandbox",
+        "關閉所有工具"
+      ],
+      "correct": 2,
+      "explain": "文件內容只能當資料，不能取得執行權限。",
+      "en": {
+        "prompt": "An external document read by the agent contains instructions. What should happen?",
+        "options": [
+          "Follow the document's instructions",
+          "A large enough model makes it safe",
+          "Treat it as untrusted data; tool calls still need validation, permissions, and a sandbox",
+          "Disable every tool"
+        ],
+        "explain": "Document content is data only and must never gain execution rights."
+      }
+    },
+    {
+      "id": 30,
+      "prompt": "測試 95%、正式環境 78%，第一步最該做什麼？",
+      "options": [
+        "建立 end-to-end trace 並把失敗案例分類",
+        "立刻換更大的模型",
+        "降低測試標準讓數字一致",
+        "增加 temperature"
+      ],
+      "correct": 0,
+      "explain": "先看得到失敗發生在哪一段，才能找根因。",
+      "en": {
+        "prompt": "Success is 95% in testing and 78% in production. What should you do first?",
+        "options": [
+          "Build end-to-end traces and classify the failures",
+          "Switch to a larger model right away",
+          "Lower the test bar so the numbers match",
+          "Raise the temperature"
+        ],
+        "explain": "You must see which stage fails before you can find the root cause."
       }
     }
   ]
