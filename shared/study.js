@@ -51,7 +51,7 @@ function cleanState(value) {
     answers, earlier,
     attempts:all.reduce((sum, v) => sum + v.attempts, 0),
     correct:all.reduce((sum, v) => sum + v.correct, 0),
-    lang:source.lang === "en" ? "en" : "zh"
+    lang:source.lang === "zh" ? "zh" : "en"
   };
 }
 // Synced per-item records: note:<id> {read}, quiz:<id> {attempts, correct, wrong}, earlier {attempts, correct}; each carries `at`.
@@ -89,7 +89,7 @@ function loadRecords() {
 let state, records = {};
 try { state = cleanState(JSON.parse(localStorage.getItem(KEY))); } catch { state = cleanState({}); }
 try { records = loadRecords(); state = {...fromRecords(records), lang:state.lang}; } catch {}
-let lang = state.lang === "en" ? "en" : "zh";
+let lang = state.lang === "zh" ? "zh" : "en";
 let topic = "all", tab = "learn", page = 0, session = null;
 const expanded = new Set();
 const PAGE_SIZE = 10;

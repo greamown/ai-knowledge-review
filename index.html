@@ -98,8 +98,8 @@ const COPY = {
   }
 };
 const LANG_KEY = "ai-knowledge-review-lang";
-let lang = "zh";
-try { if (localStorage.getItem(LANG_KEY) === "en") lang = "en"; } catch {}
+let lang = "en";
+try { if (localStorage.getItem(LANG_KEY) === "zh") lang = "zh"; } catch {}
 // Reads the same per-item records the topic pages save: notes count when read (Agent's older records say state "understood").
 // ponytail: a topic last used before records existed shows 0 here until it is opened and saved once.
 function progress(key) {
