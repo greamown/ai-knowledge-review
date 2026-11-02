@@ -6,9 +6,9 @@ Three bilingual (Traditional Chinese / English) AI interview review sites in one
 
 | Topic | Path | Content |
 | --- | --- | --- |
-| Agent Knowledge Lab | [`agent/`](agent/) | 30 notes and 18 quiz questions across 12 topics on AI agents: architecture, tool calling, context engineering, memory & RAG, multi-agent, security, evaluation, system design. |
-| GenAI Knowledge | [`genai/`](genai/) | 106 scenario-based notes and 48 quiz questions across model architecture, fine-tuning, RAG & agents, inference & deployment. |
-| VLA Knowledge Lab | [`vla/`](vla/) | 30 notes and 30 quiz questions on Vision-Language-Action for robotics and Physical AI, across 5 chapters. |
+| Agent Knowledge Lab | [`agent/`](agent/) | 31 notes and 19 quiz questions across 12 topics on AI agents: architecture, tool calling, context engineering, memory & RAG, multi-agent, security, evaluation, system design. |
+| GenAI Knowledge | [`genai/`](genai/) | 110 scenario-based notes and 52 quiz questions across model architecture, fine-tuning, RAG & agents, inference & deployment. |
+| VLA Knowledge Lab | [`vla/`](vla/) | 33 notes and 33 quiz questions on Vision-Language-Action for robotics and Physical AI, across 5 chapters. |
 
 No build step, package install, or backend. Everything is static and served from GitHub Pages.
 

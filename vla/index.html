@@ -1312,6 +1312,110 @@
           }
         ]
       }
+    },
+    {
+      "id": 30,
+      "title": "單眼深度估測如何取得可信的公尺尺度，並偵測不可靠的預測？",
+      "answer": "先說清楚尺度從哪裡來，再按場景分層驗證。\n\n單眼影像本身有尺度歧義：同一張圖可能對應「近而小」或「遠而大」的場景，相對深度不等於公尺。Metric scale 必須來自相機內參、已知尺度資料、立體或深度感測器的教師訊號，或可靠的場景先驗；換不同焦距的鏡頭時要重新處理內參。泛化方面，訓練與測試要分開場景與裝置，做 cross-camera／cross-domain validation，並依距離、材質（玻璃、反光）、光照與運動狀態切分失敗案例。輸出附帶 confidence／uncertainty mask，讓控制器不信任高風險像素。部署（2 GB、P99 < 25 ms、≥ 30 FPS）可用蒸餾、量化、降低輸入尺寸與非同步前處理，但要在目標 SoC 實測記憶體、熱穩態與完整影像管線的 P99。\n\n全域平均改善不等於安全：要按場景報告 Abs Rel、RMSE、δ<1.25 與近距離障礙物漏檢率。\n\n面試延伸：原始面試 Q21（Qualcomm Depth Estimation）。追問：公開資料集 Abs Rel 改善 10%，但玻璃門附近漏檢率增加，要放行嗎？不能只看平均。安全閘門可設為：近距離障礙物漏檢率不得高於現行版本，玻璃、強光等高風險場景各自要過門檻；不達標就阻擋發佈，或在低信心區域降速、改用其他感測器。評分：尺度歧義與校準 3、域外測試／不確定性 3、延遲／記憶體 2、安全部署準則 2。",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "Metric depth 部署流程",
+          "steps": [
+            "尺度來源 · 內參、感測器教師訊號、已知尺度資料",
+            "分層驗證 · 跨相機／場景、距離、材質、光照",
+            "部署閘門 · Uncertainty mask、目標 SoC P99、漏檢率"
+          ]
+        }
+      ],
+      "en": {
+        "title": "How does monocular depth estimation get a trustworthy metric scale and flag unreliable predictions?",
+        "answer": "State where the scale comes from, then validate per scene.\n\nA single image is scale-ambiguous: the same picture can show a near, small scene or a far, large one, so relative depth is not meters. Metric scale must come from camera intrinsics, data with known scale, a stereo or depth-sensor teacher signal, or reliable scene priors; a lens with a different focal length needs its intrinsics handled again. For generalization, split training and test by scene and device, run cross-camera and cross-domain validation, and slice failures by distance, material (glass, reflections), lighting, and motion. Output a confidence or uncertainty mask so the controller does not trust high-risk pixels. For deployment (2 GB, P99 < 25 ms, at least 30 FPS), consider distillation, quantization, smaller inputs, and asynchronous preprocessing, but measure memory, thermal steady state, and full image-pipeline P99 on the target SoC.\n\nA better global average is not safety: report Abs Rel, RMSE, delta<1.25, and near-obstacle miss rate per scene.\n\nInterview insight: Original interview Q21 (Qualcomm depth estimation). Follow-up: Abs Rel improves 10% on a public dataset, but misses near glass doors rise; do you ship? Not on the average alone. A safety gate can require that the near-obstacle miss rate is no worse than the current release and that high-risk scenes such as glass and glare each pass their own threshold; otherwise block the release, or slow down and rely on other sensors in low-confidence regions. Scoring: scale ambiguity and calibration 3, out-of-domain testing and uncertainty 3, latency and memory 2, safe deployment criteria 2.",
+        "flows": [
+          {
+            "caption": "Metric depth deployment",
+            "steps": [
+              "Scale source · Intrinsics, sensor teacher, known-scale data",
+              "Sliced validation · Cross-camera / scene, distance, material, lighting",
+              "Release gate · Uncertainty mask, target-SoC P99, miss rate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 31,
+      "title": "影片深度估測閃爍導致反覆剎車，如何兼顧時序穩定與資料新鮮度？",
+      "answer": "穩定與新鮮要一起量測，歷史估計要能被放棄。\n\n先拆開時間：影像時間戳、排隊時間、模型執行時間，以及規劃器取用時的 frame age；單幀推論 12 ms 不代表 Sensor-to-Planning P99 < 25 ms。降低閃爍可用光流或位姿把上一幀深度 warp 到目前幀、訓練時加 temporal consistency loss，或做短窗融合；但融合在運動遮擋與物體邊界處會產生拖影。用 occlusion mask、motion boundary 與 confidence gating 決定何時丟棄歷史估計。佇列採 bounded queue（例如 latest-frame-wins），避免 backlog 讓輸出越來越舊。\n\n融合能降低閃爍，但每多等一幀就多一份延遲；用 Frame Age P99 與 Deadline Miss Rate 守住上限。\n\n面試延伸：原始面試 Q22（Qualcomm Video Depth）。追問：三幀融合讓 Temporal Error 降 30%，但 Frame Age P99 由 18 ms 變 45 ms，怎麼改？不要等未來影格：改成因果（causal）融合，只把過去的估計 warp 到當前幀，或用輕量 recurrent state 只保留一份狀態；融合放在獨立路徑，規劃器永遠拿最新幀的結果。指標：Temporal Warping Error、Abs Rel、Frame Age P99、Sensor-to-Planning P99、Deadline Miss Rate、誤剎車率。評分：Temporal modeling 3、遮擋／運動誤差 2、Queue／Deadline 3、端到端量測 2。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "時序穩定但不過時",
+          "steps": [
+            "時間拆解 · 時間戳、排隊、推論、Frame Age",
+            "時序融合 · Warp／短窗、遮擋與信心 gating",
+            "佇列控制 · Bounded queue、latest-frame-wins"
+          ]
+        }
+      ],
+      "en": {
+        "title": "Flickering video depth makes the robot brake repeatedly: how do you balance temporal stability and freshness?",
+        "answer": "Measure stability and freshness together, and make history easy to drop.\n\nSplit the time first: image timestamp, queueing, model execution, and the frame age when the planner reads the result. A 12 ms per-frame inference does not mean sensor-to-planning P99 < 25 ms. To reduce flicker, warp the previous depth into the current frame with optical flow or pose, add a temporal consistency loss in training, or fuse a short window; but fusion smears at motion occlusions and object boundaries. Use occlusion masks, motion boundaries, and confidence gating to decide when to discard past estimates. Use a bounded queue (for example latest-frame-wins) so a backlog cannot make outputs ever older.\n\nFusion reduces flicker, but each frame you wait for adds latency; hold the limit with frame-age P99 and deadline miss rate.\n\nInterview insight: Original interview Q22 (Qualcomm video depth). Follow-up: three-frame fusion cuts temporal error by 30% but frame-age P99 goes from 18 ms to 45 ms; how do you redesign? Do not wait for future frames: switch to causal fusion that only warps past estimates into the current frame, or keep a single lightweight recurrent state; run fusion on its own path so the planner always gets the newest frame's result. Metrics: temporal warping error, Abs Rel, frame-age P99, sensor-to-planning P99, deadline miss rate, false braking rate. Scoring: temporal modeling 3, occlusion and motion errors 2, queue and deadline design 3, end-to-end measurement 2.",
+        "flows": [
+          {
+            "caption": "Stable but not stale",
+            "steps": [
+              "Time breakdown · Timestamp, queueing, inference, frame age",
+              "Temporal fusion · Warp / short window, occlusion and confidence gating",
+              "Queue control · Bounded queue, latest-frame-wins"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 32,
+      "title": "如何為 AMR 的感知到規劃管線建立 SIL／HIL 自動化 Regression Suite？",
+      "answer": "分層驗證、量端到端時序、用安全門檻擋發佈。\n\n先定義資料契約與可追溯的 Scenario Matrix：速度、光照、障礙物大小與移動方向、感測器掉包、時鐘偏移、CPU／GPU 壅塞與熱穩態。分四層：單元／算子正確性；SIL 驗證感知與規劃行為；HIL 驗證真實 I/O 時序並做 Fault Injection；真機跑安全情境。用 ROS 2 Trace 與跨節點一致的時間戳量測 Capture-to-Planning P99（目標 < 40 ms、Deadline Miss Rate < 0.1%），不只量推論；明確區分 Simulation Time 與 Wall Clock。量化前後在同一 Golden Dataset 比較 per-scene 準確率、False Negative 與最壞情況風險。CI 產生版本化報告，不達標就阻擋發佈；Safe-stop／Degraded Mode 獨立驗證，不讓模型單獨決定緊急停車。\n\nSIL 達標不代表 HIL 達標：模擬時間會掩蓋 DDS、Driver 與 DMA 的真實延遲。\n\n面試延伸：原始面試 Q27（AMD Physical AI 驗證）。追問：SIL P99 25 ms、HIL P99 70 ms，如何證明根因而不是加大 Timeout？在每個邊界打時間戳（曝光、Driver 收到、DMA 完成、DDS publish／take、推論開始／結束），用 ros2_tracing 等工具重建每幀時間線；先確認時鐘同步（PTP／chrony）誤差，再逐段替換或隔離（調整 DDS 設定、固定 CPU affinity、改 Driver 緩衝），看哪一段的延遲分布跟著改變。評分：驗證層級與場景 3、端到端時序 3、安全與精度回歸 3、CI 可重現性 1。",
+      "topic": 4,
+      "flows": [
+        {
+          "caption": "四層驗證",
+          "steps": [
+            "單元／算子 · 數值正確性",
+            "SIL · 感知與規劃行為、Scenario Matrix",
+            "HIL · 真實 I/O 時序、Fault Injection",
+            "真機 · 安全情境、Safe-stop 驗證"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ros2_tracing",
+          "url": "https://github.com/ros2/ros2_tracing"
+        }
+      ],
+      "en": {
+        "title": "How do you build an automated SIL / HIL regression suite for an AMR perception-to-planning pipeline?",
+        "answer": "Validate in layers, measure end-to-end timing, and block releases on safety gates.\n\nDefine data contracts and a traceable scenario matrix first: speed, lighting, obstacle size and direction, sensor dropouts, clock skew, CPU / GPU contention, and thermal steady state. Use four layers: unit and operator correctness; SIL for perception and planning behavior; HIL for real I/O timing with fault injection; and the real robot for safety scenarios. Measure capture-to-planning P99 (target < 40 ms, deadline miss rate < 0.1%) with ROS 2 tracing and consistent cross-node timestamps, not just inference time, and keep simulation time and wall-clock time clearly apart. Before and after quantization, compare per-scene accuracy, false negatives, and worst-case risk on the same golden dataset. CI produces a versioned report and blocks the release when a safety gate fails. Validate safe-stop and degraded modes on their own; the model must not decide emergency stops alone.\n\nPassing in SIL does not mean passing in HIL: simulated time hides the real latency of DDS, drivers, and DMA.\n\nInterview insight: Original interview Q27 (AMD Physical AI validation). Follow-up: SIL P99 is 25 ms but HIL P99 is 70 ms; how do you prove the root cause instead of raising timeouts? Timestamp every boundary (exposure, driver receive, DMA complete, DDS publish / take, inference start / end) and rebuild a per-frame timeline with tools such as ros2_tracing. Check clock-sync error (PTP / chrony) first, then swap or isolate one stage at a time (DDS settings, pinned CPU affinity, driver buffering) and see which stage's latency distribution moves. Scoring: validation layers and scenarios 3, end-to-end timing 3, safety and accuracy regression 3, CI reproducibility 1.",
+        "flows": [
+          {
+            "caption": "Four validation layers",
+            "steps": [
+              "Unit / operator · Numerical correctness",
+              "SIL · Perception and planning behavior, scenario matrix",
+              "HIL · Real I/O timing, fault injection",
+              "Real robot · Safety scenarios, safe-stop checks"
+            ]
+          }
+        ],
+        "sources": [
+          {
+            "title": "ros2_tracing",
+            "url": "https://github.com/ros2/ros2_tracing"
+          }
+        ]
+      }
     }
   ],
   "quiz": [
@@ -1973,6 +2077,72 @@
           "Choose by freshness, loss consequences, and deadlines, with application safety mechanisms"
         ],
         "explain": "Design reliable delivery and timely completion separately.\n\nNo. Reliability and deadlines are different requirements. Reliable targets delivery, while retransmission, buffering, or backpressure can add latency. Best Effort guarantees neither delivery nor deadlines. High-rate images may favor Best Effort with small queues for freshness, while handling consecutive losses. Discrete mode changes may need reliable transport, application acknowledgments, sequence numbers, and timeouts. Choose by message semantics, expiry, and failure consequences; verify publisher/subscriber QoS compatibility.\n\nDeadline QoS does not guarantee callback or complete control-path deadlines.\n\nInterview insight: Original Q6 follow-up. Deadline QoS monitors expected message intervals, not callback or end-to-end completion deadlines. Lifespan limits message validity; liveliness reflects activity. Both reliability choices need age checks, watchdogs, and safe fallback. Reliable delivery does not confirm actuator execution."
+      }
+    },
+    {
+      "id": 30,
+      "prompt": "單眼深度模型要輸出公尺尺度，下列何者正確？",
+      "options": [
+        "相對深度乘上固定常數即可",
+        "需要內參、感測器教師訊號或已知尺度等尺度來源，並按場景驗證",
+        "只要 Abs Rel 平均下降就能部署",
+        "換鏡頭後不必重新處理"
+      ],
+      "correct": 1,
+      "explain": "先說清楚尺度從哪裡來，再按場景分層驗證。\n\n單眼影像本身有尺度歧義：同一張圖可能對應「近而小」或「遠而大」的場景，相對深度不等於公尺。Metric scale 必須來自相機內參、已知尺度資料、立體或深度感測器的教師訊號，或可靠的場景先驗；換不同焦距的鏡頭時要重新處理內參。泛化方面，訓練與測試要分開場景與裝置，做 cross-camera／cross-domain validation，並依距離、材質（玻璃、反光）、光照與運動狀態切分失敗案例。輸出附帶 confidence／uncertainty mask，讓控制器不信任高風險像素。部署（2 GB、P99 < 25 ms、≥ 30 FPS）可用蒸餾、量化、降低輸入尺寸與非同步前處理，但要在目標 SoC 實測記憶體、熱穩態與完整影像管線的 P99。\n\n全域平均改善不等於安全：要按場景報告 Abs Rel、RMSE、δ<1.25 與近距離障礙物漏檢率。\n\n面試延伸：原始面試 Q21（Qualcomm Depth Estimation）。追問：公開資料集 Abs Rel 改善 10%，但玻璃門附近漏檢率增加，要放行嗎？不能只看平均。安全閘門可設為：近距離障礙物漏檢率不得高於現行版本，玻璃、強光等高風險場景各自要過門檻；不達標就阻擋發佈，或在低信心區域降速、改用其他感測器。評分：尺度歧義與校準 3、域外測試／不確定性 3、延遲／記憶體 2、安全部署準則 2。",
+      "en": {
+        "prompt": "A monocular depth model must output metric scale. Which statement is correct?",
+        "options": [
+          "Multiply relative depth by a fixed constant",
+          "It needs a scale source such as intrinsics, a sensor teacher, or known-scale data, validated per scene",
+          "Ship as soon as average Abs Rel drops",
+          "A new lens needs no extra handling"
+        ],
+        "explain": "State where the scale comes from, then validate per scene.\n\nA single image is scale-ambiguous: the same picture can show a near, small scene or a far, large one, so relative depth is not meters. Metric scale must come from camera intrinsics, data with known scale, a stereo or depth-sensor teacher signal, or reliable scene priors; a lens with a different focal length needs its intrinsics handled again. For generalization, split training and test by scene and device, run cross-camera and cross-domain validation, and slice failures by distance, material (glass, reflections), lighting, and motion. Output a confidence or uncertainty mask so the controller does not trust high-risk pixels. For deployment (2 GB, P99 < 25 ms, at least 30 FPS), consider distillation, quantization, smaller inputs, and asynchronous preprocessing, but measure memory, thermal steady state, and full image-pipeline P99 on the target SoC.\n\nA better global average is not safety: report Abs Rel, RMSE, delta<1.25, and near-obstacle miss rate per scene.\n\nInterview insight: Original interview Q21 (Qualcomm depth estimation). Follow-up: Abs Rel improves 10% on a public dataset, but misses near glass doors rise; do you ship? Not on the average alone. A safety gate can require that the near-obstacle miss rate is no worse than the current release and that high-risk scenes such as glass and glare each pass their own threshold; otherwise block the release, or slow down and rely on other sensors in low-confidence regions. Scoring: scale ambiguity and calibration 3, out-of-domain testing and uncertainty 3, latency and memory 2, safe deployment criteria 2."
+      }
+    },
+    {
+      "id": 31,
+      "prompt": "三幀融合讓閃爍下降，但 Frame Age P99 由 18 ms 升到 45 ms，較好的做法？",
+      "options": [
+        "接受延遲，穩定比較重要",
+        "加大佇列避免丟幀",
+        "把 Deadline 放寬到 50 ms",
+        "改成只用過去影格的因果融合，並用 bounded queue 讓規劃器拿最新幀"
+      ],
+      "correct": 3,
+      "explain": "穩定與新鮮要一起量測，歷史估計要能被放棄。\n\n先拆開時間：影像時間戳、排隊時間、模型執行時間，以及規劃器取用時的 frame age；單幀推論 12 ms 不代表 Sensor-to-Planning P99 < 25 ms。降低閃爍可用光流或位姿把上一幀深度 warp 到目前幀、訓練時加 temporal consistency loss，或做短窗融合；但融合在運動遮擋與物體邊界處會產生拖影。用 occlusion mask、motion boundary 與 confidence gating 決定何時丟棄歷史估計。佇列採 bounded queue（例如 latest-frame-wins），避免 backlog 讓輸出越來越舊。\n\n融合能降低閃爍，但每多等一幀就多一份延遲；用 Frame Age P99 與 Deadline Miss Rate 守住上限。\n\n面試延伸：原始面試 Q22（Qualcomm Video Depth）。追問：三幀融合讓 Temporal Error 降 30%，但 Frame Age P99 由 18 ms 變 45 ms，怎麼改？不要等未來影格：改成因果（causal）融合，只把過去的估計 warp 到當前幀，或用輕量 recurrent state 只保留一份狀態；融合放在獨立路徑，規劃器永遠拿最新幀的結果。指標：Temporal Warping Error、Abs Rel、Frame Age P99、Sensor-to-Planning P99、Deadline Miss Rate、誤剎車率。評分：Temporal modeling 3、遮擋／運動誤差 2、Queue／Deadline 3、端到端量測 2。",
+      "en": {
+        "prompt": "Three-frame fusion reduces flicker, but frame-age P99 rises from 18 ms to 45 ms. What is better?",
+        "options": [
+          "Accept the latency; stability matters more",
+          "Enlarge the queue to avoid dropping frames",
+          "Relax the deadline to 50 ms",
+          "Switch to causal fusion over past frames only, with a bounded queue so the planner gets the newest frame"
+        ],
+        "explain": "Measure stability and freshness together, and make history easy to drop.\n\nSplit the time first: image timestamp, queueing, model execution, and the frame age when the planner reads the result. A 12 ms per-frame inference does not mean sensor-to-planning P99 < 25 ms. To reduce flicker, warp the previous depth into the current frame with optical flow or pose, add a temporal consistency loss in training, or fuse a short window; but fusion smears at motion occlusions and object boundaries. Use occlusion masks, motion boundaries, and confidence gating to decide when to discard past estimates. Use a bounded queue (for example latest-frame-wins) so a backlog cannot make outputs ever older.\n\nFusion reduces flicker, but each frame you wait for adds latency; hold the limit with frame-age P99 and deadline miss rate.\n\nInterview insight: Original interview Q22 (Qualcomm video depth). Follow-up: three-frame fusion cuts temporal error by 30% but frame-age P99 goes from 18 ms to 45 ms; how do you redesign? Do not wait for future frames: switch to causal fusion that only warps past estimates into the current frame, or keep a single lightweight recurrent state; run fusion on its own path so the planner always gets the newest frame's result. Metrics: temporal warping error, Abs Rel, frame-age P99, sensor-to-planning P99, deadline miss rate, false braking rate. Scoring: temporal modeling 3, occlusion and motion errors 2, queue and deadline design 3, end-to-end measurement 2."
+      }
+    },
+    {
+      "id": 32,
+      "prompt": "SIL 的 P99 為 25 ms，HIL 卻是 70 ms，第一步該做什麼？",
+      "options": [
+        "直接加大 Timeout",
+        "只量推論時間",
+        "在各邊界打時間戳並確認時鐘同步，逐段定位延遲",
+        "改回只跑 SIL 測試"
+      ],
+      "correct": 2,
+      "explain": "分層驗證、量端到端時序、用安全門檻擋發佈。\n\n先定義資料契約與可追溯的 Scenario Matrix：速度、光照、障礙物大小與移動方向、感測器掉包、時鐘偏移、CPU／GPU 壅塞與熱穩態。分四層：單元／算子正確性；SIL 驗證感知與規劃行為；HIL 驗證真實 I/O 時序並做 Fault Injection；真機跑安全情境。用 ROS 2 Trace 與跨節點一致的時間戳量測 Capture-to-Planning P99（目標 < 40 ms、Deadline Miss Rate < 0.1%），不只量推論；明確區分 Simulation Time 與 Wall Clock。量化前後在同一 Golden Dataset 比較 per-scene 準確率、False Negative 與最壞情況風險。CI 產生版本化報告，不達標就阻擋發佈；Safe-stop／Degraded Mode 獨立驗證，不讓模型單獨決定緊急停車。\n\nSIL 達標不代表 HIL 達標：模擬時間會掩蓋 DDS、Driver 與 DMA 的真實延遲。\n\n面試延伸：原始面試 Q27（AMD Physical AI 驗證）。追問：SIL P99 25 ms、HIL P99 70 ms，如何證明根因而不是加大 Timeout？在每個邊界打時間戳（曝光、Driver 收到、DMA 完成、DDS publish／take、推論開始／結束），用 ros2_tracing 等工具重建每幀時間線；先確認時鐘同步（PTP／chrony）誤差，再逐段替換或隔離（調整 DDS 設定、固定 CPU affinity、改 Driver 緩衝），看哪一段的延遲分布跟著改變。評分：驗證層級與場景 3、端到端時序 3、安全與精度回歸 3、CI 可重現性 1。",
+      "en": {
+        "prompt": "SIL P99 is 25 ms but HIL P99 is 70 ms. What should you do first?",
+        "options": [
+          "Raise the timeout",
+          "Measure inference time only",
+          "Timestamp every boundary, check clock sync, and locate the latency stage by stage",
+          "Go back to running SIL only"
+        ],
+        "explain": "Validate in layers, measure end-to-end timing, and block releases on safety gates.\n\nDefine data contracts and a traceable scenario matrix first: speed, lighting, obstacle size and direction, sensor dropouts, clock skew, CPU / GPU contention, and thermal steady state. Use four layers: unit and operator correctness; SIL for perception and planning behavior; HIL for real I/O timing with fault injection; and the real robot for safety scenarios. Measure capture-to-planning P99 (target < 40 ms, deadline miss rate < 0.1%) with ROS 2 tracing and consistent cross-node timestamps, not just inference time, and keep simulation time and wall-clock time clearly apart. Before and after quantization, compare per-scene accuracy, false negatives, and worst-case risk on the same golden dataset. CI produces a versioned report and blocks the release when a safety gate fails. Validate safe-stop and degraded modes on their own; the model must not decide emergency stops alone.\n\nPassing in SIL does not mean passing in HIL: simulated time hides the real latency of DDS, drivers, and DMA.\n\nInterview insight: Original interview Q27 (AMD Physical AI validation). Follow-up: SIL P99 is 25 ms but HIL P99 is 70 ms; how do you prove the root cause instead of raising timeouts? Timestamp every boundary (exposure, driver receive, DMA complete, DDS publish / take, inference start / end) and rebuild a per-frame timeline with tools such as ros2_tracing. Check clock-sync error (PTP / chrony) first, then swap or isolate one stage at a time (DDS settings, pinned CPU affinity, driver buffering) and see which stage's latency distribution moves. Scoring: validation layers and scenarios 3, end-to-end timing 3, safety and accuracy regression 3, CI reproducibility 1."
       }
     }
   ]

@@ -947,6 +947,36 @@
           }
         ]
       }
+    },
+    {
+      "id": 31,
+      "title": "半導體除錯 Agent 透過 MCP／RAG 讀取 Log，如何做到跨專案零洩漏又可驗證？",
+      "answer": "授權放在 Agent 之外：Agent 只提出結構化 Tool Request，由獨立的 Policy Enforcement Point 檢查使用者身分、專案、操作類型、參數 Schema、Resource Scope 與配額。資料索引依專案隔離，檢索前後都做存取控制；Bring-up Log、寄存器 Dump 與驗證報告都視為 untrusted input。只讀診斷工具與會改寫 Debug Script 的工具分開，後者需要人工核准、Sandbox 執行、可回滾並留 Audit Trail。Prompt 裡寫「禁止跨專案」不是授權機制。\n\n隔離：專案索引 · 檢索前後授權 · Memory 帶來源、版本、TTL、敏感度\n工具：只讀 / 寫入分開 · Schema · Sandbox · Human Approval · Rollback\n評估：固定 Incident Dataset · Evidence Grounding · 跨專案存取測試 · Injection 成功率\n指標：Cross-project violations = 0 · Unauthorized tool execution · Tool P99 < 1.5 s · Cost per resolved incident\n\n試著再回答：根因建議正確率 90%，但有 1% 機會對錯誤專案執行 Debug Script，要怎麼改架構才能上線？（提示：專案 ID 由 Session 身分綁定，不由模型填寫；執行前由 Policy 比對目標資源所屬專案；寫入類操作一律人工確認。）",
+      "topic": 3,
+      "flows": [
+        {
+          "caption": "Tool Request 授權路徑",
+          "steps": [
+            "Agent → 結構化 Tool Request",
+            "Policy Enforcement Point · 身分、專案、Schema、Scope",
+            "只讀工具執行 / 寫入工具 → 人工核准 → Sandbox → Audit"
+          ]
+        }
+      ],
+      "en": {
+        "title": "A chip-debug agent reads logs through MCP and RAG: how do you guarantee zero cross-project leaks and keep it verifiable?",
+        "answer": "Put authorization outside the agent: the agent only proposes structured tool requests, and a separate policy enforcement point checks user identity, project, operation type, parameter schema, resource scope, and quota. Data indexes are isolated per project with access checks both before and after retrieval; bring-up logs, register dumps, and validation reports are all untrusted input. Keep read-only diagnostic tools apart from tools that rewrite debug scripts; the latter need human approval, sandboxed execution, rollback, and an audit trail. Writing \"never cross projects\" in the prompt is not an authorization mechanism.\n\nIsolation: Per-project index · Auth before and after retrieval · Memory with source, version, TTL, sensitivity\nTools: Read-only / write split · Schema · Sandbox · Human approval · Rollback\nEvaluation: Fixed incident dataset · Evidence grounding · Cross-project access tests · Injection success rate\nMetrics: Cross-project violations = 0 · Unauthorized tool execution · Tool P99 < 1.5 s · Cost per resolved incident\n\nThink one step further: root-cause suggestions are 90% correct, but there is a 1% chance of running a debug script on the wrong project; what must change before launch? (Hint: bind the project ID to the session identity instead of letting the model fill it in, have the policy check which project the target resource belongs to before execution, and require human confirmation for every write.)",
+        "flows": [
+          {
+            "caption": "Tool request authorization path",
+            "steps": [
+              "Agent → Structured tool request",
+              "Policy enforcement point · Identity, project, schema, scope",
+              "Read-only tool runs / Write tool → Human approval → Sandbox → Audit"
+            ]
+          }
+        ]
+      }
     }
   ],
   "quiz": [
@@ -1344,6 +1374,28 @@
           "Raise the temperature"
         ],
         "explain": "You must see which stage fails before you can find the root cause."
+      }
+    },
+    {
+      "id": 31,
+      "prompt": "如何確保除錯 Agent 不會讀到其他專案的資料？",
+      "options": [
+        "在 Prompt 寫明禁止跨專案",
+        "由 Agent 之外的 Policy Enforcement Point 依身分與專案授權，索引依專案隔離",
+        "換更大的模型",
+        "只留 Log 事後稽核"
+      ],
+      "correct": 1,
+      "explain": "授權必須在模型之外強制執行，Prompt 不是權限邊界。",
+      "en": {
+        "prompt": "How do you make sure the debug agent never reads another project's data?",
+        "options": [
+          "State in the prompt that cross-project access is forbidden",
+          "A policy enforcement point outside the agent authorizes by identity and project, with per-project indexes",
+          "Use a larger model",
+          "Keep logs and audit afterwards"
+        ],
+        "explain": "Authorization must be enforced outside the model; a prompt is not a permission boundary."
       }
     }
   ]
